@@ -1,4 +1,36 @@
-﻿using System;
+﻿/******************************************************************************
+Company: NewsIT-M.W.Steidl, 1180 Wien/Österreich (Vienna/Austria)
+
+Copyright 2014 NewsIT-M.W.Steidl (www.newsit.biz)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the "Software"), to deal 
+in the Software without restriction, including without limitation the rights 
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
+of the Software, and to permit persons to whom the Software is furnished 
+to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included 
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+(see also http://www.opensource.org/licenses/MIT) 
+ 
+Project: IPTC NewsML-G2 demos/examples
+Program: NewsMLG2demo1
+Class: NewsMLG2demo1
+  
+
+Current date / persID / change log (most current at top)
+StartDate: 2014-03-01
+******************************************************************************/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +56,13 @@ namespace NewsMLG2demo1
 
         }
 
+        /// <summary>
+        /// This examples creates a NewsML-G2 News Item as shown in the QuickStart NewsML-G2 Text
+        /// document in this package http://www.iptc.org/std/NewsML-G2/2.15/documentation/IPTC-NewsML-G2-QuickStartGuides_2014.zip
+        /// </summary>
         private void GenerateQuickStartTextExample1()
+            // Code History:
+            // 2014-03-01 mws
         {
             // variables global only to this method
             XmlNode foundNode = null;
