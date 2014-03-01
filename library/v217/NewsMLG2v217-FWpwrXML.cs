@@ -44,7 +44,7 @@ using System.Reflection;
 namespace NewsIT.IPTC.NewsMLG2.v217
 {
 	// *************************************************************************
-	#region **** STRUCTURES AND ENUMERATIONS
+	#region **** GENERIC ENUMERATIONS
 
     //**************************************************************************
     public enum ReadFromItemResultEnum { ok, unknown, firstFromMultiple, emptyXPath, emptyAttribname, targetNotFound,
@@ -78,29 +78,39 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     //**************************************************************************
     //**************************************************************************
     /// <summary>
-    /// The class represents the basics of all NewsML-G2 item classes
+    /// The class represents the base of all NewsML-G2 item classes
     /// </summary>
     public abstract class AnyItemXml
     {
+        // the version of the corresponding NewsML-G2 specification:
         public const string Newsmlg2VersionCs = "2.17";
-        public const string G2NsCs = "http://iptc.org/std/nar/2006-10-01/";
+        // namespace URI of the NewsML-G2/News Architecture:
+        public const string G2NsCs = "http://iptc.org/std/nar/2006-10-01/"; 
+        // the namespace prefix of this News ARchitecture (=nar) namespace.
+        // all elements of this NewsML-G2 namespace are attributed as "nar: elements"
         public const string G2NsPrefixCs = "nar";
+        // NewsML-G2 Conformance Level: set to "power"
         public const string ConformanceLevelCs = "power";
 
         public XmlDocument ItemXdoc; // the XML document representing the G2 Item
-        protected string RootElemName = "";
+        protected string RootElemName = ""; // well be provided by the item-specific classes
 
         public XmlNamespaceManager NsMngr;
 
         // ##############################################################################
         // ##### For the automated adding of properties
 
+        // These are all child properties/elements of the root in NewsML-G2 items 
+        //      they are wrappers of other properties
         public enum PropsWrapping1
         {
-            ConceptItem, KnowledgeItem, NewsItem, PackageItem, PlanningItem, CatalogItem, NMHeader,
-            Catalog, RightsInfo, ItemMeta, ContentMeta, PartMeta, ConceptSet, ContentSet, GroupSet, NewsConverageSet
+            Catalog, RightsInfo, ItemMeta, ContentMeta, PartMeta, ConceptSet, ContentSet, GroupSet, NewsConverageSet, NMHeader
         };
 
+        /* These strings define the sequence of child element names of wrapping elements - see above
+        | Each sequence reflects the NewsML-G2 XML Schema
+        | These sequences are only used for adding properties
+        */
         public const string NameSeqAnyRoot = "nar:catalogRef nar:catalog nar:hopHistory nar:rightsInfo nar:itemMeta";
 
         public const string NameSeqExtRoot = NameSeqAnyRoot
@@ -208,18 +218,39 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         #region ***** BASIC METHODS
 
         // *******************************************************************************
+        /// <summary>
+        /// Initializes an empty XML document with the required basic XML nodes.
+        /// </summary>
         public abstract void InitEmptyXMLDoc();
 
+        /// <summary>
+        /// Initializes an empty XML document with the required basic XML nodes and
+        /// adds key attributes to the root element
+        /// </summary>
+        /// <param name="guid">The item's GUID</param>
+        /// <param name="version">The version number</param>
         public abstract void InitEmptyXMLDoc(string guid, int version);
 
+        /// <summary>
+        /// Initialized an item from a template file.
+        /// </summary>
+        /// <param name="fileName"></param>
         public void InitDocFromTemplateFile(string fileName)
             // Code History:
             // 2010-12-10 mws
         {
+            if (string.IsNullOrEmpty(fileName))
+                return;
+            if (!File.Exists(fileName))
+                return;
             ItemXdoc.RemoveAll();
             ItemXdoc.Load(fileName);
         }
 
+        /// <summary>
+        /// Initialized an item from a string
+        /// </summary>
+        /// <param name="xMLtemplate">A string representing the template XML document</param>
         public void InitDocFromTemplateString(string xMLtemplate)
             // Code History:
             // 2010-12-10 mws
@@ -234,23 +265,14 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // *******************************************************************************
         // *******************************************************************************
 
-        #region ***** READ/WRITE DOCUMENT METHODS
-
-
-        // *******************************************************************************
-        public bool ReadFromFile(string fileName)
-            // Code History:
-            // 2010-12-09 mws
-        {
-            if (string.IsNullOrEmpty(fileName))
-                return false;
-            if (!File.Exists(fileName))
-                return false;
-            ItemXdoc.Load(fileName);
-            return true;
-        }
+        #region ***** WRITE DOCUMENT METHODS
 
         // *******************************************************************************
+        /// <summary>
+        /// Saves the serialized XML of the item of a file
+        /// </summary>
+        /// <param name="fileName">Filename (optionally including path)</param>
+        /// <param name="saveWithBOM">Set to true if a BOM shold be added to the file</param>
         public void SaveToFile(string fileName, bool saveWithBOM)
             // Code History:
             // 2010-12-09 mws, ~2010-12-15
@@ -276,6 +298,14 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // ***** G E N E R I C
 
         // *******************************************************************************
+        /// <summary>
+        /// Adds a nar: element which is a member of the PropsWrapping1 enumeration 
+        /// as child of the root element. Checks first if the element already exists.
+        /// </summary>
+        /// <param name="wrapper">The wrapping element which should be added</param>
+        /// <param name="wrapperId">The @id value of the wrapping element 
+        /// - used for elements with unbounded cardinality</param>
+        /// <returns>True if successfully executed</returns>
         public bool CheckAddNarWrapper1(PropsWrapping1 wrapper, string wrapperId)
             // Code History:
             // 2014-02-26 mws
@@ -311,6 +341,14 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         }
 
         // *******************************************************************************
+        /// <summary>
+        /// Adds a child nar: element to a wrapping element (member of the PropsWrapping1 enumeration)
+        /// </summary>
+        /// <param name="wrapper">Wrapping element</param>
+        /// <param name="wrapperId">If required: the @id value of the wrapping element</param>
+        /// <param name="newProperty">Object representing the element/property to be added</param>
+        /// <param name="propertyXe">Return the XmlElement of the added element</param>
+        /// <returns>True if successfully executed</returns>
         public bool AddNarPropertyToWrapper1(PropsWrapping1 wrapper, string wrapperId, object newProperty, out XmlElement propertyXe)
             // Code History:
             // 2014-02-25 mws
@@ -383,6 +421,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
 
         // *******************************************************************************
+        /// <summary>
+        /// Adds a nar: element/property (provided as Object) to a parent element
+        /// </summary>
+        /// <param name="parentXPath">XPath for the parent element - should select only one</param>
+        /// <param name="childnameSeq">Sequence of QNames of all child elements, separated by a space</param>
+        /// <param name="newProperty">Object representing the property to be added</param>
+        /// <returns>True if successfully executed</returns>
         public bool AddNarPropertyToParent(string parentXPath, string childnameSeq, object newProperty)
         // Code History:
         // 2014-02-23 mws
@@ -403,6 +448,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // AddNarPropertyToParent
 
         // *******************************************************************************
+        /// <summary>
+        /// Adds a nar: element/property (provided as XmlElement) to a parent element
+        /// </summary>
+        /// <param name="parentXPath">XPath for the parent element - should select only one</param>
+        /// <param name="childnameSeq">Sequence of QNames of all child elements, separated by a space</param>
+        /// <param name="newProperty">XmlElement represeting the property to be added</param>
+        /// <returns>True if successfully executed</returns>
         public bool AddNarPropertyToParent(string parentXPath, string childnameSeq, XmlElement newProperty)
         // Code History:
         // 2014-02-23 mws
@@ -421,13 +473,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
         // *******************************************************************************
         /// <summary>
-        /// Adds a property (as XmlElement) to a parent element
+        /// Adds a nar: element/property (provided as XmlElement) to a parent element
         /// </summary>
-        /// <param name="parentXPath">The XPath in the G2 item of the parent element</param>
-        /// <param name="childnameSeq">A sequence of child names, separated by spaces</param>
+        /// <param name="parentXPath">XPath for the parent element - should select only one</param>
+        /// <param name="childnameSeq">Sequence of QNames of all child elements, separated by a space</param>
         /// <param name="newPropertyName">QName of the property to be added</param>
         /// <param name="newProperty">XmlElement of the property to be added</param>
-        /// <returns>True if adding of the property was successful</returns>
+        /// <returns>True if successfully executed</returns>
         public bool AddPropertyToParent(string parentXPath, string childnameSeq, string newPropertyName, XmlElement newProperty)
         // Code History:
         // 2014-02-22 mws
@@ -456,6 +508,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // ***** S P E C I F I C
 
         // ******************************************************************************
+        /// <summary>
+        /// Set the GUID and version number of a NewsML-G2 item
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <param name="version"></param>
         public void SetGuidAndVersion(string guid, long version)
         // Code History:
         // 2010-12-11 mws
@@ -469,7 +526,25 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
         } // SetGuidAndVersion
 
+        /// <summary>
+        /// Sets the xml:lang attribute of the root element
+        /// </summary>
+        /// <param name="xmllang">IETF BCP 47 compliant language tag</param>
+        public void SetRootXmlLang(string xmllang)
+        // Code History:
+        // 2010-12-11 mws
+        {
+            XmlNode rootXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
+            XmlElement docelement = (XmlElement)rootXN;
+            if (!string.IsNullOrEmpty(xmllang))
+                docelement.SetAttribute("xml:lang", xmllang);
+        } // SetXmlLang
+
         // ******************************************************************************
+        /// <summary>
+        /// Adds a catalogRef element with href attribute
+        /// </summary>
+        /// <param name="href">URL of the catalog</param>
         public void AddCatalogRef(string href)
         // Code History:
         // 2010-12-09 mws
@@ -664,6 +739,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         #region ***** READ FROM ITEM METHODS
 
         // ******************************************************************************
+        /// <summary>
+        /// Gets an element/property as XmlElement
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element</param>
+        /// <param name="resultXE">Returned XmlElement</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
         public void GetElemAsXE(
             string xPath,
             out XmlElement resultXE,
@@ -691,6 +772,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // GetElemAsXE
 
         // ******************************************************************************
+        /// <summary>
+        /// Gets one or more element(s)/property(ies) as XmlNodeList
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element(s)</param>
+        /// <param name="resultXNL">Returned XmlNodeList</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
         public void GetElemsAsXNodeList(
             string xPath,
             out XmlNodeList resultXNL,
@@ -709,6 +796,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // GetElemsAsXNodeList
 
         // ******************************************************************************
+        /// <summary>
+        /// Gets inner value of an element/property as string
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element</param>
+        /// <param name="textvalueType">Select innerText or innerXML</param>
+        /// <param name="value">Returned string value</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
         public void GetElemValueAsString(
             string xPath,
             ElementTextvalueTypeEnum textvalueType,
@@ -745,6 +839,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // GetElemValueAsString
 
         // ******************************************************************************
+        /// <summary>
+        /// Gets textnode value of an element/property as int64
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element</param>
+        /// <param name="value">Returned int64 value</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
         public void GetElemValueAsInt64(
             string xPath,
             out Int64 value,
@@ -779,14 +879,20 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // GetElemValueAsInt64
 
         // ******************************************************************************
+        /// <summary>
+        /// Gets textnode value of an element/property as DateTime
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element</param>
+        /// <param name="value">Retured DateTime value</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
         public void GetElemValueAsDateTime(
             string xPath,
-            out DateTime valueDT,
+            out DateTime value,
             out ReadFromItemResultEnum result)
             // Code History:
             // 2010-12-31 mws
         {
-            valueDT = DateTime.MinValue;
+            value = DateTime.MinValue;
             result = ReadFromItemResultEnum.ok;
             if (string.IsNullOrEmpty(xPath))
             {
@@ -799,29 +905,45 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             {
                 try
                 {
-                    valueDT = Convert.ToDateTime(valueStr);
+                    value = Convert.ToDateTime(valueStr);
                 }
                 catch
                 {
                     result = ReadFromItemResultEnum.valuetypeConversionFailed;
-                    valueDT = DateTime.MinValue;
+                    value = DateTime.MinValue;
                 }
             }
             else
                 return;
         } // GetElemValueAsDateTime
 
+            
+
         // ******************************************************************************
-        public void GetElemAsDictionary(
+        // ******************************************************************************
+        /// <summary>
+        /// Gets an attribute's value of an element/property as string
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element</param>
+        /// <param name="attribname">Name of the attributes</param>
+        /// <param name="value">Returned string value</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
+        public void GetAttribValueAsString(
             string xPath,
-            out Dictionary<string, string> dictionary,
+            string attribname,
+            out string value,
             out ReadFromItemResultEnum result)
             // Code History:
-            // 2014-02-26 mws
+            // 2010-12-31 mws
         {
-            dictionary = new Dictionary<string, string>();
+            value = string.Empty;
             result = ReadFromItemResultEnum.ok;
             if (string.IsNullOrEmpty(xPath))
+            {
+                result = ReadFromItemResultEnum.emptyXPath;
+                return;
+            }
+            if (string.IsNullOrEmpty(attribname))
             {
                 result = ReadFromItemResultEnum.emptyXPath;
                 return;
@@ -834,53 +956,17 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             }
             if (foundXNL.Count > 1)
                 result = ReadFromItemResultEnum.firstFromMultiple;
-
-            XmlElement foundXE = (XmlElement) foundXNL[0];
-            for (int idx = 0; idx < foundXE.Attributes.Count; idx++)
-            {
-                string attrName = foundXE.Attributes[idx].LocalName;
-                string attrValue = foundXE.Attributes[idx].Value;
-                dictionary.Add(attrName, attrValue);
-            }
-            if (!string.IsNullOrEmpty(foundXE.InnerText))
-                dictionary.Add("thisValue", foundXE.InnerText);
-        } // GetElemAsDictionary
-            
-
-        // ******************************************************************************
-        // ******************************************************************************
-        public void GetAttribValueAsString(
-            string xPathToElement,
-            string attribname,
-            out string value,
-            out ReadFromItemResultEnum result)
-            // Code History:
-            // 2010-12-31 mws
-        {
-            value = string.Empty;
-            result = ReadFromItemResultEnum.ok;
-            if (string.IsNullOrEmpty(xPathToElement))
-            {
-                result = ReadFromItemResultEnum.emptyXPath;
-                return;
-            }
-            if (string.IsNullOrEmpty(attribname))
-            {
-                result = ReadFromItemResultEnum.emptyXPath;
-                return;
-            }
-            XmlNodeList foundXNL = ItemXdoc.SelectNodes(xPathToElement, NsMngr);
-            if (foundXNL.Count == 0)
-            {
-                result = ReadFromItemResultEnum.targetNotFound;
-                return;
-            }
-            if (foundXNL.Count > 1)
-                result = ReadFromItemResultEnum.firstFromMultiple;
             value = ((XmlElement) foundXNL[0]).GetAttribute(attribname);
         } // GetAttribValueAsString
 
         // ******************************************************************************
+        /// <summary>
+        /// Gets an attribute's value of an element/property as int64
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element</param>
+        /// <param name="attribname">Name of the attributes</param>
+        /// <param name="value">Returned int64 value</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
         public void GetAttribValueAsInt64(
             string xPath,
             string attribname,
@@ -909,33 +995,80 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // GetAttribValueAsInt64
 
         // ******************************************************************************
+        /// <summary>
+        /// Gets an attribute's value of an element/property as DateTime
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element</param>
+        /// <param name="attribname">Name of the attributes</param>
+        /// <param name="value">Returned DateTime value</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
         public void GetAttribValueAsDateTime(
             string xPath,
             string attribname,
-            out DateTime valueDT,
+            out DateTime value,
             out ReadFromItemResultEnum result)
             // Code History:
             // 2010-12-31 mws
         {
-            valueDT = DateTime.MinValue;
+            value = DateTime.MinValue;
             string valueStr;
             GetAttribValueAsString(xPath, attribname, out valueStr, out result);
             if ((result == ReadFromItemResultEnum.ok) || (result == ReadFromItemResultEnum.firstFromMultiple))
             {
                 try
                 {
-                    valueDT = Convert.ToDateTime(valueStr);
+                    value = Convert.ToDateTime(valueStr);
                 }
                 catch
                 {
                     result = ReadFromItemResultEnum.valuetypeConversionFailed;
-                    valueDT = DateTime.MinValue;
+                    value = DateTime.MinValue;
                 }
             }
             else
                 return;
         } // GetAttribValueAsDateTime
 
+        // ******************************************************************************
+        /// <summary>
+        /// Gets all attributes of an element/property as Dictionary
+        /// </summary>
+        /// <param name="xPath">XPath selecting the element</param>
+        /// <param name="dictionary">Returns the attributes as Dictionary of string key/value pairs</param>
+        /// <param name="result">Returns a ReadFromItemResultEnum value</param>
+        public void GetElemAttribsAsDictionary(
+            string xPath,
+            out Dictionary<string, string> dictionary,
+            out ReadFromItemResultEnum result)
+        // Code History:
+        // 2014-02-26 mws
+        {
+            dictionary = new Dictionary<string, string>();
+            result = ReadFromItemResultEnum.ok;
+            if (string.IsNullOrEmpty(xPath))
+            {
+                result = ReadFromItemResultEnum.emptyXPath;
+                return;
+            }
+            XmlNodeList foundXNL = ItemXdoc.SelectNodes(xPath, NsMngr);
+            if (foundXNL.Count == 0)
+            {
+                result = ReadFromItemResultEnum.targetNotFound;
+                return;
+            }
+            if (foundXNL.Count > 1)
+                result = ReadFromItemResultEnum.firstFromMultiple;
+
+            XmlElement foundXE = (XmlElement)foundXNL[0];
+            for (int idx = 0; idx < foundXE.Attributes.Count; idx++)
+            {
+                string attrName = foundXE.Attributes[idx].LocalName;
+                string attrValue = foundXE.Attributes[idx].Value;
+                dictionary.Add(attrName, attrValue);
+            }
+            if (!string.IsNullOrEmpty(foundXE.InnerText))
+                dictionary.Add("thisValue", foundXE.InnerText);
+        } // GetElemAttribsAsDictionary
 
         #endregion
 
@@ -944,12 +1077,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
         // *******************************************************************************
         /// <summary>
-        /// Searches for an existing XmlNode prior to the reference element under a parent
+        /// Searches for an existing element prior to the reference element,
+        /// both are children of the same parent,
         /// as defined by a sequence of element names
         /// </summary>
-        /// <param name="parentXPath">The XPath in the G2 item of the parent element</param>
-        /// <param name="childnameSeq">A sequence of child names, separated by spaces</param>
-        /// <param name="refXEname">The name of the reference element</param>
+        /// <param name="parentXPath">XPath of the parent element</param>
+        /// <param name="childnameSeq">Sequence of QNames of all child elements, separated by a space</param>
+        /// <param name="refXEname">The QName of the reference element</param>
         /// <returns></returns>
         public XmlNode FindPriorXNbubbleup(string parentXPath, string childnameSeq, string refXEname)
         // Code History:
@@ -981,6 +1115,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // FindPriorXNbubbleup
 
         // *******************************************************************************
+        /// <summary>
+        /// Searches for an XML Node and returns it if found
+        /// </summary>
+        /// <param name="checkXPath">XPath of the node to be searched for</param>
+        /// <param name="foundXnode">Returns a found XML Node</param>
+        /// <returns>True if the node was found</returns>
         public bool FindXE(string checkXPath, out XmlNode foundXnode)
         // Code History:
         // 2014-02-22 mws
@@ -1006,6 +1146,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             }
         } // findXE
 
+        /// <summary>
+        /// Searches for an XML Node by an XPath relative to the root element and returns it if found
+        /// </summary>
+        /// <param name="checkRelativeXPath">XPath relative to the item's root element of the node to be searched for</param>
+        /// <param name="foundXnode">Returns a found XML Node</param>
+        /// <returns>True if the node was found</returns>
         public bool FindRelXE(string checkRelativeXPath, out XmlNode foundXnode)
         // Code History:
         // 2014-02-22 mws
@@ -1033,10 +1179,20 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // findXE
 
         // *******************************************************************************
+        /// <summary>
+        /// Checks if an XML Node exists
+        /// </summary>
+        /// <param name="checkXPath">XPath of the node to be checked</param>
+        /// <returns>True if the node exists</returns>
         public bool ExistsXN(string checkXPath)
         // Code History:
         // 2014-02-23 mws
         {
+            if (string.IsNullOrEmpty(checkXPath))
+            {
+                SetErrState(ItemProcErrEnum.NoXPathAvailable);
+                return false;
+            }
             XmlNodeList tempXNL;
             tempXNL = ItemXdoc.SelectNodes(checkXPath, NsMngr);
             if ((tempXNL == null) || (tempXNL.Count == 0))
@@ -1048,6 +1204,37 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // existsXE
 
         // *******************************************************************************
+        /// <summary>
+        /// Checks if an XML Node exists by an XPath relative to the root element
+        /// </summary>
+        /// <param name="checkRelativeXPath">XPath relative to the item's root element of the node to be searched for</param>
+        /// <returns>True if the node exists</returns>
+        public bool ExistsRelXN(string checkRelativeXPath)
+        // Code History:
+        // 2014-03-01 mws
+        {
+            if (string.IsNullOrEmpty(checkRelativeXPath))
+            {
+                SetErrState(ItemProcErrEnum.NoXPathAvailable);
+                return false;
+            }
+            XmlNodeList tempXNL;
+            string checkXPath = "/nar:" + RootElemName + checkRelativeXPath;
+            tempXNL = ItemXdoc.SelectNodes(checkXPath, NsMngr);
+            if ((tempXNL == null) || (tempXNL.Count == 0))
+            {
+                return false;
+            }
+            else
+                return true;
+        } // existsXE
+
+        // *******************************************************************************
+        /// <summary>
+        /// Transforms a nar: property object to an existing XML Element
+        /// </summary>
+        /// <param name="aProperty">Object representing a nar: property</param>
+        /// <param name="newElement">Target element</param>
         public void NarProperty2XmlElement(object aProperty, XmlElement newElement)
         // Code History:
         // 2014-02-25 mws
@@ -1082,6 +1269,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         } // NarProperty2XmlElement
 
         // *******************************************************************************
+        /// <summary>
+        /// Transforms a nar: property object to an XML Element
+        /// </summary>
+        /// <param name="aProperty">Object representing a nar: property</param>
+        /// <param name="newElement">Returns the element after the transform action</param>
+        /// <returns>True if successfully executed</returns>
         public bool NarProperty2XmlElement(object aProperty, out XmlElement newElement)
         // Code History:
         // 2014-02-26 mws
@@ -1141,6 +1334,18 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
 
         // ******************************************************************************
+        /// <summary>
+        /// Returns a set of data about a member of the PropsWrapping1 enumeration 
+        /// = top level elements of a NewsML-G2 item wrapping other properties
+        /// </summary>
+        /// <param name="wrapper">Wrapping property about which the details are requested</param>
+        /// <param name="wrapperId">The @id of the wrapping element</param>
+        /// <param name="wrapperParentXPath">Returned XPath of the parent of the wrapping element</param>
+        /// <param name="wrapperParentChildNameSeq">Returned child name sequence of the wrapping element's parent</param>
+        /// <param name="wrapperXPath">Returned XPath of the wrapping element</param>
+        /// <param name="wrapperLocalName">Local name of the wrapping element</param>
+        /// <param name="wrapperChildNameSeq">Child name sequence of the wrapping element</param>
+        /// <returns>True if successfully executed</returns>
         public bool GetNarWrapper1Details(PropsWrapping1 wrapper, string wrapperId,
             out string wrapperParentXPath, out string wrapperParentChildNameSeq, 
             out string wrapperXPath, out string wrapperLocalName, out string wrapperChildNameSeq )
@@ -1155,18 +1360,6 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             wrapperChildNameSeq = string.Empty;
             switch (wrapper)
             {
-                case PropsWrapping1.CatalogItem:
-                case PropsWrapping1.ConceptItem:
-                case PropsWrapping1.KnowledgeItem:
-                case PropsWrapping1.NewsItem:
-                case PropsWrapping1.PackageItem:
-                case PropsWrapping1.PlanningItem:
-                    wrapperParentXPath = string.Empty;
-                    wrapperParentChildNameSeq = string.Empty;
-                    wrapperXPath = "/nar:" + RootElemName;
-                    wrapperLocalName = RootElemName;
-                    wrapperChildNameSeq = NameSeqAnyRoot;
-                    break;
                 case PropsWrapping1.Catalog:
                     if (string.IsNullOrEmpty(wrapperId))
                     {
@@ -1233,6 +1426,16 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             return true;
         } // GetNarWrapper1Details
 
+        /// <summary>
+        /// Returns a set of data about a member of the PropsWrapping1 enumeration 
+        /// = top level elements of a NewsML-G2 item wrapping other properties
+        /// </summary>
+        /// <param name="wrapper">Wrapping property about which the details are requested</param>
+        /// <param name="wrapperId">The @id of the wrapping element</param>
+        /// <param name="wrapperXPath">Returned XPath of the wrapping element</param>
+        /// <param name="wrapperLocalName">Local name of the wrapping element</param>
+        /// <param name="wrapperChildNameSeq">Child name sequence of the wrapping element</param>
+        /// <returns>True if successfully executed</returns>
         public bool GetNarWrapper1Details(PropsWrapping1 wrapper, string wrapperId,
             out string wrapperXPath, out string wrapperLocalName, out string wrapperChildNameSeq)
         {
@@ -1283,42 +1486,6 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // ***** DEPRECATED STUFF *******************************************************
         #region ***** DEPRECATED STUFF
         // ******************************************************************************
-
-        /*** Property enumerations - deprecated 2014-02-26
-        public enum PropsAnyRoot {CatalogRef,Catalog,HopHistory,RightsInfo,ItemMeta};
-        public enum PropsExtRoot {CatalogRef, Catalog, HopHistory, RightsInfo, ItemMeta, ContentMeta, PartMeta, Assert, InlinRef, DerivedFrom};
-        public enum PropsHopHistory { Hop };
-        public enum PropsRightsInfo {Accountable, CopyrightHolder, CopyrightNotice, UsageTerms, Link, RightsExtProperty};
-        public enum PropsItemMeta
-        {
-            ItemClass, Provider, VersionCreated, FirstCreated, Embargoed, PubStatus, Role, FileName, Generator,
-            Profile, Service, Title, EdNote, MemberOf, InstanceOf, Signal, AltRef, DeliverableOf, Hash, Expires
-        }
-        public enum PropsContentMetaAcD {Icon, Urgency, ContentCreated, ContentModified, Located,
-            InfoSource, Creator, Contributor, Audience, ExclAudience, AltId, Rating, UserInteraction,
-            Language, Keyword, Subject, Slugline, Headline, Description,
-            ContentMetaExtProperty };
-        public enum PropsContentMetaAfD {Icon, Urgency, ContentCreated, ContentModified, Located, 
-            InfoSource, Creator, Contributor, Audience, ExclAudience, AltId, Rating, UserInteraction, 
-            Language, Genre, Keyword, Subject, Slugline, Headline, Dateline, By, Creditline, Description, 
-            ContentMetaExtProperty};
-        public enum PropsPartMeta {Icon, TimeDelim, RegionDelim, Urgency, ContentCreated, ContentModified, Located,
-            InfoSource, Creator, Contributor, Audience, ExclAudience, AltId, Rating, UserInteraction,
-            Language, Genre, Keyword, Subject, Slugline, Headline, Dateline, By, Creditline, Description,
-            PartMetaExtProperty };
-
-        public enum PropsConcept
-        {
-            ConceptId, Type, Name, Definition, Note, RemoteInfo, HierarchyInfo,
-            SameAs, Broader, Narrower, Related,
-            PersonDetails, OrganisationDetails, GeoAreaDetails, POIDetails, ObjectDetails, EventDetails
-        };
-
-        public enum PropsConceptRel
-        {
-            SameAs, Broader, Narrower, Related
-        };
-        *******************/
 
 
         #endregion

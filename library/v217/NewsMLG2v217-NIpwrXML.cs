@@ -51,6 +51,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 	public class NIpwrXml : AnyItemXml
     {
 
+        // Defines the sequence of QNames of the children of the root element
         public const string NameSeqNiRoot =
             NameSeqAnyRoot + " nar:contentMeta nar:partMeta nar:assert nar:inlineRef " +
             "nar:derivedFrom nar:contentSet";
@@ -95,6 +96,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // *******************************************************************************
         #region ***** WRITE METHODS
 
+        /// <summary>
+        /// Adds a contentSet element as child to the root element
+        /// </summary>
         public void AddContentSet()
         // Code History:
         // 2014-02-27 mws

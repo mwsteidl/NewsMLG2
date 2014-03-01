@@ -51,6 +51,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 	public class KIpwrXml : AnyItemXml
     {
 
+        // Defines the sequence of QNames of the children of the root element
         protected const string NameSeqKiRoot =
             NameSeqAnyRoot + " nar:contentMeta nar:partMeta nar:assert nar:inlineRef " +
             "nar:derivedFrom nar:conceptSet nar:schemeMeta";
@@ -100,6 +101,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // *******************************************************************************
         #region ***** WRITE METHODS
 
+        /// <summary>
+        /// Adds a conceptSet element as child to the root element
+        /// </summary>
         public void AddConceptSet()
         // Code History:
         // 2010-12-12/2014-02-22 mws
@@ -109,6 +113,10 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
 
         // ******************************************************************************
+        /// <summary>
+        /// Adds a concept property as child to the conceptSet wrapper
+        /// </summary>
+        /// <param name="conceptElementId"></param>
         public void AddCSconcept(string conceptElementId)
         // Code History:
         // 2010-12-12,2014-02-22 mws
