@@ -35,6 +35,26 @@ using System;
 
 namespace NewsIT.IPTC.NewsMLG2.v217
 {
+    /*********************************************************************
+     * This is a set of classes corresponding to each element/property
+     * defined by NewsML-G2 in a specific version.
+     * The class name corresponds to the local name of the element,
+     * only the first character is different: in upper case
+     * A class provides a field for each defined attribute
+     * - the field names are identical to the attribute names -
+     * and these additional fields for managing the corresponding XML element:
+     * Xname: the local name of the element
+     * XnsURI: the namespace URI - in fact the one of the nar: namespace
+     * XnsPrefix: the prefix as used by this library - in fact "nar"
+     * Xusagecode: r = root element, p = property, d = detail of a property
+     *      w = wrapping element, m = text markup, 
+     * Xcard: a code for the cardinality: s = single, u = unbounded occurence
+     * These X... fields are readonly, initialized on creating a class instance
+     * Note: the classes below are auto-generated from the Structure Matrix
+     * document (Excel sheet) of the corresponding NewsML-G2 version
+     * It is strongly recommended not to modify them
+     *********************************************************************/
+
     public class A
     {
         public string id;

@@ -75,6 +75,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         }
 
         // ******************************************************************************
+        /// <summary>
+        /// Appends this object as concept element as child to a parent element
+        /// </summary>
+        /// <param name="NG2Item">The NewsML-G2 item</param>
+        /// <param name="parentXPath">XPath of the parent element</param>
+        /// <returns>A Property Processing Statuts</returns>
         public virtual PropProcStatus AppendAsChildOf(AnyItemXml NG2Item, string parentXPath)
             // Code History:
             // 2014-02-27 mws
@@ -94,12 +100,25 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             return ApplyToElementInternal(NG2Item, cptElement, true);
         } // AppendAsChildOf
 
+        /// <summary>
+        /// Applies all attributes and child elements of this object to an existing XML element
+        /// </summary>
+        /// <param name="NG2Item">The NewsML-G2 item</param>
+        /// <param name="applyElement">The XML Element to which the object should be applied</param>
+        /// <returns>A Property Processing Statuts</returns>
         public PropProcStatus ApplyToElement(AnyItemXml NG2Item, XmlElement applyElement)
         {
             return ApplyToElementInternal(NG2Item, applyElement, false);
         }
 
         // ******************************************************************************
+        /// <summary>
+        /// Internal method for applying the object to an XML Element
+        /// </summary>
+        /// <param name="NG2Item">The NewsML-G2 Item</param>
+        /// <param name="applyElement">The XML Element to which the object should be applied</param>
+        /// <param name="fullConceptMode">If true: treat the applyElement as concept element, else: treat it as any other property having a concept as value</param>
+        /// <returns>A Property Processing Statuts</returns>
         protected virtual PropProcStatus ApplyToElementInternal(AnyItemXml NG2Item, XmlElement applyElement, bool fullConceptMode)
         // Code History:
         // 2014-02-27 mws
@@ -209,7 +228,8 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     //**************************************************************************
     //**************************************************************************
     /// <summary>
-    /// Class for a basic structured NewsML-G2 Concept
+    /// Class for a structured NewsML-G2 Concept representing 
+    /// a person/organisation/geoArea/POI/object entity
     /// </summary>
     public class ConceptEntityStruElem : ConceptGenericStruElem
     {
