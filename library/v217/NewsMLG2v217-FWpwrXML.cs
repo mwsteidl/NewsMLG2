@@ -86,7 +86,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public const string Newsmlg2VersionCs = "2.17";
         // namespace URI of the NewsML-G2/News Architecture:
         public const string G2NsCs = "http://iptc.org/std/nar/2006-10-01/"; 
-        // the namespace prefix of this News ARchitecture (=nar) namespace.
+        // the namespace prefix of this *n*ews *ar*chitecture (=nar) namespace.
         // all elements of this NewsML-G2 namespace are attributed as "nar: elements"
         public const string G2NsPrefixCs = "nar";
         // NewsML-G2 Conformance Level: set to "power"
@@ -490,9 +490,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 return false;
 
             XmlNode priorNode = FindPriorXNbubbleup(parentXPath, childnameSeq, newPropertyName);
-            if (priorNode == null)
-                parentXN.PrependChild(newProperty);
-            else
+            if (priorNode == null) // no node prior by the name sequence found
+                parentXN.AppendChild(newProperty); //~2014-03-03 Prepend -> Append
+            else // a prior node by the name sequence found
                 parentXN.InsertAfter(newProperty, priorNode);
             return true;
         } // AddPropertyToParent

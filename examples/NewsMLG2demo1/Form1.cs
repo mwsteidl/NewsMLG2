@@ -28,7 +28,8 @@ Class: NewsMLG2demo1
   
 
 Current date / persID / change log (most current at top)
-StartDate: 2014-03-01
+ * 2014-03-03 mws: use of classes with propValue parameter in constructor
+StartDate: 2014-03-01 mws
 ******************************************************************************/
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,8 @@ namespace NewsMLG2demo1
 {
     public partial class Form1 : Form
     {
+        private const string PgmVersion = " v1.0 [2014-03-03]";
+
         public Form1()
         {
             InitializeComponent();
@@ -53,7 +56,7 @@ namespace NewsMLG2demo1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.Text += PgmVersion;
         }
 
         /// <summary>
@@ -62,7 +65,7 @@ namespace NewsMLG2demo1
         /// </summary>
         private void GenerateQuickStartTextExample1()
             // Code History:
-            // 2014-03-01 mws
+            // 2014-03-03 mws
         {
             // variables global only to this method
             XmlNode foundNode = null;
@@ -71,6 +74,7 @@ namespace NewsMLG2demo1
             var g2NI = new NIpwrXml();
             // * add the GUID and the version number to it
             g2NI.InitEmptyXMLDoc("urn:newsml:acmenews.com:20131121:US-FINANCE-FED", 3);
+            g2NI.SetRootXmlLang("en-US");
             
             // * add the catalogRefs to it
             g2NI.AddCatalogRef("http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_22.xml");
@@ -89,15 +93,13 @@ namespace NewsMLG2demo1
             // * create a structured object for the copyrightHolder element
             var copyrightHolderSe = new ConceptGenericStruElem();
             copyrightHolderSe.Uri = "http://www.acmenews.com/about.html#copyright";
-            var crName = new Name();
             // * property with a value in the text node
-            crName.thisValue = "Acme News and Media LLC";
+            var crName = new Name("Acme News and Media LLC");
             copyrightHolderSe.Names.Add(crName);
             // * apply this structure to the already created copyrightHolder element
             copyrightHolderSe.ApplyToElement(g2NI, copyrightHolderXe);
             // * property with a value in the text node
-            var copyrightNotice = new CopyrightNotice();
-            copyrightNotice.thisValue = "(c) 2013 Copyright Acme News and Media LLC";
+            var copyrightNotice = new CopyrightNotice("(c) 2013 Copyright Acme News and Media LLC");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.RightsInfo, copyrightNotice);
 
             // ** add an itemMeta element as wrapper of properties
@@ -112,11 +114,9 @@ namespace NewsMLG2demo1
             var provider = new Provider();
             provider.uri = "http://www.acmenews.com/about/";
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ItemMeta, provider);
-            var versionCreated = new VersionCreated();
-            versionCreated.thisValue = "2013-11-21T16:25:32-05:00";
+            var versionCreated = new VersionCreated("2013-11-21T16:25:32-05:00");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ItemMeta, versionCreated);
-            var embargoed = new Embargoed();
-            embargoed.thisValue = "2013-11-26T12:00:00-05:00";
+            var embargoed = new Embargoed("2013-11-26T12:00:00-05:00");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ItemMeta, embargoed);
             var pubStatus = new PubStatus();
             pubStatus.qcode = "stat:usable";
@@ -127,12 +127,10 @@ namespace NewsMLG2demo1
             g2NI.CheckAddNarWrapper1(AnyItemXml.PropsWrapping1.ContentMeta);
 
             // ** add a sequence of properties as children of itemMeta
-            var contentCreated = new ContentCreated();
-            contentCreated.thisValue = "2013-11-21T15:21:06-05:00";
+            var contentCreated = new ContentCreated("2013-11-21T15:21:06-05:00");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, contentCreated);
 
-            var contentModified = new ContentModified();
-            contentModified.thisValue = "2013-11-21T16:22:45-05:00";
+            var contentModified = new ContentModified("2013-11-21T16:22:45-05:00");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, contentModified);
 
             // * a structured property
@@ -141,9 +139,7 @@ namespace NewsMLG2demo1
             XmlElement locatedXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, located, out locatedXe);
             var locatedSe = new ConceptGenericStruElem();
-            var locName = new Name();
-            locName.thisValue = "New York, NY";
-            locatedSe.Names.Add(locName);
+            locatedSe.Names.Add(new Name("New York, NY"));
             locatedSe.ApplyToElement(g2NI, locatedXe);
 
             var creator = new Creator();
@@ -151,9 +147,7 @@ namespace NewsMLG2demo1
             XmlElement creatorXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, creator, out creatorXe);
             var creatorSe = new ConceptGenericStruElem();
-            var creaName = new Name();
-            creaName.thisValue = "Meredith Jameson";
-            creatorSe.Names.Add(creaName);
+            creatorSe.Names.Add(new Name("Meredith Jameson"));
             creatorSe.ApplyToElement(g2NI, creatorXe);
 
             var infoSource = new InfoSource();
@@ -161,9 +155,7 @@ namespace NewsMLG2demo1
             XmlElement infoSourceXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, infoSource, out infoSourceXe);
             var infoSourceSe = new ConceptGenericStruElem();
-            var isName = new Name();
-            isName.thisValue = "Associated Press";
-            infoSourceSe.Names.Add(isName);
+            infoSourceSe.Names.Add(new Name("Associated Press"));
             infoSourceSe.ApplyToElement(g2NI, infoSourceXe);
 
             var language = new Language();
@@ -175,9 +167,7 @@ namespace NewsMLG2demo1
             XmlElement subjectXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, subject, out subjectXe);
             var subjectSe = new ConceptGenericStruElem();
-            var subjectName = new Name();
-            subjectName.thisValue = "economy, business and finance";
-            subjectSe.Names.Add(subjectName);
+            subjectSe.Names.Add(new Name("economy, business and finance"));
             subjectSe.ApplyToElement(g2NI, subjectXe);
 
             // * note: as this is another subject the type definitions of the variables have been removed
@@ -186,9 +176,7 @@ namespace NewsMLG2demo1
             subjectXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, subject, out subjectXe);
             subjectSe = new ConceptGenericStruElem();
-            subjectName = new Name();
-            subjectName.thisValue = "central bank";
-            subjectSe.Names.Add(subjectName);
+            subjectSe.Names.Add(new Name("central bank"));
             subjectSe.ApplyToElement(g2NI, subjectXe);
 
             subject = new Subject();
@@ -196,17 +184,13 @@ namespace NewsMLG2demo1
             subjectXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, subject, out subjectXe);
             subjectSe = new ConceptGenericStruElem();
-            subjectName = new Name();
-            subjectName.thisValue = "money and monetary policy";
-            subjectSe.Names.Add(subjectName);
+            subjectSe.Names.Add(new Name("money and monetary policy"));
             subjectSe.ApplyToElement(g2NI, subjectXe);
 
-            var slugline = new Slugline();
-            slugline.thisValue = "US-Finance-Fed";
+            var slugline = new Slugline("US-Finance-Fed");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, slugline);
 
-            var headline = new Headline();
-            headline.thisValue = "Fed to halt QE to avert \"bubble\"";
+            var headline = new Headline("Fed to halt QE to avert \"bubble\"");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, headline);
 
             // ** add a contentMeta element as wrapper of properties representing the content of the News Item

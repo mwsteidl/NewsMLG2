@@ -27,6 +27,8 @@ Program: no specific / Common Unit
 Class: NewsIT.IPTC.NewsMLG2.v217. ... A class for each element in the nar namespace  
 
 Current date / persID / change log (most current at top)
+ * 2014-03-03 mws: properties with a value in the textnode got a
+ *          constructur with a propValue param to set thisValue
  * 2014-02-26 mws: G2 struct matrix updated and transformed
  * 2014-02-25 mws: struct -> class
 StartDate: 2014-02-24 mws
@@ -38,11 +40,16 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     /*********************************************************************
      * This is a set of classes corresponding to each element/property
      * defined by NewsML-G2 in a specific version.
+     * A class can be transformed into an XML Element 
+     * by the NarProperty2XmlElement method of the NewsML-G2 item classes.
+     * 
      * The class name corresponds to the local name of the element,
      * only the first character is different: in upper case
-     * A class provides a field for each defined attribute
-     * - the field names are identical to the attribute names -
-     * and these additional fields for managing the corresponding XML element:
+     * A class provides a field for each defined attribute:
+     * the field names are identical to the attribute names 
+     *  except field names starting with Y: the Y was prefixed as the attribute
+     *  name is identical to a C# keyword (e.g. class).
+     * In addition these fields for managing the corresponding XML element are available:
      * Xname: the local name of the element
      * XnsURI: the namespace URI - in fact the one of the nar: namespace
      * XnsPrefix: the prefix as used by this library - in fact "nar"
@@ -54,7 +61,6 @@ namespace NewsIT.IPTC.NewsMLG2.v217
      * document (Excel sheet) of the corresponding NewsML-G2 version
      * It is strongly recommended not to modify them
      *********************************************************************/
-
     public class A
     {
         public string id;
@@ -231,6 +237,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public AltId() { Xname = "altId"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public AltId(string propValue) { Xname = "altId"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class AltLoc
@@ -430,6 +437,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Born() { Xname = "born"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Born(string propValue) { Xname = "born"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Br
@@ -497,6 +505,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public By() { Xname = "by"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public By(string propValue) { Xname = "by"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Capacity
@@ -519,6 +528,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Capacity() { Xname = "capacity"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Capacity(string propValue) { Xname = "capacity"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Catalog
@@ -602,6 +612,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public CeasedToExist() { Xname = "ceasedToExist"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public CeasedToExist(string propValue) { Xname = "ceasedToExist"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class ChannelXxNMSG
@@ -625,6 +636,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public ChannelXxNMSG() { Xname = "channel"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public ChannelXxNMSG(string propValue) { Xname = "channel"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class ChannelXxREMCONT
@@ -676,6 +688,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public ChannelXxREMCONT() { Xname = "channel"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public ChannelXxREMCONT(string propValue) { Xname = "channel"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Circle
@@ -874,6 +887,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public ContentCreated() { Xname = "contentCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public ContentCreated(string propValue) { Xname = "contentCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class ContentMeta
@@ -940,6 +954,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public ContentModified() { Xname = "contentModified"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public ContentModified(string propValue) { Xname = "contentModified"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class ContentSet
@@ -1029,6 +1044,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public CopyrightNotice() { Xname = "copyrightNotice"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public CopyrightNotice(string propValue) { Xname = "copyrightNotice"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Country
@@ -1070,6 +1086,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Created() { Xname = "created"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Created(string propValue) { Xname = "created"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Creator
@@ -1116,6 +1133,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Creditline() { Xname = "creditline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Creditline(string propValue) { Xname = "creditline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Dateline
@@ -1139,6 +1157,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Dateline() { Xname = "dateline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Dateline(string propValue) { Xname = "dateline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Dates
@@ -1181,6 +1200,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Definition() { Xname = "definition"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Definition(string propValue) { Xname = "definition"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class DeliverableOf
@@ -1310,6 +1330,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Description() { Xname = "description"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Description(string propValue) { Xname = "description"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Destination
@@ -1333,6 +1354,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Destination() { Xname = "destination"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Destination(string propValue) { Xname = "destination"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Details
@@ -1355,6 +1377,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Details() { Xname = "details"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Details(string propValue) { Xname = "details"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Died
@@ -1373,6 +1396,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Died() { Xname = "died"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Died(string propValue) { Xname = "died"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Dissolved
@@ -1391,6 +1415,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Dissolved() { Xname = "dissolved"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Dissolved(string propValue) { Xname = "dissolved"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Duration
@@ -1409,6 +1434,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Duration() { Xname = "duration"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Duration(string propValue) { Xname = "duration"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class EdNote
@@ -1431,6 +1457,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public EdNote() { Xname = "edNote"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public EdNote(string propValue) { Xname = "edNote"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Email
@@ -1450,6 +1477,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Email() { Xname = "email"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
+        public Email(string propValue) { Xname = "email"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Embargoed
@@ -1468,6 +1496,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Embargoed() { Xname = "embargoed"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Embargoed(string propValue) { Xname = "embargoed"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class End
@@ -1488,6 +1517,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public End() { Xname = "end"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public End(string propValue) { Xname = "end"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Event
@@ -1584,6 +1614,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public ExDate() { Xname = "exDate"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public ExDate(string propValue) { Xname = "exDate"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class ExRule
@@ -1634,6 +1665,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Fax() { Xname = "fax"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
+        public Fax(string propValue) { Xname = "fax"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class FileName
@@ -1652,6 +1684,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public FileName() { Xname = "fileName"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public FileName(string propValue) { Xname = "fileName"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class FirstCreated
@@ -1670,6 +1703,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public FirstCreated() { Xname = "firstCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public FirstCreated(string propValue) { Xname = "firstCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Founded
@@ -1688,6 +1722,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Founded() { Xname = "founded"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Founded(string propValue) { Xname = "founded"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class G2contentType
@@ -1727,6 +1762,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Generator() { Xname = "generator"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Generator(string propValue) { Xname = "generator"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Genre
@@ -1968,6 +2004,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Headline() { Xname = "headline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Headline(string propValue) { Xname = "headline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class HierarchyInfo
@@ -1986,6 +2023,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public HierarchyInfo() { Xname = "hierarchyInfo"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public HierarchyInfo(string propValue) { Xname = "hierarchyInfo"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Hop
@@ -2077,6 +2115,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Im() { Xname = "im"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
+        public Im(string propValue) { Xname = "im"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class InfoSource
@@ -2182,6 +2221,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public InlineData() { Xname = "inlineData"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public InlineData(string propValue) { Xname = "inlineData"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class InlineRef
@@ -2325,6 +2365,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public ItemCount() { Xname = "itemCount"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public ItemCount(string propValue) { Xname = "itemCount"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class ItemMeta
@@ -2447,6 +2488,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Keyword() { Xname = "keyword"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Keyword(string propValue) { Xname = "keyword"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class KnowledgeItem
@@ -2485,6 +2527,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Language() { Xname = "language"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Language(string propValue) { Xname = "language"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class LineXxADDR
@@ -2505,6 +2548,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public LineXxADDR() { Xname = "line"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
+        public LineXxADDR(string propValue) { Xname = "line"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class LineXxGEOAREA
@@ -2672,6 +2716,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Name() { Xname = "name"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Name(string propValue) { Xname = "name"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Narrower
@@ -2836,6 +2881,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Note() { Xname = "note"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Note(string propValue) { Xname = "note"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class ObjectDetails
@@ -2896,6 +2942,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public OpenHours() { Xname = "openHours"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public OpenHours(string propValue) { Xname = "openHours"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class OrganisationDetails
@@ -2960,6 +3007,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Origin() { Xname = "origin"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Origin(string propValue) { Xname = "origin"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class PackageItem
@@ -3135,6 +3183,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Phone() { Xname = "phone"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
+        public Phone(string propValue) { Xname = "phone"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Planning
@@ -3244,6 +3293,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public PostalCode() { Xname = "postalCode"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "s"; }
+        public PostalCode(string propValue) { Xname = "postalCode"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Priority
@@ -3262,6 +3312,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Priority() { Xname = "priority"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Priority(string propValue) { Xname = "priority"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Profile
@@ -3352,6 +3403,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Rating() { Xname = "rating"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Rating(string propValue) { Xname = "rating"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Rb
@@ -3380,6 +3432,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public RDate() { Xname = "rDate"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public RDate(string propValue) { Xname = "rDate"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class RegionDelim
@@ -3423,6 +3476,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Registration() { Xname = "registration"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Registration(string propValue) { Xname = "registration"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Related
@@ -3780,6 +3834,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Scheduled() { Xname = "scheduled"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Scheduled(string propValue) { Xname = "scheduled"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Scheme
@@ -3842,6 +3897,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Sender() { Xname = "sender"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Sender(string propValue) { Xname = "sender"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Sent
@@ -3860,6 +3916,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Sent() { Xname = "sent"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Sent(string propValue) { Xname = "sent"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Service
@@ -3926,6 +3983,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Slugline() { Xname = "slugline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Slugline(string propValue) { Xname = "slugline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Span
@@ -3966,6 +4024,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Start() { Xname = "start"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Start(string propValue) { Xname = "start"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Subject
@@ -4014,6 +4073,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public TimeDelim() { Xname = "timeDelim"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public TimeDelim(string propValue) { Xname = "timeDelim"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Timestamp
@@ -4033,6 +4093,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Timestamp() { Xname = "timestamp"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Timestamp(string propValue) { Xname = "timestamp"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class Title
@@ -4055,6 +4116,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Title() { Xname = "title"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public Title(string propValue) { Xname = "title"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class TransmitId
@@ -4073,6 +4135,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public TransmitId() { Xname = "transmitId"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public TransmitId(string propValue) { Xname = "transmitId"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Type
@@ -4112,6 +4175,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Urgency() { Xname = "urgency"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Urgency(string propValue) { Xname = "urgency"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class UsageTerms
@@ -4135,6 +4199,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public UsageTerms() { Xname = "usageTerms"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public UsageTerms(string propValue) { Xname = "usageTerms"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class UserInteraction
@@ -4155,6 +4220,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public UserInteraction() { Xname = "userInteraction"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public UserInteraction(string propValue) { Xname = "userInteraction"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class VersionCreated
@@ -4173,6 +4239,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public VersionCreated() { Xname = "versionCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public VersionCreated(string propValue) { Xname = "versionCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
     public class Web
@@ -4192,6 +4259,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Web() { Xname = "web"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
+        public Web(string propValue) { Xname = "web"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
     public class GenericProperty
@@ -4353,5 +4421,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xcard;
         public GenericProperty() { Xname = "genericProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = " "; Xcard = "u"; }
     }
+
+
 
 }
