@@ -27,7 +27,7 @@ Program: no specific / Common Unit
 Class: NewsIT.IPTC.NewsMLG2.v217.NIpwrXML = NewsML-G2 News Item
 
 Current date / persID / change log (most current at top)
-StartDate: 2014-02-27 mws
+StartDate: 2014-03-05 mws
 ******************************************************************************/
 using System;
 using System.Globalization;
@@ -46,23 +46,23 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     //**************************************************************************
     //**************************************************************************
     /// <summary>
-	/// IPTC NewsML-G2 News Item class
+	/// IPTC NewsML-G2 Planning Item class
 	/// </summary>
-	public class NewsItemPwrXml : AnyItemXml
+	public class PlanningItemPwrXml : AnyItemXml
     {
 
         // Defines the sequence of QNames of the children of the root element
         public const string NameSeqNiRoot =
             NameSeqAnyRoot + " nar:contentMeta nar:partMeta nar:assert nar:inlineRef " +
-            "nar:derivedFrom nar:contentSet";
+            "nar:derivedFrom nar:newsCoverageSet";
 
 		//**************************************************************************
 		/// <summary>
 		/// Constructor for a blank G2 News Item object - has to be initialised before being used
 		/// </summary>
-        public NewsItemPwrXml()
+        public PlanningItemPwrXml()
 		{
-            RootElemName = "newsItem";
+            RootElemName = "planningItem";
         }
 
         // *******************************************************************************
@@ -78,7 +78,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public override void InitEmptyXMLDoc(string guid, int version)
         {
             ItemXdoc.RemoveAll();
-            ItemXdoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <newsItem xmlns='http://iptc.org/std/nar/2006-10-01/'></newsItem>");
+            ItemXdoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <planningItem xmlns='http://iptc.org/std/nar/2006-10-01/'></planningItem>");
             XmlNode rootXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
             XmlElement docelement = (XmlElement)rootXN;
             docelement.SetAttribute("standard", "NewsML-G2");
@@ -97,13 +97,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         #region ***** WRITE METHODS
 
         /// <summary>
-        /// Adds a contentSet element as child to the root element
+        /// Adds a newsCoverageSet element as child to the root element
         /// </summary>
-        public void AddContentSet()
+        public void AddNewsCoverageSet()
         // Code History:
-        // 2014-02-27 mws
+        // 2014-03-05 mws
         {           
-            CheckAddNarWrapper1(PropsWrapping1.ContentSet);
+            CheckAddNarWrapper1(PropsWrapping1.NewsConverageSet);
         } // AddContentSet
 
 

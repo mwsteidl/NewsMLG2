@@ -71,7 +71,7 @@ namespace NewsMLG2demo1
             XmlNode foundNode = null;
 
             // *** create an object for the NewsML-G2 News Item
-            var g2NI = new NIpwrXml();
+            var g2NI = new NewsItemPwrXml();
             // * add the GUID and the version number to it
             g2NI.InitEmptyXMLDoc("urn:newsml:acmenews.com:20131121:US-FINANCE-FED", 3);
             g2NI.SetRootXmlLang("en-US");

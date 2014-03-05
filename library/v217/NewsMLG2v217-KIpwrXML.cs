@@ -48,7 +48,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     /// <summary>
     /// IPTC NewsML-G2 Knowledge Item class
 	/// </summary>
-	public class KIpwrXml : AnyItemXml
+	public class KnowledgeItemPwrXml : AnyItemXml
     {
 
         // Defines the sequence of QNames of the children of the root element
@@ -65,7 +65,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 		/// <summary>
 		/// Constructor for a blank G2 Knowledge Item object - has to be initialised before being used
 		/// </summary>
-        public KIpwrXml()
+        public KnowledgeItemPwrXml()
 		{
             RootElemName = "knowledgeItem";
         }
