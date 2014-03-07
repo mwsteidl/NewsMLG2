@@ -52,13 +52,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     {
 
         // Defines the sequence of QNames of the children of the root element
-        protected const string NameSeqKiRoot =
+        public const string NameSeqKiRoot =
             NameSeqAnyRoot + " nar:contentMeta nar:partMeta nar:assert nar:inlineRef " +
             "nar:derivedFrom nar:conceptSet nar:schemeMeta";
 
-        protected const string NameSeqKiConceptSet = "nar:concept";
+        public const string NameSeqKiConceptSet = "nar:concept";
 
-        protected const string NameSeqSchemeMeta = "nar:sameAsScheme nar:name nar:definition nar:note nar:related";
+        public const string NameSeqSchemeMeta = "nar:sameAsScheme nar:name nar:definition nar:note nar:related nar:schemeMetaExtProperty";
 
 
 		//**************************************************************************

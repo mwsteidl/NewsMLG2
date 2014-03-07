@@ -91,8 +91,7 @@ namespace NewsMLG2demo1
             // * add the copyrightHolder property to the rightsInfo wrapper and get the new XML element returned
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.RightsInfo, copyrightHolder, out copyrightHolderXe);
             // * create a structured object for the copyrightHolder element
-            var copyrightHolderSe = new ConceptGenericStruElem();
-            copyrightHolderSe.Uri = "http://www.acmenews.com/about.html#copyright";
+            var copyrightHolderSe = new ConceptGenericStruElem {Uri = "http://www.acmenews.com/about.html#copyright"};
             // * property with a value in the text node
             var crName = new Name("Acme News and Media LLC");
             copyrightHolderSe.Names.Add(crName);
@@ -107,19 +106,16 @@ namespace NewsMLG2demo1
 
             // ** add a sequence of properties as children of itemMeta
             // * property using the qcode attribute
-            var itemClass = new ItemClass();
-            itemClass.qcode = "ninat:text";
+            var itemClass = new ItemClass {qcode = "ninat:text"};
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ItemMeta, itemClass);
             // * property using the uri attribute
-            var provider = new Provider();
-            provider.uri = "http://www.acmenews.com/about/";
+            var provider = new Provider {uri = "http://www.acmenews.com/about/"};
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ItemMeta, provider);
             var versionCreated = new VersionCreated("2013-11-21T16:25:32-05:00");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ItemMeta, versionCreated);
             var embargoed = new Embargoed("2013-11-26T12:00:00-05:00");
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ItemMeta, embargoed);
-            var pubStatus = new PubStatus();
-            pubStatus.qcode = "stat:usable";
+            var pubStatus = new PubStatus {qcode = "stat:usable"};
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ItemMeta, pubStatus);
 
 
@@ -134,36 +130,31 @@ namespace NewsMLG2demo1
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, contentModified);
 
             // * a structured property
-            var located = new Located();
-            located.qcode = "geoloc:NYC";
+            var located = new Located {qcode = "geoloc:NYC"};
             XmlElement locatedXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, located, out locatedXe);
             var locatedSe = new ConceptGenericStruElem();
             locatedSe.Names.Add(new Name("New York, NY"));
             locatedSe.ApplyToElement(g2NI, locatedXe);
 
-            var creator = new Creator();
-            creator.uri = "http://www.acmenews.com/staff/mjameson";
+            var creator = new Creator {uri = "http://www.acmenews.com/staff/mjameson"};
             XmlElement creatorXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, creator, out creatorXe);
             var creatorSe = new ConceptGenericStruElem();
             creatorSe.Names.Add(new Name("Meredith Jameson"));
             creatorSe.ApplyToElement(g2NI, creatorXe);
 
-            var infoSource = new InfoSource();
-            infoSource.qcode = "is:AP";
+            var infoSource = new InfoSource {qcode = "is:AP"};
             XmlElement infoSourceXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, infoSource, out infoSourceXe);
             var infoSourceSe = new ConceptGenericStruElem();
             infoSourceSe.Names.Add(new Name("Associated Press"));
             infoSourceSe.ApplyToElement(g2NI, infoSourceXe);
 
-            var language = new Language();
-            language.tag = "en-US";
+            var language = new Language {tag = "en-US"};
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, language);
 
-            var subject = new Subject();
-            subject.qcode = "medtop:04000000";
+            var subject = new Subject {qcode = "medtop:04000000"};
             XmlElement subjectXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, subject, out subjectXe);
             var subjectSe = new ConceptGenericStruElem();
@@ -171,16 +162,14 @@ namespace NewsMLG2demo1
             subjectSe.ApplyToElement(g2NI, subjectXe);
 
             // * note: as this is another subject the type definitions of the variables have been removed
-            subject = new Subject();
-            subject.qcode = "medtop:20000350";
+            subject = new Subject {qcode = "medtop:20000350"};
             subjectXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, subject, out subjectXe);
             subjectSe = new ConceptGenericStruElem();
             subjectSe.Names.Add(new Name("central bank"));
             subjectSe.ApplyToElement(g2NI, subjectXe);
 
-            subject = new Subject();
-            subject.qcode = "medtop:20000379";
+            subject = new Subject {qcode = "medtop:20000379"};
             subjectXe = null;
             g2NI.AddNarPropertyToWrapper1(AnyItemXml.PropsWrapping1.ContentMeta, subject, out subjectXe);
             subjectSe = new ConceptGenericStruElem();

@@ -58,7 +58,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
 		//**************************************************************************
 		/// <summary>
-		/// Constructor for a blank G2 News Item object - has to be initialised before being used
+		/// Constructor for a blank G2 Concept Item object - has to be initialised before being used
 		/// </summary>
         public ConceptItemPwrXml()
 		{

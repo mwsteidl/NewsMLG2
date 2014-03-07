@@ -3876,6 +3876,35 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public SchemeMeta() { Xname = "schemeMeta"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    public class SchemeMetaExtProperty
+    {
+        public string id;
+        public string creator;
+        public string modified;
+        public string custom;
+        public string how;
+        public string why;
+        public string pubconstraint;
+        public string xmllang;
+        public string dir;
+        public string qcode;
+        public string uri;
+        public string literal;
+        public string type;
+        public string rel;
+        public string validfrom;
+        public string validto;
+        public string value;
+        public string valuedatatype;
+        public string valueunit;
+        public readonly string Xname;
+        public readonly string XnsURI;
+        public readonly string XnsPrefix;
+        public readonly string Xusagecode;
+        public readonly string Xcard;
+        public SchemeMetaExtProperty() { Xname = "schemeMetaExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+    }
+
     public class Sender
     {
         public string id;

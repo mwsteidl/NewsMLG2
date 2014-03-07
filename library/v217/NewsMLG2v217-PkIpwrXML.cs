@@ -52,13 +52,16 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     {
 
         // Defines the sequence of QNames of the children of the root element
-        public const string NameSeqNiRoot =
+        public const string NameSeqPkiRoot =
             NameSeqAnyRoot + " nar:contentMeta nar:partMeta nar:assert nar:inlineRef " +
             "nar:derivedFrom nar:groupSet";
 
+        public const string NameSeqPkiGroup =
+            "nar:groupRef nar:itemRef nar:conceptRef nar:title nar:signal nar:edNote nar:groupExtProperty";
+
 		//**************************************************************************
 		/// <summary>
-		/// Constructor for a blank G2 News Item object - has to be initialised before being used
+		/// Constructor for a blank G2 Package Item object - has to be initialised before being used
 		/// </summary>
         public PackageItemPwrXml()
 		{

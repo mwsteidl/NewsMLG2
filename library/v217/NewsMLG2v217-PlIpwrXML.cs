@@ -52,13 +52,20 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     {
 
         // Defines the sequence of QNames of the children of the root element
-        public const string NameSeqNiRoot =
+        public const string NameSeqPliRoot =
             NameSeqAnyRoot + " nar:contentMeta nar:partMeta nar:assert nar:inlineRef " +
             "nar:derivedFrom nar:newsCoverageSet";
 
+        public const string NameSeqPliNewsCoverage =
+            "nar:planning nar:delivery nar:newsCoverageExtProperty"; 
+
+        public const string NameSeqPliNewsCovPlan =
+            "nar:g2contentType nar:itemClass nar:itemCount nar:assignedTo nar:scheduled nar:service "
+            + NameSeqContentMetaDescrFullGroup + " nar:ednote";
+
 		//**************************************************************************
 		/// <summary>
-		/// Constructor for a blank G2 News Item object - has to be initialised before being used
+		/// Constructor for a blank G2 Planning Item object - has to be initialised before being used
 		/// </summary>
         public PlanningItemPwrXml()
 		{
@@ -104,7 +111,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2014-03-05 mws
         {           
             CheckAddNarWrapper1(PropsWrapping1.NewsConverageSet);
-        } // AddContentSet
+        } // AddNewsCoverageSet
 
 
         #endregion
