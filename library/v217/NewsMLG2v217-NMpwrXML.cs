@@ -24,10 +24,10 @@ IN THE SOFTWARE.
 
 Project: IPTC NewsML-G2 library
 Program: no specific / Common Unit
-Class: NewsIT.IPTC.NewsMLG2.v217.NIpwrXML = NewsML-G2 News Item
+Class: NewsIT.IPTC.NewsMLG2.v217.NMpwrXML = NewsML-G2 News Message (distribution container)
 
 Current date / persID / change log (most current at top)
-StartDate: 2014-03-05 mws
+StartDate: 2014-03-15 mws
 ******************************************************************************/
 using System;
 using System.Globalization;
@@ -48,28 +48,17 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     /// <summary>
 	/// IPTC NewsML-G2 Planning Item class
 	/// </summary>
-	public class PlanningItemPwrXml : AnyItemXml
+	public class NewsMessagePwrXml : NarDocXml
     {
 
-        // Defines the sequence of QNames of the children of the root element
-        public const string NameSeqPliRoot =
-            NameSeqAnyRoot + " nar:contentMeta nar:partMeta nar:assert nar:inlineRef " +
-            "nar:derivedFrom nar:newsCoverageSet";
-
-        public const string NameSeqPliNewsCoverage =
-            "nar:planning nar:delivery nar:newsCoverageExtProperty"; 
-
-        public const string NameSeqPliNewsCovPlan =
-            "nar:g2contentType nar:itemClass nar:itemCount nar:assignedTo nar:scheduled nar:service "
-            + NameSeqContentMetaDescrFullGroup + " nar:ednote";
 
 		//**************************************************************************
 		/// <summary>
-		/// Constructor for a blank G2 Planning Item object - has to be initialised before being used
+		/// Constructor for a blank G2 News Message object - has to be initialised before being used
 		/// </summary>
-        public PlanningItemPwrXml()
+        public NewsMessagePwrXml()
 		{
-            RootElemName = "planningItem";
+            RootElemName = "newsMessage";
         }
 
         // *******************************************************************************
@@ -79,22 +68,18 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // *******************************************************************************
         public override void InitEmptyXMLDoc()
         {
-            InitEmptyXMLDoc(string.Empty, 0);
+            XmlDoc.RemoveAll();
+            XmlDoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <newsMessage xmlns='http://iptc.org/std/nar/2006-10-01/'></newsMessage>");
+            XmlNode rootXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
+            XmlElement docelement = (XmlElement)rootXN;
+            // add the two mandatory wrapping elements
+            CheckAddNarWrapper1(PropsWrapping1.NMHeader);
+            CheckAddNarWrapper1(PropsWrapping1.NMitemSet);
         } // InitEmptyXMLDoc
 
         public override void InitEmptyXMLDoc(string guid, int version)
         {
-            XmlDoc.RemoveAll();
-            XmlDoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <planningItem xmlns='http://iptc.org/std/nar/2006-10-01/'></planningItem>");
-            XmlNode rootXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
-            XmlElement docelement = (XmlElement)rootXN;
-            docelement.SetAttribute("standard", "NewsML-G2");
-            docelement.SetAttribute("standardversion", Newsmlg2VersionCs);
-            docelement.SetAttribute("conformance", ConformanceLevelCs);
-            if (!string.IsNullOrEmpty(guid))
-                docelement.SetAttribute("guid", guid);
-            if (version > 0)
-                docelement.SetAttribute("version", version.ToString());
+            InitEmptyXMLDoc();
         } // InitEmptyXMLDoc
 
         #endregion
@@ -103,16 +88,22 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // *******************************************************************************
         #region ***** WRITE METHODS
 
-        /// <summary>
-        /// Adds a newsCoverageSet element as child to the root element
-        /// </summary>
-        public void AddNewsCoverageSet()
-        // Code History:
-        // 2014-03-05 mws
-        {           
-            CheckAddNarWrapper1(PropsWrapping1.NewsConverageSet);
-        } // AddNewsCoverageSet
+        public bool AddItemToItemSet(XmlElement newItem)
+            // Code History:
+            // 2014-03-15 mws
+        {
+            XmlElement itemSet;
+            ReadFromItemResultEnum getResult;
+            GetElemAsXE("nar:newsMessage/nar:itemSet", out itemSet, out getResult);
+            if (getResult == ReadFromItemResultEnum.ok)
+            {
+                itemSet.AppendChild(newItem);
+            }
+            else
+                return false;
 
+            return true;
+        }
 
         #endregion
 

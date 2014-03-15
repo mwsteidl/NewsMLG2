@@ -77,9 +77,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
         public override void InitEmptyXMLDoc(string guid, int version)
         {
-            ItemXdoc.RemoveAll();
-            ItemXdoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <conceptItem xmlns='http://iptc.org/std/nar/2006-10-01/'></conceptItem>");
-            XmlNode rootXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
+            XmlDoc.RemoveAll();
+            XmlDoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <conceptItem xmlns='http://iptc.org/std/nar/2006-10-01/'></conceptItem>");
+            XmlNode rootXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
             XmlElement docelement = (XmlElement)rootXN;
             docelement.SetAttribute("standard", "NewsML-G2");
             docelement.SetAttribute("standardversion", Newsmlg2VersionCs);
@@ -103,7 +103,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // Code History:
         // 2014-03-05 mws
         {
-            AddNarPropertyToParent("/nar:" + RootElemName, NameSeqCiRoot, ItemXdoc.CreateElement("concept", G2NsCs));
+            AddNarPropertyToParent("/nar:" + RootElemName, NameSeqCiRoot, XmlDoc.CreateElement("concept", G2NsCs));
         } // AddConcept
 
 

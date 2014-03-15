@@ -33,6 +33,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NewsMLG2lib217">
+      <HintPath>..\..\..\..\..\NAMESPACE\NewsIT\IPTC\NewsMLG2\v217\dll\NewsMLG2lib217.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,18 +50,6 @@
   <ItemGroup>
     <Compile Include="..\..\..\..\..\NAMESPACE-dev\NewsIT\IPTC\NewsMLG2\NewsMLG2xmltools.cs">
       <Link>NewsMLG2xmltools.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\NAMESPACE-dev\NewsIT\IPTC\NewsMLG2\v217\NewsMLG2v217-ConceptStruElem.cs">
-      <Link>NewsMLG2v217-ConceptStruElem.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\NAMESPACE-dev\NewsIT\IPTC\NewsMLG2\v217\NewsMLG2v217-FWpwrXML.cs">
-      <Link>NewsMLG2v217-FWpwrXML.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\NAMESPACE-dev\NewsIT\IPTC\NewsMLG2\v217\NewsMLG2v217-NarElements.cs">
-      <Link>NewsMLG2v217-NarElements.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\NAMESPACE-dev\NewsIT\IPTC\NewsMLG2\v217\NewsMLG2v217-NIpwrXML.cs">
-      <Link>NewsMLG2v217-NIpwrXML.cs</Link>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

@@ -88,13 +88,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             if (string.IsNullOrEmpty(parentXPath))
                 return PropProcStatus.ErrNoXPath;
 
-            XmlNodeList parentXNL = NG2Item.ItemXdoc.SelectNodes(parentXPath, NG2Item.NsMngr);
+            XmlNodeList parentXNL = NG2Item.XmlDoc.SelectNodes(parentXPath, NG2Item.NsMngr);
             if (parentXNL.Count == 0)
                 return PropProcStatus.ErrElementNotFound;
             if (parentXNL.Count > 1)
                 return PropProcStatus.ErrElementsToManyFound;
 
-            XmlElement cptElement = NG2Item.ItemXdoc.CreateElement("concept", AnyItemXml.G2NsCs);
+            XmlElement cptElement = NG2Item.XmlDoc.CreateElement("concept", NarDocXml.G2NsCs);
             parentXNL[0].AppendChild(cptElement);
 
             return ApplyToElementInternal(NG2Item, cptElement, true);
@@ -127,10 +127,10 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
             if (fullConceptMode)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("conceptId", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("conceptId", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(ConceptId, newElement);
                 applyElement.AppendChild(newElement);
-                newElement = NG2Item.ItemXdoc.CreateElement("type", AnyItemXml.G2NsCs);
+                newElement = NG2Item.XmlDoc.CreateElement("type", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(Type, newElement);
                 applyElement.AppendChild(newElement);
             }
@@ -166,55 +166,55 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             }
             foreach (var name in Names)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("name", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("name", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(name, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var definition in Definitions)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("definition", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("definition", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(definition, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var note in Notes)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("note", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("note", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(note, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var remoteInfo in RemoteInfos)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("remoteInfo", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("remoteInfo", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(remoteInfo, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var hierarchyInfo in HierarchyInfos)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("hierarchyInfo", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("hierarchyInfo", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(hierarchyInfo, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var sameAs in SameAsses)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("sameAs", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("sameAs", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(sameAs, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var broader in Broaders)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("broader", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("broader", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(broader, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var narrower in Narrowers)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("narrower", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("narrower", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(narrower, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var related in Relateds)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("related", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("related", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(related, newElement);
                 applyElement.AppendChild(newElement);
             }
@@ -260,31 +260,31 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
             foreach (var personDetails in PersonDetailses)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("personDetails", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("personDetails", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(personDetails, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var organisationDetails in OrganisationDetailses)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("organisationDetails", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("organisationDetails", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(organisationDetails, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var geoAreaDetails in GeoAreaDetailses)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("geoAreaDetails", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("geoAreaDetails", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(geoAreaDetails, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var poiDetails in PoiDetailses)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("POIDetails", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("POIDetails", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(poiDetails, newElement);
                 applyElement.AppendChild(newElement);
             }
             foreach (var objectDetails in ObjectDetailses)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("objectDetails", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("objectDetails", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(objectDetails, newElement);
                 applyElement.AppendChild(newElement);
             }
@@ -319,7 +319,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
             foreach (var eventDetails in EventDetailses)
             {
-                XmlElement newElement = NG2Item.ItemXdoc.CreateElement("eventDetails", AnyItemXml.G2NsCs);
+                XmlElement newElement = NG2Item.XmlDoc.CreateElement("eventDetails", NarDocXml.G2NsCs);
                 NG2Item.NarProperty2XmlElement(eventDetails, newElement);
                 applyElement.AppendChild(newElement);
             }

@@ -82,9 +82,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
         public override void InitEmptyXMLDoc(string guid, int version)
         {
-            ItemXdoc.RemoveAll();
-            ItemXdoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <knowledgeItem xmlns='http://iptc.org/std/nar/2006-10-01/'></knowledgeItem>");
-            XmlNode rootXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
+            XmlDoc.RemoveAll();
+            XmlDoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <knowledgeItem xmlns='http://iptc.org/std/nar/2006-10-01/'></knowledgeItem>");
+            XmlNode rootXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
             XmlElement docelement = (XmlElement)rootXN;
             docelement.SetAttribute("standard", "NewsML-G2");
             docelement.SetAttribute("standardversion", Newsmlg2VersionCs);
@@ -139,11 +139,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // Code History:
         // 2010-12-12 mws
         {
-            XmlNode parentXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']", NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']", NsMngr);
             if (parentXN == null)
                 AddCSconcept(conceptElementId);
-            parentXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']", NsMngr);
-            XmlElement newXElement = ItemXdoc.CreateElement("conceptId", G2NsCs);
+            parentXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']", NsMngr);
+            XmlElement newXElement = XmlDoc.CreateElement("conceptId", G2NsCs);
             if (!string.IsNullOrEmpty(conceptId.qcode))
                 newXElement.SetAttribute("qcode", conceptId.qcode);
             if (!string.IsNullOrEmpty(conceptId.created))
@@ -159,11 +159,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2010-12-13 mws
         {
             string parentXPath = "/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']";
-            XmlNode parentXN = ItemXdoc.SelectSingleNode(parentXPath, NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode(parentXPath, NsMngr);
             if (parentXN == null)
                 AddCSconcept(conceptElementId);
 
-            XmlElement newXElement = ItemXdoc.CreateElement("type", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("type", G2NsCs);
             if (!string.IsNullOrEmpty(qcType))
                 newXElement.SetAttribute("qcode", qcType);
             AddPropertyToParent(parentXPath, NameSeqConcept, newXElement);
@@ -175,11 +175,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2010-12-13, 2014-02-22 mws
         {
             string parentXPath = "/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']";
-            XmlNode parentXN = ItemXdoc.SelectSingleNode(parentXPath, NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode(parentXPath, NsMngr);
             if (parentXN == null)
                 AddCSconcept(conceptElementId);
 
-            XmlElement newXElement = ItemXdoc.CreateElement("name", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("name", G2NsCs);
             NarProperty2XmlElement(name, newXElement);
             AddPropertyToParent(parentXPath, NameSeqConcept, newXElement);
         } // ScAddCSCname
@@ -190,11 +190,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2010-12-13 mws
         {
             string parentXPath = "/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']";
-            XmlNode parentXN = ItemXdoc.SelectSingleNode(parentXPath, NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode(parentXPath, NsMngr);
             if (parentXN == null)
                 AddCSconcept(conceptElementId);
 
-            XmlElement newXElement = ItemXdoc.CreateElement("definition", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("definition", G2NsCs);
             NarProperty2XmlElement(definition, newXElement);
             AddPropertyToParent(parentXPath, NameSeqConcept, newXElement);
         } // ScAddCSCdefinition
@@ -205,11 +205,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2010-12-13 mws
         {
             string parentXPath = "/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']";
-            XmlNode parentXN = ItemXdoc.SelectSingleNode(parentXPath, NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode(parentXPath, NsMngr);
             if (parentXN == null)
                 AddCSconcept(conceptElementId);
 
-            XmlElement newXElement = ItemXdoc.CreateElement("note", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("note", G2NsCs);
             NarProperty2XmlElement(note, newXElement);
             AddPropertyToParent(parentXPath, NameSeqConcept, newXElement);
         } // ScAddCSCnote
@@ -223,11 +223,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2010-12-13 mws
         {
             string parentXPath = "/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']";
-            XmlNode parentXN = ItemXdoc.SelectSingleNode(parentXPath, NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode(parentXPath, NsMngr);
             if (parentXN == null)
                 AddCSconcept(conceptElementId);
 
-            XmlElement newXElement = ItemXdoc.CreateElement("sameAs", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("sameAs", G2NsCs);
             NarProperty2XmlElement(sameAs, newXElement);
             AddPropertyToParent(parentXPath, NameSeqConcept, newXElement);
         } // ScAddCSCsameAs
@@ -239,11 +239,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2010-12-13 mws
         {
             string parentXPath = "/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']";
-            XmlNode parentXN = ItemXdoc.SelectSingleNode(parentXPath, NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode(parentXPath, NsMngr);
             if (parentXN == null)
                 AddCSconcept(conceptElementId);
 
-            XmlElement newXElement = ItemXdoc.CreateElement("broader", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("broader", G2NsCs);
             NarProperty2XmlElement(broader, newXElement);
             AddPropertyToParent(parentXPath, NameSeqConcept, newXElement);
         } // ScAddCSCbroader
@@ -255,11 +255,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2010-12-13 mws
         {
             string parentXPath = "/nar:" + RootElemName + "/nar:conceptSet/nar:concept[@id='" + conceptElementId + "']";
-            XmlNode parentXN = ItemXdoc.SelectSingleNode(parentXPath, NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode(parentXPath, NsMngr);
             if (parentXN == null)
                 AddCSconcept(conceptElementId);
 
-            XmlElement newXElement = ItemXdoc.CreateElement("related", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("related", G2NsCs);
             NarProperty2XmlElement(related, newXElement);
             AddPropertyToParent(parentXPath, NameSeqConcept, newXElement);
         } // ScAddCSCrelated
@@ -273,7 +273,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         {
             // check if this element already exists
             XmlNode thisXN =
-            ItemXdoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
+            XmlDoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
             if (thisXN != null)
                 return;
 
@@ -285,7 +285,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2014-02-22 mws
         {
             string thisXPath = "/nar:" + RootElemName + "/nar:schemeMeta";
-            XmlNode thisXN = ItemXdoc.SelectSingleNode(thisXPath, NsMngr);
+            XmlNode thisXN = XmlDoc.SelectSingleNode(thisXPath, NsMngr);
             if (thisXN == null)
                 ScAddSchemeMeta(schemeMeta);
         }
@@ -297,10 +297,10 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // Code History:
         // 2014-02-12 mws
         {
-            XmlNode parentXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
             if (parentXN == null)
                 return;
-            XmlElement newXElement = ItemXdoc.CreateElement("name", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("name", G2NsCs);
             NarProperty2XmlElement(name, newXElement);
             parentXN.AppendChild(newXElement);
         } // ScAddSMname
@@ -310,10 +310,10 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // Code History:
         // 2014-02-12 mws
         {
-            XmlNode parentXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
             if (parentXN == null)
                 return;
-            XmlElement newXElement = ItemXdoc.CreateElement("definition", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("definition", G2NsCs);
             NarProperty2XmlElement(definition, newXElement);
             parentXN.AppendChild(newXElement);
         } // ScAddSMdefinition
@@ -323,10 +323,10 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // Code History:
         // 2014-02-12 mws
         {
-            XmlNode parentXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
             if (parentXN == null)
                 return;
-            XmlElement newXElement = ItemXdoc.CreateElement("note", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("note", G2NsCs);
             NarProperty2XmlElement(note, newXElement);
             parentXN.AppendChild(newXElement);
         } // ScAddSMnote
@@ -336,10 +336,10 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // Code History:
         // 2014-02-12 mws
         {
-            XmlNode parentXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
+            XmlNode parentXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName + "/nar:schemeMeta", NsMngr);
             if (parentXN == null)
                 return;
-            XmlElement newXElement = ItemXdoc.CreateElement("related", G2NsCs);
+            XmlElement newXElement = XmlDoc.CreateElement("related", G2NsCs);
             NarProperty2XmlElement(related, newXElement);
             parentXN.AppendChild(newXElement);
         } // ScAddSMrelated

@@ -80,9 +80,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
         public override void InitEmptyXMLDoc(string guid, int version)
         {
-            ItemXdoc.RemoveAll();
-            ItemXdoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <packageItem xmlns='http://iptc.org/std/nar/2006-10-01/'></packageItem>");
-            XmlNode rootXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
+            XmlDoc.RemoveAll();
+            XmlDoc.LoadXml("<?xml version='1.0' encoding='utf-8' standalone='yes'?> <packageItem xmlns='http://iptc.org/std/nar/2006-10-01/'></packageItem>");
+            XmlNode rootXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
             XmlElement docelement = (XmlElement)rootXN;
             docelement.SetAttribute("standard", "NewsML-G2");
             docelement.SetAttribute("standardversion", Newsmlg2VersionCs);

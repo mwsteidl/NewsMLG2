@@ -24,10 +24,10 @@ IN THE SOFTWARE.
  
 Project: IPTC NewsML-G2 library
 Program: no specific / Common Unit
-Class: NewsIT.IPTC.NewsMLG2.v217.AnyItemPwrXML = shared framework for all NewsML-G2 items
+Class: NewsIT.IPTC.NewsMLG2.v217.NarDocXml = shared framework for all G2 News Architecture documents
 
 Current date / persID / change log (most current at top)
-StartDate: 2010-12 -> 2014-02-22 mws
+StartDate: 2014-03-15 mws
 ******************************************************************************/
 using System;
 using System.Collections.Generic;
@@ -78,9 +78,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     //**************************************************************************
     //**************************************************************************
     /// <summary>
-    /// The class represents the base of all NewsML-G2 item classes
+    /// The class represents the base of all NewsML-G2 XML documents = items and the news message
     /// </summary>
-    public abstract class AnyItemXml
+    public abstract class NarDocXml
     {
         // the version of the corresponding NewsML-G2 specification:
         public const string Newsmlg2VersionCs = "2.17";
@@ -92,7 +92,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // NewsML-G2 Conformance Level: set to "power"
         public const string ConformanceLevelCs = "power";
 
-        public XmlDocument ItemXdoc; // the XML document representing the G2 Item
+        public XmlDocument XmlDoc; // the XML document, either an item or a news message
         protected string RootElemName = ""; // well be provided by the item-specific classes
 
         public XmlNamespaceManager NsMngr;
@@ -104,7 +104,8 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         //      they are wrappers of other properties
         public enum PropsWrapping1
         {
-            Catalog, RightsInfo, ItemMeta, ContentMeta, PartMeta, ConceptSet, ContentSet, GroupSet, NewsConverageSet, NMHeader
+            Catalog, RightsInfo, ItemMeta, ContentMeta, PartMeta, ConceptSet, ContentSet, GroupSet, NewsConverageSet, 
+            NMHeader, NMitemSet
         };
 
         /* These strings define the sequence of child element names of wrapping elements - see above
@@ -167,10 +168,10 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         /// <summary>
         /// Constructor for a blank G2 Item object - has to be initialised before being used
         /// </summary>
-        public AnyItemXml()
+        public NarDocXml()
         {
-            ItemXdoc = new XmlDocument();
-            NsMngr = new XmlNamespaceManager(ItemXdoc.NameTable);
+            XmlDoc = new XmlDocument();
+            NsMngr = new XmlNamespaceManager(XmlDoc.NameTable);
             NsMngr.AddNamespace("nar", G2NsCs);
         }
 
@@ -243,8 +244,8 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 return;
             if (!File.Exists(fileName))
                 return;
-            ItemXdoc.RemoveAll();
-            ItemXdoc.Load(fileName);
+            XmlDoc.RemoveAll();
+            XmlDoc.Load(fileName);
         }
 
         /// <summary>
@@ -255,8 +256,8 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             // Code History:
             // 2010-12-10 mws
         {
-            ItemXdoc.RemoveAll();
-            ItemXdoc.LoadXml(xMLtemplate);
+            XmlDoc.RemoveAll();
+            XmlDoc.LoadXml(xMLtemplate);
         }
 
 
@@ -278,12 +279,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             // 2010-12-09 mws, ~2010-12-15
         {
             if (saveWithBOM)
-                ItemXdoc.Save(fileName);
+                XmlDoc.Save(fileName);
             else
             {
                 var uTF8NoPreamble = new UTF8Encoding(false);
                 var xdocSw = new StreamWriter(fileName, false, uTF8NoPreamble);
-                ItemXdoc.Save(xdocSw);
+                XmlDoc.Save(xdocSw);
                 xdocSw.Close();
                 xdocSw.Dispose();
             }
@@ -322,7 +323,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             }
             if (!ExistsXN(wrapperXPath))
             {
-                XmlElement newWrapperXElement = ItemXdoc.CreateElement(wrapperLocalName, G2NsCs);
+                XmlElement newWrapperXElement = XmlDoc.CreateElement(wrapperLocalName, G2NsCs);
                 if (!string.IsNullOrEmpty(wrapperId))
                 {
                     if (wrapperLocalName == "partMeta")
@@ -395,7 +396,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 return false;
 
             // create a new XmlElement from the property class
-            propertyXe = ItemXdoc.CreateElement(newPropName, G2NsCs);
+            propertyXe = XmlDoc.CreateElement(newPropName, G2NsCs);
             NarProperty2XmlElement(newProperty, propertyXe);
             // add the new XmlElement as a child of the wrapper
             AddNarPropertyToParent(wrapperXPath, wrapperChildNameSeq, propertyXe);
@@ -436,7 +437,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             XmlElement newElement;
             if (!NarProperty2XmlElement(newProperty, out newElement))
                 return false;
-            string newPropertyName = string.Empty;
+            string newPropertyName;
             if (newElement.NamespaceURI == G2NsCs)
                 newPropertyName = "nar:" + newElement.Name;
             else
@@ -489,6 +490,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             if (!FindXE(parentXPath, out parentXN))
                 return false;
 
+            if (IsFirstInNameSeq(newPropertyName, childnameSeq)) //++2014-03-15
+            {
+                parentXN.PrependChild(newProperty);
+                return true;
+            }
+            // The new property wasn't the first one in a name sequence: try to find the prior one
             XmlNode priorNode = FindPriorXNbubbleup(parentXPath, childnameSeq, newPropertyName);
             if (priorNode == null) // no node prior by the name sequence found
                 parentXN.AppendChild(newProperty); //~2014-03-03 Prepend -> Append
@@ -503,235 +510,6 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             // 2014-02-25: forwarding to a renamed method
             return AddNarPropertyToParent(parentXPath, childnameSeq, newProperty);
         }
-
-        // ******************************************************************************
-        // ***** S P E C I F I C
-
-        // ******************************************************************************
-        /// <summary>
-        /// Set the GUID and version number of a NewsML-G2 item
-        /// </summary>
-        /// <param name="guid"></param>
-        /// <param name="version"></param>
-        public void SetGuidAndVersion(string guid, long version)
-        // Code History:
-        // 2010-12-11 mws
-        {
-            XmlNode rootXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
-            XmlElement docelement = (XmlElement)rootXN;
-            if (!string.IsNullOrEmpty(guid))
-                docelement.SetAttribute("guid", guid);
-            if (version > 0)
-                docelement.SetAttribute("version", version.ToString());
-
-        } // SetGuidAndVersion
-
-        /// <summary>
-        /// Sets the xml:lang attribute of the root element
-        /// </summary>
-        /// <param name="xmllang">IETF BCP 47 compliant language tag</param>
-        public void SetRootXmlLang(string xmllang)
-        // Code History:
-        // 2010-12-11 mws
-        {
-            XmlNode rootXN = ItemXdoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
-            XmlElement docelement = (XmlElement)rootXN;
-            if (!string.IsNullOrEmpty(xmllang))
-                docelement.SetAttribute("xml:lang", xmllang);
-        } // SetXmlLang
-
-        // ******************************************************************************
-        /// <summary>
-        /// Adds a catalogRef element with href attribute
-        /// </summary>
-        /// <param name="href">URL of the catalog</param>
-        public void AddCatalogRef(string href)
-        // Code History:
-        // 2010-12-09 mws
-        {
-            XmlElement catalogRef = ItemXdoc.CreateElement("catalogRef", G2NsCs);
-            catalogRef.SetAttribute("href", href);
-            ItemXdoc.DocumentElement.PrependChild(catalogRef);
-        }
-
-
-        #endregion
-
-        // ***** SIMPLE (& constrained) WRITE METHODS ***********************************
-        #region ***** SIMPLE (& constrained) WRITE METHODS
-
-        // ******************************************************************************
-        // ***** I T E M   M E T A
-        // ******************************************************************************
-
-        public void ScAddItemMeta()
-        // Code History:
-        // 2010-12-09, 2014-02-26 mws
-        {
-            CheckAddNarWrapper1(PropsWrapping1.ItemMeta);
-        } // ScAddItemMeta
-
-        public void ScAddIMitemClass(ItemClass itemClass)
-        // Code History:
-        // 2014-02-26 mws
-        {
-            AddNarPropertyToWrapper1(PropsWrapping1.ItemMeta, string.Empty, new ItemClass());
-        }
-
-        public void ScAddIMitemClass(string classQC)
-        // Code History:
-        // 2010-12-09; 2014-02-26 mws
-        {
-            var itemClass = new ItemClass();
-            itemClass.qcode = classQC;
-            AddNarPropertyToWrapper1(PropsWrapping1.ItemMeta, itemClass);
-        } // ScAddIMitemClass
-
-        // ******************************************************************************
-        public void ScAddIMversionCreated(string dtValueAsStr)
-        // Code History:
-        // 2010-12-11, 2014-02-26 mws
-        {
-            var versionCreated = new VersionCreated();
-            versionCreated.thisValue = dtValueAsStr;
-            AddNarPropertyToWrapper1(PropsWrapping1.ItemMeta, versionCreated);
-        } // ScAddIMversionCreated
-
-        // ******************************************************************************
-        public void ScAddIMfirstCreated(string dtValueAsStr)
-        // Code History:
-        // 2010-12-11, 2014-02-26 mws
-        {
-            var firstCreated = new FirstCreated();
-            firstCreated.thisValue = dtValueAsStr;
-            AddNarPropertyToWrapper1(PropsWrapping1.ItemMeta, firstCreated);
-        } // ScAddIMfirstCreated
-
-        // ******************************************************************************
-        public void ScAddIMedNote(string text, string roleQC)
-        // Code History:
-        // 2010-12-09,2014-02-26 mws
-        {
-            var edNote = new EdNote();
-            edNote.role = roleQC;
-            edNote.thisValue = text;
-            AddNarPropertyToWrapper1(PropsWrapping1.ItemMeta, edNote);
-        } // ScAddIMedNote
-
-        // ******************************************************************************
-        // ***** C O N T E N T   M E T A 
-        // ******************************************************************************
-        public void ScAddContentMeta()
-        // Code History:
-        // 2010-12-11, 2014-02-26 mws
-        {
-            CheckAddNarWrapper1(PropsWrapping1.ContentMeta);
-        } // ScAddContentMeta
-
-        // ******************************************************************************
-        public void ScAddCMurgency(int urgencyValue)
-        // Code History:
-        // 2014-02-26 mws
-        {
-            if (urgencyValue < 1)
-                return;
-            if (urgencyValue < 9)
-                return;
-            var urgency = new Urgency();
-            urgency.thisValue = urgencyValue.ToString();
-            AddNarPropertyToWrapper1(PropsWrapping1.ContentMeta, urgency);
-        } // ScAddCMurgency
-
-        // ******************************************************************************
-        public void ScAddCMcontentCreated(string dtValueAsStr)
-        // Code History:
-        // 2010-12-11, 2014-02-26 mws
-        {
-            var contentCreated = new ContentCreated();
-            contentCreated.thisValue = dtValueAsStr;
-            AddNarPropertyToWrapper1(PropsWrapping1.ContentMeta, contentCreated);
-        } // ScAddCMcontentCreated
-
-        // ******************************************************************************
-        public void ScAddCMcontentModified(string dtValueAsStr)
-        // Code History:
-        // 2010-12-11, 2014-02-26 mws
-        {
-            var contentModified = new ContentModified();
-            contentModified.thisValue = dtValueAsStr;
-            AddNarPropertyToWrapper1(PropsWrapping1.ContentMeta, contentModified);
-        } // ScAddCMcontentModified
-
-        // ******************************************************************************
-        public void ScAddCMdescription(string text, string langTag)
-        // Code History:
-        // 2010-12-11, 2014-02-26 mws
-        {
-            var description = new Description();
-            description.thisValue = text;
-            description.xmllang = langTag;
-            AddNarPropertyToWrapper1(PropsWrapping1.ContentMeta, description);
-        } // ScAddCMdescription
-
-        // ******************************************************************************
-        // ***** P A R T   M E T A 
-        // ******************************************************************************
-        public void ScAddPartMeta(string partId)
-        // Code History:
-        // 2010-12-11, 2014-02-26 mws
-        {
-            CheckAddNarWrapper1(PropsWrapping1.PartMeta, partId);
-        } // ScAddPartMeta
-
-        public void ScAddPartMeta(string partId, int seq, string contentrefs)
-        // Code History:
-        // 2010-12-14, 2014-02-26 mws
-        {
-            CheckAddNarWrapper1(PropsWrapping1.PartMeta, partId);
-            XmlElement partMetaXE = null;
-            ReadFromItemResultEnum readResult;
-            GetElemAsXE("/nar:" + RootElemName + "/nar:partMeta[@partid='" + partId + "']", out partMetaXE, out readResult);
-            if (readResult == ReadFromItemResultEnum.ok)
-            {
-                if (seq > -1)
-                    partMetaXE.SetAttribute("seq", seq.ToString());
-                partMetaXE.SetAttribute("contentrefs", contentrefs);
-            }
-
-        } // ScAddPartMeta
-
-        // ******************************************************************************
-        public void ScAddPMcontentCreated(string partId, string dtValueAsStr)
-        // Code History:
-        // 2010-12-11,2014-02-26 mws
-        {
-            var contentCreated = new ContentCreated();
-            contentCreated.thisValue = dtValueAsStr;
-            AddNarPropertyToWrapper1(PropsWrapping1.PartMeta, partId, contentCreated);
-        } // ScAddPMcontentCreated
-
-        // ******************************************************************************
-        public void ScAddPMcontentModified(string partId, string dtValueAsStr)
-        // Code History:
-        // 2010-12-11,2014-02-26 mws
-        {
-            var contentModified = new ContentModified();
-            contentModified.thisValue = dtValueAsStr;
-            AddNarPropertyToWrapper1(PropsWrapping1.PartMeta, partId, contentModified);
-        } // ScAddPMcontentModified
-
-        // ******************************************************************************
-        public void ScAddPMdescription(string partId, string text, string roleQC)
-        // Code History:
-        // 2010-12-11,2014-02-26 mws
-        {
-            var description = new Description();
-            description.thisValue = text;
-            // description.xmllang = langTag;
-            description.role = roleQC;
-            AddNarPropertyToWrapper1(PropsWrapping1.PartMeta, partId, description);
-        } // ScAddPMdescription
-
 
         #endregion
 
@@ -759,7 +537,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 result = ReadFromItemResultEnum.emptyXPath;
                 return;
             }
-            XmlNodeList foundXNL = ItemXdoc.SelectNodes(xPath, NsMngr);
+            XmlNodeList foundXNL = XmlDoc.SelectNodes(xPath, NsMngr);
             if (foundXNL.Count == 0)
             {
                 result = ReadFromItemResultEnum.targetNotFound;
@@ -792,7 +570,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 result = ReadFromItemResultEnum.emptyXPath;
                 return;
             }
-            resultXNL = ItemXdoc.SelectNodes(xPath, NsMngr);
+            resultXNL = XmlDoc.SelectNodes(xPath, NsMngr);
         } // GetElemsAsXNodeList
 
         // ******************************************************************************
@@ -818,7 +596,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 result = ReadFromItemResultEnum.emptyXPath;
                 return;
             }
-            XmlNodeList foundXNL = ItemXdoc.SelectNodes(xPath, NsMngr);
+            XmlNodeList foundXNL = XmlDoc.SelectNodes(xPath, NsMngr);
             if (foundXNL.Count == 0)
             {
                 result = ReadFromItemResultEnum.targetNotFound;
@@ -948,7 +726,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 result = ReadFromItemResultEnum.emptyXPath;
                 return;
             }
-            XmlNodeList foundXNL = ItemXdoc.SelectNodes(xPath, NsMngr);
+            XmlNodeList foundXNL = XmlDoc.SelectNodes(xPath, NsMngr);
             if (foundXNL.Count == 0)
             {
                 result = ReadFromItemResultEnum.targetNotFound;
@@ -1050,7 +828,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 result = ReadFromItemResultEnum.emptyXPath;
                 return;
             }
-            XmlNodeList foundXNL = ItemXdoc.SelectNodes(xPath, NsMngr);
+            XmlNodeList foundXNL = XmlDoc.SelectNodes(xPath, NsMngr);
             if (foundXNL.Count == 0)
             {
                 result = ReadFromItemResultEnum.targetNotFound;
@@ -1075,16 +853,44 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // ***** SPECIAL PROPERTY ACCESS METHODS ****************************************
         #region ***** SPECIAL PROPERTY ACCESS METHODS
 
+
+        /// <summary>
+        /// Checks if the name of an element is the first in a name sequence.
+        /// Should be used prior to FindPriorXNbubbleup as that method does not indicate
+        /// that the element searched for is the first one in a name sequence.
+        /// </summary>
+        /// <param name="refXName"></param>
+        /// <param name="nameSeq"></param>
+        /// <returns></returns>
+        public bool IsFirstInNameSeq(string refXName, string nameSeq)
+            // Code History:
+            // 2014-03-15 mws
+        {
+            if (string.IsNullOrEmpty(refXName))
+                return false;
+            if (string.IsNullOrEmpty(nameSeq))
+                return false;
+            string[] namesInSeq = nameSeq.Split(' '); // split by space character
+            if (namesInSeq.Length < 1)
+                return false;
+            if (refXName == namesInSeq[0])
+                return true;
+            else
+                return false;
+        } // IsFirstInNameSeq
+
         // *******************************************************************************
         /// <summary>
         /// Searches for an existing element prior to the reference element,
         /// both are children of the same parent,
-        /// as defined by a sequence of element names
+        /// as defined by a sequence of element names.
+        /// Prior to using this method the method IsFirstInNameSeq should be used to
+        /// find out if the reference element is the first in a name sequence.
         /// </summary>
         /// <param name="parentXPath">XPath of the parent element</param>
         /// <param name="childnameSeq">Sequence of QNames of all child elements, separated by a space</param>
         /// <param name="refXEname">The QName of the reference element</param>
-        /// <returns></returns>
+        /// <returns>The Xml Node reprenting the one prior to the reference element. If none was found null is returned.</returns>
         public XmlNode FindPriorXNbubbleup(string parentXPath, string childnameSeq, string refXEname)
         // Code History:
         // 2014-02-22 mws
@@ -1133,7 +939,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 return false;
             }
             XmlNodeList tempXNL;
-            tempXNL = ItemXdoc.SelectNodes(checkXPath, NsMngr);
+            tempXNL = XmlDoc.SelectNodes(checkXPath, NsMngr);
             if ((tempXNL == null) || (tempXNL.Count == 0))
             {
                 SetErrState(ItemProcErrEnum.XmlNodeNotFound);
@@ -1165,7 +971,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             }
             XmlNodeList tempXNL;
             string checkXPath = "/nar:" + RootElemName + checkRelativeXPath;
-            tempXNL = ItemXdoc.SelectNodes(checkXPath, NsMngr);
+            tempXNL = XmlDoc.SelectNodes(checkXPath, NsMngr);
             if ((tempXNL == null) || (tempXNL.Count == 0))
             {
                 SetErrState(ItemProcErrEnum.XmlNodeNotFound);
@@ -1194,7 +1000,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 return false;
             }
             XmlNodeList tempXNL;
-            tempXNL = ItemXdoc.SelectNodes(checkXPath, NsMngr);
+            tempXNL = XmlDoc.SelectNodes(checkXPath, NsMngr);
             if ((tempXNL == null) || (tempXNL.Count == 0))
             {
                 return false;
@@ -1220,7 +1026,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             }
             XmlNodeList tempXNL;
             string checkXPath = "/nar:" + RootElemName + checkRelativeXPath;
-            tempXNL = ItemXdoc.SelectNodes(checkXPath, NsMngr);
+            tempXNL = XmlDoc.SelectNodes(checkXPath, NsMngr);
             if ((tempXNL == null) || (tempXNL.Count == 0))
             {
                 return false;
@@ -1304,7 +1110,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 return false;
             }
 
-            newElement = ItemXdoc.CreateElement(newPropName, G2NsCs);
+            newElement = XmlDoc.CreateElement(newPropName, G2NsCs);
             foreach (FieldInfo info in fi)
             {
                 try { fieldValue = info.GetValue(aProperty).ToString(); }
@@ -1402,6 +1208,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                     wrapperXPath = wrapperParentXPath + "/nar:" + wrapperLocalName;
                     wrapperChildNameSeq = NameSeqNMHeader;
                     break;
+                case PropsWrapping1.NMitemSet:
+                    wrapperLocalName = "itemSet";
+                    wrapperXPath = wrapperParentXPath + "/nar:" + wrapperLocalName;
+                    wrapperChildNameSeq = "";
+                    break;
                 case PropsWrapping1.NewsConverageSet:
                     wrapperLocalName = "newsCoverageSet";
                     wrapperXPath = wrapperParentXPath + "/nar:" + wrapperLocalName;
@@ -1478,15 +1289,6 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             _Err = ItemProcErrEnum.NoError;
 			_ErrStr = string.Empty;
         }
-
-        #endregion
-
-        // ******************************************************************************
-        // ******************************************************************************
-        // ***** DEPRECATED STUFF *******************************************************
-        #region ***** DEPRECATED STUFF
-        // ******************************************************************************
-
 
         #endregion
     }
