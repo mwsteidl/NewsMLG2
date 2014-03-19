@@ -27,7 +27,7 @@ Program: no specific / Common Unit
 Class: NewsIT.IPTC.NewsMLG2.v217.KIpwrXML = NewsML-G2 Knowledge Item
 
 Current date / persID / change log (most current at top)
-StartDate: 2010-12 -> 2014-02-22 mws
+StartDate: 2014-02-22 mws
 ******************************************************************************/
 using System;
 using System.Globalization;
@@ -116,13 +116,12 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         /// <summary>
         /// Adds a concept property as child to the conceptSet wrapper
         /// </summary>
-        /// <param name="conceptElementId"></param>
+        /// <param name="conceptElementId">The id attribute value of the concept element</param>
         public void AddCSconcept(string conceptElementId)
         // Code History:
         // 2010-12-12,2014-02-22 mws
         {           
-            var concept = new Concept();
-            concept.id = conceptElementId;
+            var concept = new Concept {id = conceptElementId};
             AddNarPropertyToWrapper1(PropsWrapping1.ConceptSet, concept);
         } // AddCSconcept
 

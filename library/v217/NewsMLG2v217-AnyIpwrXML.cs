@@ -27,7 +27,7 @@ Program: no specific / Common Unit
 Class: NewsIT.IPTC.NewsMLG2.v217.AnyItemPwrXML = shared framework for all NewsML-G2 items
 
 Current date / persID / change log (most current at top)
-StartDate: 2010-12 -> 2014-02-22 mws
+StartDate: 2014-02-22 mws
 ******************************************************************************/
 using System;
 using System.Collections.Generic;
@@ -74,8 +74,8 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         /// <summary>
         /// Set the GUID and version number of a NewsML-G2 item
         /// </summary>
-        /// <param name="guid"></param>
-        /// <param name="version"></param>
+        /// <param name="guid">The GUID</param>
+        /// <param name="version">The version</param>
         public void SetGuidAndVersion(string guid, long version)
         // Code History:
         // 2010-12-11 mws
@@ -98,7 +98,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // 2010-12-11 mws
         {
             XmlNode rootXN = XmlDoc.SelectSingleNode("/nar:" + RootElemName, NsMngr);
-            XmlElement docelement = (XmlElement)rootXN;
+            var docelement = (XmlElement)rootXN;
             if (!string.IsNullOrEmpty(xmllang))
                 docelement.SetAttribute("xml:lang", xmllang);
         } // SetXmlLang

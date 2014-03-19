@@ -24,7 +24,7 @@ IN THE SOFTWARE.
  
 Project: IPTC NewsML-G2 library
 Program: no specific / Common Unit
-Class: NewsIT.IPTC.NewsMLG2.v217.ConceptStruElem
+Class: NewsIT.IPTC.NewsMLG2.v217.ConceptStructProp
   
 
 Current date / persID / change log (most current at top)
@@ -40,7 +40,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     /// <summary>
     /// Class for a basic structured NewsML-G2 Concept
     /// </summary>
-    public class ConceptGenericStruElem
+    public class ConceptStructProp
     {
         public string Uri;
         public string QCode;
@@ -58,7 +58,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public List<Narrower> Narrowers;
         public List<Related> Relateds; 
 
-        public ConceptGenericStruElem()
+        public ConceptStructProp()
         {
             CoreConcept = new Concept();
             ConceptId = new ConceptId();
@@ -222,7 +222,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             return PropProcStatus.ok;
         } // ApplyToElement
 
-    } //class ConceptGenericStruElem
+    } //class ConceptStructProp
 
     //**************************************************************************
     //**************************************************************************
@@ -231,7 +231,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     /// Class for a structured NewsML-G2 Concept representing 
     /// a person/organisation/geoArea/POI/object entity
     /// </summary>
-    public class ConceptEntityStruElem : ConceptGenericStruElem
+    public class ConceptEntityStructProp : ConceptStructProp
     {
         public List<PersonDetails> PersonDetailses;
         public List<OrganisationDetails> OrganisationDetailses;
@@ -239,7 +239,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public List<POIDetails> PoiDetailses;
         public List<ObjectDetails> ObjectDetailses;
 
-        public ConceptEntityStruElem() : base()
+        public ConceptEntityStructProp() : base()
         {
             PersonDetailses = new List<PersonDetails>();
             OrganisationDetailses = new List<OrganisationDetails>();
@@ -290,7 +290,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             }
             return PropProcStatus.ok;
         }
-    } // class ConceptEntityStruElem
+    } // class ConceptEntityStructProp
 
     //**************************************************************************
     //**************************************************************************
@@ -298,11 +298,11 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     /// <summary>
     /// Class for a structured NewsML-G2 Concept representing an event
     /// </summary>
-    public class ConceptEventStruElem : ConceptGenericStruElem
+    public class ConceptEventStructProp : ConceptStructProp
     {
         public List<EventDetails> EventDetailses;
 
-        public ConceptEventStruElem() : base()
+        public ConceptEventStructProp() : base()
         {
             EventDetailses = new List<EventDetails>();
         }
@@ -325,6 +325,6 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             }
             return PropProcStatus.ok;
         }
-    } // class ConceptEventStruElem
+    } // class ConceptEventStructProp
 
 }

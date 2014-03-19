@@ -1866,7 +1866,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public GroupSet() { Xname = "groupSet"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
-    public class GroupSetExtProperty
+    public class GroupExtProperty
     {
         public string id;
         public string creator;
@@ -1892,7 +1892,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string XnsPrefix;
         public readonly string Xusagecode;
         public readonly string Xcard;
-        public GroupSetExtProperty() { Xname = "groupSetExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+        public GroupExtProperty() { Xname = "groupExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
     public class Hash

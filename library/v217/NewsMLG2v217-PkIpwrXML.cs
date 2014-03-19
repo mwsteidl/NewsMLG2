@@ -66,7 +66,21 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public PackageItemPwrXml()
 		{
             RootElemName = "packageItem";
+		    _idSequence = 0;
+		}
+
+        // *******************************************************************************
+        // *******************************************************************************
+        #region ***** PROPERTIES
+
+        private int _idSequence;
+
+        public int NewIdSequence
+        {
+            get {_idSequence++; return _idSequence; }
         }
+
+        #endregion
 
         // *******************************************************************************
         // *******************************************************************************

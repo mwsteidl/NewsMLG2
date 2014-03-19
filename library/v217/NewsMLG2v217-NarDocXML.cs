@@ -47,13 +47,25 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 	#region **** GENERIC ENUMERATIONS
 
     //**************************************************************************
+    /// <summary>
+    /// Enumeration of results returned by methods reading from an NewsML-G2 Item
+    /// </summary>
     public enum ReadFromItemResultEnum { ok, unknown, firstFromMultiple, emptyXPath, emptyAttribname, targetNotFound,
                                         valuetypeConversionFailed };
+    /// <summary>
+    /// Enumeration of how a text string should be applied to an XML elemennt
+    /// </summary>
     public enum ElementTextvalueTypeEnum { innerText, innerXML };
 
-    public enum ItemProcStateEnum { ok, error, unknown };
+    /// <summary>
+    /// Enumeration of states after processing a NewsML-G2 document
+    /// </summary>
+    public enum G2DocProcStateEnum { ok, error, unknown };
 
-    public enum ItemProcErrEnum
+    /// <summary>
+    /// Enumeration of errors returned from processing a NewsML-G2 document
+    /// </summary>
+    public enum G2DocProcErrEnum
     {
         NoError,
         PropNotFromNarNamespace,
@@ -61,15 +73,22 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         NoPropNameAvailable,
         NoXPathAvailable,
         XmlNodeNotFound,
+        NoCoreProp
     };
 
+    /// <summary>
+    /// Enumeration of states returned from processing a NewsML-G2 property
+    /// </summary>
     public enum PropProcStatus
     {
         ok,
         ErrNoParentXmlElement,
         ErrNoXPath,
         ErrElementNotFound,
-        ErrElementsToManyFound
+        ErrElementsToManyFound,
+        ErrPkgNoPblPath,
+        ErrPkgNoPblParentNode,
+        ErrPkgNoGroupRole
     }
 
 	#endregion
@@ -82,26 +101,42 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     /// </summary>
     public abstract class NarDocXml
     {
-        // the version of the corresponding NewsML-G2 specification:
+        /// <summary>
+        /// The version of the corresponding NewsML-G2 specification
+        /// </summary>
         public const string Newsmlg2VersionCs = "2.17";
-        // namespace URI of the NewsML-G2/News Architecture:
+        /// <summary>
+        /// namespace URI of the NewsML-G2/News Architecture
+        /// </summary>
         public const string G2NsCs = "http://iptc.org/std/nar/2006-10-01/"; 
-        // the namespace prefix of this *n*ews *ar*chitecture (=nar) namespace.
-        // all elements of this NewsML-G2 namespace are attributed as "nar: elements"
+        /// <summary>
+        /// The namespace prefix of this *n*ews *ar*chitecture (=nar) namespace.
+        /// all elements of this NewsML-G2 namespace are attributed as "nar: elements"
+        /// </summary>
         public const string G2NsPrefixCs = "nar";
-        // NewsML-G2 Conformance Level: set to "power"
+        /// <summary>
+        /// NewsML-G2 Conformance Level: set to "power"
+        /// </summary>
         public const string ConformanceLevelCs = "power";
 
-        public XmlDocument XmlDoc; // the XML document, either an item or a news message
-        protected string RootElemName = ""; // well be provided by the item-specific classes
+        /// <summary>
+        /// The XML Document holding the NewsML-G2 Item or News Message
+        /// </summary>
+        public XmlDocument XmlDoc;
+        /// <summary>
+        /// The root element name must be set by the item-specific or news message classes
+        /// </summary>
+        protected string RootElemName = ""; 
 
         public XmlNamespaceManager NsMngr;
 
         // ##############################################################################
         // ##### For the automated adding of properties
 
-        // These are all child properties/elements of the root in NewsML-G2 items 
-        //      they are wrappers of other properties
+        /// <summary>
+        /// These are all child properties/elements of the root in NewsML-G2 items 
+        /// they are wrappers of other properties
+        /// </summary>
         public enum PropsWrapping1
         {
             Catalog, RightsInfo, ItemMeta, ContentMeta, PartMeta, ConceptSet, ContentSet, GroupSet, NewsConverageSet, 
@@ -182,17 +217,17 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
         //********************************************************************************
 
-        private ItemProcStateEnum _ItemPropState;
+        private G2DocProcStateEnum _g2DocPropState;
 
-        protected ItemProcStateEnum ItemPropState
+        protected G2DocProcStateEnum G2DocPropState
         {
-            get { return _ItemPropState; }
-            set { _ItemPropState = value; }
+            get { return _g2DocPropState; }
+            set { _g2DocPropState = value; }
         }
 
-        private ItemProcErrEnum _Err = ItemProcErrEnum.NoError;
+        private G2DocProcErrEnum _Err = G2DocProcErrEnum.NoError;
 
-        public ItemProcErrEnum Err
+        public G2DocProcErrEnum Err
         {
             get { return _Err; }
             set { _Err = value; }
@@ -428,13 +463,14 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         /// <param name="parentXPath">XPath for the parent element - should select only one</param>
         /// <param name="childnameSeq">Sequence of QNames of all child elements, separated by a space</param>
         /// <param name="newProperty">Object representing the property to be added</param>
+        /// <param name="newElement">Returns the new elemente created for this property</param>
         /// <returns>True if successfully executed</returns>
-        public bool AddNarPropertyToParent(string parentXPath, string childnameSeq, object newProperty)
+        public bool AddNarPropertyToParent(string parentXPath, string childnameSeq, object newProperty, out XmlElement newElement)
         // Code History:
         // 2014-02-23 mws
         {
             ResetErrState();
-            XmlElement newElement;
+            // Creates a new Xml Element from the property object
             if (!NarProperty2XmlElement(newProperty, out newElement))
                 return false;
             string newPropertyName;
@@ -442,11 +478,25 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 newPropertyName = "nar:" + newElement.Name;
             else
             {
-                SetErrState(ItemProcErrEnum.PropNotFromNarNamespace);
+                SetErrState(G2DocProcErrEnum.PropNotFromNarNamespace);
                 return false;
             }
+            // add the element of the property to the parent element
             return AddPropertyToParent(parentXPath, childnameSeq, newPropertyName, newElement);
         } // AddNarPropertyToParent
+
+        /// <summary>
+        /// Adds a nar: element/property (provided as Object) to a parent element
+        /// </summary>
+        /// <param name="parentXPath">XPath for the parent element - should select only one</param>
+        /// <param name="childnameSeq">Sequence of QNames of all child elements, separated by a space</param>
+        /// <param name="newProperty">Object representing the property to be added</param>
+        /// <returns>True if successfully executed</returns>
+        public bool AddNarPropertyToParent(string parentXPath, string childnameSeq, object newProperty)
+        {
+            XmlElement newElement;
+            return AddNarPropertyToParent(parentXPath, childnameSeq, newProperty, out newElement);
+        }
 
         // *******************************************************************************
         /// <summary>
@@ -466,7 +516,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 newPropertyName = "nar:" + newProperty.Name;
             else
             {
-                SetErrState(ItemProcErrEnum.PropNotFromNarNamespace);
+                SetErrState(G2DocProcErrEnum.PropNotFromNarNamespace);
                 return false;
             }
             return AddPropertyToParent(parentXPath, childnameSeq, newPropertyName, newProperty);
@@ -510,6 +560,47 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             // 2014-02-25: forwarding to a renamed method
             return AddNarPropertyToParent(parentXPath, childnameSeq, newProperty);
         }
+
+        // *******************************************************************************
+        /// <summary>
+        /// Adds a structured nar: element/property (provided as object) to a parent element
+        /// </summary>
+        /// <param name="newStructProp">The property to be added as StructuredProperty</param>
+        /// <returns>True if successfully executed</returns>
+        public bool AddStructNarProp(StructuredProperty newStructProp)
+            // Code History:
+            // 2014-03-19 mws
+        {
+            ResetErrState();
+            // check if the required things are present
+            if (string.IsNullOrEmpty(newStructProp.ParentXPath))
+            {
+                SetErrState(G2DocProcErrEnum.NoXPathAvailable);
+                return false;
+            }
+            if (newStructProp.CoreProp == null)
+            {
+                SetErrState(G2DocProcErrEnum.NoCoreProp);
+                return false;
+            }
+
+            // add the core property
+            XmlElement corePropXe;
+            if (!AddNarPropertyToParent(newStructProp.ParentXPath, newStructProp.ParentChildNameSeq, newStructProp.CoreProp, out corePropXe))
+            {
+                return false;
+            }
+
+            // add the child properties
+            string coreXPath = newStructProp.ParentXPath + "/nar:" + corePropXe.Name;
+            if (corePropXe.HasAttribute("id")) // try to be as precise as possible 
+                coreXPath += "[@id='" + corePropXe.GetAttribute("id") + "']";
+            foreach (var childProp in newStructProp.ChildProps)
+            {
+                AddNarPropertyToParent(coreXPath, newStructProp.ChildNameSeq, childProp);
+            }
+            return true;
+        } // AddStructNarProp
 
         #endregion
 
@@ -935,14 +1026,14 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             foundXnode = null;
             if (string.IsNullOrEmpty(checkXPath))
             {
-                SetErrState(ItemProcErrEnum.NoXPathAvailable);
+                SetErrState(G2DocProcErrEnum.NoXPathAvailable);
                 return false;
             }
             XmlNodeList tempXNL;
             tempXNL = XmlDoc.SelectNodes(checkXPath, NsMngr);
             if ((tempXNL == null) || (tempXNL.Count == 0))
             {
-                SetErrState(ItemProcErrEnum.XmlNodeNotFound);
+                SetErrState(G2DocProcErrEnum.XmlNodeNotFound);
                 return false;
             }
             else
@@ -966,7 +1057,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             foundXnode = null;
             if (string.IsNullOrEmpty(checkRelativeXPath))
             {
-                SetErrState(ItemProcErrEnum.NoXPathAvailable);
+                SetErrState(G2DocProcErrEnum.NoXPathAvailable);
                 return false;
             }
             XmlNodeList tempXNL;
@@ -974,7 +1065,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             tempXNL = XmlDoc.SelectNodes(checkXPath, NsMngr);
             if ((tempXNL == null) || (tempXNL.Count == 0))
             {
-                SetErrState(ItemProcErrEnum.XmlNodeNotFound);
+                SetErrState(G2DocProcErrEnum.XmlNodeNotFound);
                 return false;
             }
             else
@@ -996,7 +1087,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         {
             if (string.IsNullOrEmpty(checkXPath))
             {
-                SetErrState(ItemProcErrEnum.NoXPathAvailable);
+                SetErrState(G2DocProcErrEnum.NoXPathAvailable);
                 return false;
             }
             XmlNodeList tempXNL;
@@ -1021,7 +1112,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         {
             if (string.IsNullOrEmpty(checkRelativeXPath))
             {
-                SetErrState(ItemProcErrEnum.NoXPathAvailable);
+                SetErrState(G2DocProcErrEnum.NoXPathAvailable);
                 return false;
             }
             XmlNodeList tempXNL;
@@ -1106,7 +1197,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
 
             if (string.IsNullOrEmpty(newPropName))
             {
-                SetErrState(ItemProcErrEnum.NoPropNameAvailable);
+                SetErrState(G2DocProcErrEnum.NoPropNameAvailable);
                 return false;
             }
 
@@ -1169,7 +1260,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 case PropsWrapping1.Catalog:
                     if (string.IsNullOrEmpty(wrapperId))
                     {
-                        SetErrState(ItemProcErrEnum.NoWrapperIdAvailable);
+                        SetErrState(G2DocProcErrEnum.NoWrapperIdAvailable);
                         return false;
                     }
                     wrapperLocalName = "catalog";
@@ -1221,7 +1312,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 case PropsWrapping1.PartMeta:
                     if (string.IsNullOrEmpty(wrapperId))
                     {
-                        SetErrState(ItemProcErrEnum.NoWrapperIdAvailable);
+                        SetErrState(G2DocProcErrEnum.NoWrapperIdAvailable);
                         return false;
                     }
                     wrapperLocalName = "partMeta";
@@ -1266,16 +1357,16 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         // ******************************************************************************
 
         //*******************************************************************************
-		protected void SetErrState(ItemProcErrEnum IPErr, string errStr)
+		protected void SetErrState(G2DocProcErrEnum IPErr, string errStr)
             // Code History:
             // 2010-12-11 mws
 		{
-            _ItemPropState = ItemProcStateEnum.error;
+            _g2DocPropState = G2DocProcStateEnum.error;
 		    _Err = IPErr;
 			_ErrStr = errStr;
         }
 
-        protected void SetErrState(ItemProcErrEnum IPErr)
+        protected void SetErrState(G2DocProcErrEnum IPErr)
         {
             SetErrState(IPErr, string.Empty);
         }
@@ -1285,8 +1376,8 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             // Code History:
             // 2010-12-11 mws
         {
-            _ItemPropState = ItemProcStateEnum.ok;
-            _Err = ItemProcErrEnum.NoError;
+            _g2DocPropState = G2DocProcStateEnum.ok;
+            _Err = G2DocProcErrEnum.NoError;
 			_ErrStr = string.Empty;
         }
 
