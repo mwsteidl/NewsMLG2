@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mainTC = new System.Windows.Forms.TabControl();
             this.ex1Tpg = new System.Windows.Forms.TabPage();
-            this.ex2Tpg = new System.Windows.Forms.TabPage();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.qsTextEx1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.qsTextEx1Lbl = new System.Windows.Forms.Label();
+            this.qsPackageEx1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.qsTextEx1 = new System.Windows.Forms.Button();
+            this.ex2Tpg = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.qsPkgEx1Lbl = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.mainTC.SuspendLayout();
             this.ex1Tpg.SuspendLayout();
@@ -53,6 +55,20 @@
             this.menuStrip1.Size = new System.Drawing.Size(450, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // statusStrip1
             // 
@@ -75,8 +91,10 @@
             // 
             // ex1Tpg
             // 
+            this.ex1Tpg.Controls.Add(this.qsPkgEx1Lbl);
+            this.ex1Tpg.Controls.Add(this.label1);
             this.ex1Tpg.Controls.Add(this.qsTextEx1Lbl);
-            this.ex1Tpg.Controls.Add(this.button3);
+            this.ex1Tpg.Controls.Add(this.qsPackageEx1);
             this.ex1Tpg.Controls.Add(this.button2);
             this.ex1Tpg.Controls.Add(this.qsTextEx1);
             this.ex1Tpg.Location = new System.Drawing.Point(4, 22);
@@ -87,29 +105,33 @@
             this.ex1Tpg.Text = "Examples 1";
             this.ex1Tpg.UseVisualStyleBackColor = true;
             // 
-            // ex2Tpg
+            // qsTextEx1Lbl
             // 
-            this.ex2Tpg.Location = new System.Drawing.Point(4, 22);
-            this.ex2Tpg.Name = "ex2Tpg";
-            this.ex2Tpg.Padding = new System.Windows.Forms.Padding(3);
-            this.ex2Tpg.Size = new System.Drawing.Size(360, 346);
-            this.ex2Tpg.TabIndex = 1;
-            this.ex2Tpg.Text = "Examples 2";
-            this.ex2Tpg.UseVisualStyleBackColor = true;
+            this.qsTextEx1Lbl.AutoSize = true;
+            this.qsTextEx1Lbl.Location = new System.Drawing.Point(200, 29);
+            this.qsTextEx1Lbl.Name = "qsTextEx1Lbl";
+            this.qsTextEx1Lbl.Size = new System.Drawing.Size(22, 13);
+            this.qsTextEx1Lbl.TabIndex = 3;
+            this.qsTextEx1Lbl.Text = ". . .";
             // 
-            // fileToolStripMenuItem
+            // qsPackageEx1
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.qsPackageEx1.Location = new System.Drawing.Point(9, 122);
+            this.qsPackageEx1.Name = "qsPackageEx1";
+            this.qsPackageEx1.Size = new System.Drawing.Size(185, 23);
+            this.qsPackageEx1.TabIndex = 2;
+            this.qsPackageEx1.Text = "QuickStart Package Example 1";
+            this.qsPackageEx1.UseVisualStyleBackColor = true;
+            this.qsPackageEx1.Click += new System.EventHandler(this.qsPackageEx1_Click);
             // 
-            // exitToolStripMenuItem
+            // button2
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.button2.Location = new System.Drawing.Point(9, 72);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // qsTextEx1
             // 
@@ -121,32 +143,33 @@
             this.qsTextEx1.UseVisualStyleBackColor = true;
             this.qsTextEx1.Click += new System.EventHandler(this.qsTextEx1_Click);
             // 
-            // button2
+            // ex2Tpg
             // 
-            this.button2.Location = new System.Drawing.Point(9, 72);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ex2Tpg.Location = new System.Drawing.Point(4, 22);
+            this.ex2Tpg.Name = "ex2Tpg";
+            this.ex2Tpg.Padding = new System.Windows.Forms.Padding(3);
+            this.ex2Tpg.Size = new System.Drawing.Size(442, 346);
+            this.ex2Tpg.TabIndex = 1;
+            this.ex2Tpg.Text = "Examples 2";
+            this.ex2Tpg.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // label1
             // 
-            this.button3.Location = new System.Drawing.Point(9, 122);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(200, 77);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(22, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = ". . .";
             // 
-            // qsTextEx1Lbl
+            // qsPkgEx1Lbl
             // 
-            this.qsTextEx1Lbl.AutoSize = true;
-            this.qsTextEx1Lbl.Location = new System.Drawing.Point(200, 29);
-            this.qsTextEx1Lbl.Name = "qsTextEx1Lbl";
-            this.qsTextEx1Lbl.Size = new System.Drawing.Size(22, 13);
-            this.qsTextEx1Lbl.TabIndex = 3;
-            this.qsTextEx1Lbl.Text = ". . .";
+            this.qsPkgEx1Lbl.AutoSize = true;
+            this.qsPkgEx1Lbl.Location = new System.Drawing.Point(200, 127);
+            this.qsPkgEx1Lbl.Name = "qsPkgEx1Lbl";
+            this.qsPkgEx1Lbl.Size = new System.Drawing.Size(22, 13);
+            this.qsPkgEx1Lbl.TabIndex = 5;
+            this.qsPkgEx1Lbl.Text = ". . .";
             // 
             // Form1
             // 
@@ -178,11 +201,13 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TabControl mainTC;
         private System.Windows.Forms.TabPage ex1Tpg;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button qsPackageEx1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button qsTextEx1;
         private System.Windows.Forms.TabPage ex2Tpg;
         private System.Windows.Forms.Label qsTextEx1Lbl;
+        private System.Windows.Forms.Label qsPkgEx1Lbl;
+        private System.Windows.Forms.Label label1;
     }
 }
 
