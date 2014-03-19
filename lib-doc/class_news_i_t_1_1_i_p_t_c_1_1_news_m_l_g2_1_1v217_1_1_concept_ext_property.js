@@ -1,0 +1,28 @@
+var class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property =
+[
+    [ "ConceptExtProperty", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a03fa8ee806c2a155e83abc9932f92bfc", null ],
+    [ "creator", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a1265953bc8c9966e0854218b2eabda0c", null ],
+    [ "custom", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a56b8283ae2530bf371ba596fbb132400", null ],
+    [ "dir", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a909d874172877ed29b998df5b23154ea", null ],
+    [ "how", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a4829fe8d94d7372c8fd206032ea4949f", null ],
+    [ "id", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a19dd5e84dc8ea5b3772ec11d70aeae25", null ],
+    [ "literal", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#ade61e1db570af402d54fe9c305b52681", null ],
+    [ "modified", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a35f4e3b0d19a340ff238e58f670e1c59", null ],
+    [ "pubconstraint", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a1f1563c3ee84229c6a85999e55a7b0e5", null ],
+    [ "qcode", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a58fb5776fc25e60211851ef93a1776ad", null ],
+    [ "rel", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a70bd1632a773a49e800e725932c24c3b", null ],
+    [ "type", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a54d2cb8c587ca326116d8e1911d9c932", null ],
+    [ "uri", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a30f0b3728b3eb90257397808e7f76fe9", null ],
+    [ "validfrom", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a53c57c602fcb10185dabd449e12b9115", null ],
+    [ "validto", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a9c5fe1cdefe051461b0d3cc4a243c2eb", null ],
+    [ "value", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a3b2e14bea4ad978870c5ca2b1a188f9d", null ],
+    [ "valuedatatype", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a332f10b088ac5641f7b4e835ef4f5dcf", null ],
+    [ "valueunit", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#abeab1dd5a631b738411879ec184bb7fb", null ],
+    [ "why", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#aa8978f18a261fd3af3358e8b3e9fae16", null ],
+    [ "Xcard", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a1dc304d2910927314eb7b5cb7b1ec0ea", null ],
+    [ "xmllang", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#ac763c9a81f7bab5a449f19e702179e08", null ],
+    [ "Xname", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a8d8d60b7771f254f19bafc7d38d6fe5b", null ],
+    [ "XnsPrefix", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#ac57f7b536d73a23a8933c3a2efbd3872", null ],
+    [ "XnsURI", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#ac3e59b54da4eb79a38db5191622de2a3", null ],
+    [ "Xusagecode", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_concept_ext_property.html#a30291e8976b515d3d8e055b29e8008e8", null ]
+];

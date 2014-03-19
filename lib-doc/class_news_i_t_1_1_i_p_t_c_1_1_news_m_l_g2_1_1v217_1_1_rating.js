@@ -1,0 +1,26 @@
+var class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating =
+[
+    [ "Rating", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#aaa5dc7cbf56dc23681005751fa321969", null ],
+    [ "Rating", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a4d695bbc03a02dc16adfc04ecbf9f491", null ],
+    [ "creator", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#ac1c6eae0a11b7935840cf740dc7086e0", null ],
+    [ "custom", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#ae6c03f7f4cf2a6e26703ebcf715d30ee", null ],
+    [ "how", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a9b9f2b4098b366d6ecb5c41d5da81186", null ],
+    [ "id", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a498482eeef041a2ca2ae943cb4868b53", null ],
+    [ "modified", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a1141bcb706464ef0979bc3fb947b90e1", null ],
+    [ "pubconstraint", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a0ac8e8c5319d106d3578e61b3618d572", null ],
+    [ "raters", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a9ee4f7c3d404853c80525eadd91bdf4a", null ],
+    [ "ratertype", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#ae4523dee1fb745f14ff1f31b84b729a2", null ],
+    [ "ratingtype", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a3c3c94c9933047fb542ff43fb5e83b37", null ],
+    [ "scalemax", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a88a9e9a6365893b88cd08eb9842b065f", null ],
+    [ "scalemin", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a4cf9494b0bad1baceab922651c9161a7", null ],
+    [ "scaleunit", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a5873649417fa2621284ebd6844ad3fa0", null ],
+    [ "thisValue", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a9a0764e1b64769e678bdc3ab9c0fc6de", null ],
+    [ "valcalctype", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#ad22317ef0b641f5abcae443af81304a9", null ],
+    [ "value", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#ad4b00bb82a6998481f2e5aedbc05d8e9", null ],
+    [ "why", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a4d9260312bef80bd761b8c9d4e9afb5b", null ],
+    [ "Xcard", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a58f6e92f11ce5816e14fc11b9a3ebc73", null ],
+    [ "Xname", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#aef94e6d988a38741484144476c3e680f", null ],
+    [ "XnsPrefix", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a65e23e4a2ba68a210e90e5ecb99e6ad8", null ],
+    [ "XnsURI", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a526aaeaca9c1e283730415e7ffb38be7", null ],
+    [ "Xusagecode", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_rating.html#a40b8dae66c49a33518957c33cb6447e5", null ]
+];

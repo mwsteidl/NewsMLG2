@@ -1,0 +1,25 @@
+var class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note =
+[
+    [ "Note", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#ad8bd7221c569e843eae3680a210dca8a", null ],
+    [ "Note", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#aa03655c9d19413509207d58de2e2a8ee", null ],
+    [ "creator", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a07e105374e094cf9d49d8a900d70bbf4", null ],
+    [ "custom", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a1c3ceea4417bd5e5b9d3e5e5bbe89b1e", null ],
+    [ "dir", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a312ebc48d80978e51a1aacbe9e8a159f", null ],
+    [ "how", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#adb36234e9071344a018048690360ac80", null ],
+    [ "id", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a5206d4f215edeec331c41ae171ba5c60", null ],
+    [ "media", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#aa0dc861d3227db1922c3d466a05c348c", null ],
+    [ "modified", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a47b1b2b2a8e11da6166ecde1f1803bcf", null ],
+    [ "pubconstraint", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a750cb5858e5409c7fb7dada289d86f04", null ],
+    [ "role", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#af90699d11ccc7b083166f7a293b8b62a", null ],
+    [ "roleuri", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a7a0107a89bf1d76133089f76e6f1aed2", null ],
+    [ "thisValue", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#aa5cd97834c4937a4de6ff71f9385e15b", null ],
+    [ "validfrom", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a3058f99aaf040d9671db3614fb300f30", null ],
+    [ "validto", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a01302d084a319bb207600ddb5bf07c9c", null ],
+    [ "why", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#ae14289676a1e4e2fd094ed0e5df8e63c", null ],
+    [ "Xcard", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a957d134a993031dec9b439fb46453be4", null ],
+    [ "xmllang", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#ad1075e8f0ecdff596988f07560fc04ce", null ],
+    [ "Xname", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a2c8367abce9b546ef5fcc5441df808e9", null ],
+    [ "XnsPrefix", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#aa1d75bb48ac1fc0ca5d99d53cbd98b7f", null ],
+    [ "XnsURI", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#a4794abc78bc65bc282ac23c3fcd547a0", null ],
+    [ "Xusagecode", "class_news_i_t_1_1_i_p_t_c_1_1_news_m_l_g2_1_1v217_1_1_note.html#ad0feedc7b2b706d4b90d39c0eb1f1b5e", null ]
+];
