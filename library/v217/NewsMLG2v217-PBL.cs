@@ -36,31 +36,9 @@ using System.Collections.Specialized;
 namespace NewsIT.IPTC.NewsMLG2.v217
 {
 
-    /************************************************************************************
-     * Package Builder Language - PBL
-     * 
-     * PBL helps creating NewsML-G2 packages by supporting a structured PBL-Path:
-     * By NewsML-G2 specifications each group of a package must have a role (attribute).
-     * As groups can appear in a hierarchical structure in a package their roles 
-     * could be represented by a string conforming to XPath in XML:
-     * the roles are appended from left to right and separated by a slash for
-     * going down one hierarchical level.
-     * In addition itemRefs and contentRefs can be addressed:
-     * - an itemRef is separated by @ at the ende of a sequence of roles 
-     *      and appends one of the attribute names residref or href, 
-     *      and appends a = sign and the value of this attribute
-     * - a contentRef is separated by # and appends attribute name and value like itemRef
-     *      using only the attributes qcode or uri
-     *      Be aware: contentRef attribute values MUST NOT contain a @
-     * Examples for PBL-Paths:
-       /grr:main ... the root group of a package, role="main"
-       /grr:main/grr:sidebar/grr:text ... a third level group, role="text"
-       /grr:main/grr:sidebar/grr:text@residref=urn:newsml:example.com:20140101:textNI134132 ... itemRef
-       /grr:main/grr:sidebar/grr:pics@href=http://example.com/pics/p13413243.jpg
-       /grr:main/grr:themes#uri=http://cv.iptc.org/newscodes/mediatopic/01000000 ... conceptRef
-     * 
-     *************************************************************************************/
-
+    /// <summary>
+    /// Enumeration of the types of the rightmost nodes in a PBL-Path, includes indicators of errors in the path
+    /// </summary>
     public enum PblNodeType {Group, ItemRef, ContentRef, Undefined, ParseError};
 
     /// <summary>
@@ -68,25 +46,57 @@ namespace NewsIT.IPTC.NewsMLG2.v217
     /// </summary>
     public class ParsedPblPath
     {
+        /// <summary>
+        /// Type of the rightmost node in the PBL-Path
+        /// </summary>
         public PblNodeType EndNodeType;
-        public StringCollection GroupRoles; // an entry for each role, top level as first entry
-        public string RefId; // the attribute name and the value separated by a = sign
+        /// <summary>
+        /// Ordered list of roles. An entry for each one, top level as first entry
+        /// </summary>
+        public StringCollection GroupRoles; 
+        /// <summary>
+        /// if part of the PBL-Path: an attribute name and the value separated by a = sign
+        /// </summary>
+        public string RefId; // 
         public ParsedPblPath() { GroupRoles = new StringCollection(); EndNodeType = PblNodeType.Undefined; }
     }
 
     /// <summary>
-    /// Static tools for handling PBL
+    /// Static tools for handling PBL (Package Builder Language)
+    ///  * Package Builder Language - PBL
+    ///  * 
+    ///  * PBL helps creating NewsML-G2 packages by supporting a structured PBL-Path:
+    ///  * By NewsML-G2 specifications each group of a package must have a role (attribute).
+    ///  * As groups can appear in a hierarchical structure in a package their roles 
+    ///  could be represented by a string conforming to XPath in XML:
+    ///  * the roles are appended from left to right and separated by a slash for
+    ///  going down one hierarchical level.
+    ///  * In addition itemRefs and contentRefs can be targeted:
+    ///  * itemRef and contentRef are separated by @ at the end of a sequence of roles 
+    ///  and appends one of theses attribute names
+    ///  *      - for itemRef: residref or href only!
+    ///  *      - for contentRef: qcode or uri only!
+    ///  *      and appends a = sign and the value of this attribute
+    ///  * Examples for PBL-Paths:
+    ///  *  /grr:main ... the root group of a package, group role="main"
+    ///  *  /grr:main/grr:sidebar/grr:text ... a third level group, group role="text"
+    ///  *  /grr:main/grr:sidebar/grr:text@residref=urn:newsml:example.com:20140101:textNI134132 ... itemRef
+    ///  *  /grr:main/grr:sidebar/grr:pics@href=http://example.com/pics/p13413243.jpg ... itemRef
+    ///  *  /grr:main/grr:themes@uri=http://cv.iptc.org/newscodes/mediatopic/01000000 ... conceptRef
+    ///  *  /grr:main/grr:themes@qcode=medtop:01000000 ... conceptRef
     /// </summary>
     public class PblTools
     {
 
         // ******************************************************************************
         /// <summary>
-        /// Parse a PBL-Path string and create a structured version of it
+        /// Parses a PBL-Path string and creates a structured version of it
         /// </summary>
         /// <param name="pblPath">The PBL-Path as string</param>
         /// <returns>The PBL-Path as structure</returns>
         public static ParsedPblPath ParsePblPath(string pblPath)
+            // Code History:
+            // 2014-03-18, ~2014-03-20 mws
         {
             var parsedPath = new ParsedPblPath();
             if (string.IsNullOrEmpty(pblPath))
@@ -94,13 +104,13 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                 parsedPath.EndNodeType = PblNodeType.ParseError;
                 return parsedPath;
             }
-
+            parsedPath.EndNodeType = PblNodeType.Undefined;
+            
             string[] pathParts = { "" }; // dummy initializer
-            if (pblPath.Contains("@")) // check for the itemRef separator
-            {
-                parsedPath.EndNodeType = PblNodeType.ItemRef;
-                pathParts = pblPath.Split('@');
-                if (pathParts.Length < 2)
+            if (pblPath.Contains("@")) 
+            {   // process the separator
+                pathParts = pblPath.Split('@'); // pathParts[0] = group roles, others: the reference
+                if (pathParts.Length < 2) // there must be at least the group roles and a reference part
                 {
                     parsedPath.EndNodeType = PblNodeType.ParseError;
                     return parsedPath;
@@ -113,29 +123,17 @@ namespace NewsIT.IPTC.NewsMLG2.v217
                         parsedPath.RefId += "@" + pathParts[idx];
                     }
                 }
-            }
-            if (parsedPath.EndNodeType != PblNodeType.ItemRef) // skip if parsed as itemRef
-            {
-                if (pblPath.Contains("#")) // check for the contenRef separator
-                {
+                // test the RefId for typical attribute names
+                if (parsedPath.RefId.StartsWith("residref="))
+                    parsedPath.EndNodeType = PblNodeType.ItemRef;
+                if (parsedPath.RefId.StartsWith("href="))
+                    parsedPath.EndNodeType = PblNodeType.ItemRef;
+                if (parsedPath.RefId.StartsWith("qcode="))
                     parsedPath.EndNodeType = PblNodeType.ContentRef;
-                    pathParts = pblPath.Split('#');
-                    if (pathParts.Length < 2)
-                    {
-                        parsedPath.EndNodeType = PblNodeType.ParseError;
-                        return parsedPath;
-                    }
-                    parsedPath.RefId = pathParts[1];
-                    if (pathParts.Length > 2)
-                    {
-                        for (int idx = 2; idx <= pathParts.Length; idx++)
-                        {
-                            parsedPath.RefId += "#" + pathParts[idx];
-                        }
-                    }
-                }
+                if (parsedPath.RefId.StartsWith("uri="))
+                    parsedPath.EndNodeType = PblNodeType.ContentRef;
             }
-            if (parsedPath.EndNodeType == PblNodeType.Undefined) // inferred type
+            else 
                 parsedPath.EndNodeType = PblNodeType.Group;
             // process the string representing the group roles
             string basePath;
@@ -144,7 +142,7 @@ namespace NewsIT.IPTC.NewsMLG2.v217
             else
                 basePath = pblPath;
             pathParts = basePath.Split('/');
-            foreach (string pathPart in pathParts)
+            foreach (string pathPart in pathParts) // split up the group roles to an ordered sequence
             {
                 if (!string.IsNullOrEmpty(pathPart)) // take out the empty parts; in any case the one at the start
                     parsedPath.GroupRoles.Add(pathPart);

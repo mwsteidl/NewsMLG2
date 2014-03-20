@@ -61,6 +61,10 @@ namespace NewsIT.IPTC.NewsMLG2.v217
      * document (Excel sheet) of the corresponding NewsML-G2 version
      * It is strongly recommended not to modify them
      *********************************************************************/
+
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:a (without child elements)
+    /// <summary>
     public class A
     {
         public string id;
@@ -85,6 +89,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public A() { Xname = "a"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "m"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:access (without child elements)
+    /// <summary>
     public class Access
     {
         public string id;
@@ -106,6 +113,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Access() { Xname = "access"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:accessStatus (without child elements)
+    /// <summary>
     public class AccessStatus
     {
         public string id;
@@ -127,6 +137,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public AccessStatus() { Xname = "accessStatus"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:accountable (without child elements)
+    /// <summary>
     public class Accountable
     {
         public string id;
@@ -150,6 +163,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Accountable() { Xname = "accountable"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:action (without child elements)
+    /// <summary>
     public class Action
     {
         public string id;
@@ -173,6 +189,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Action() { Xname = "action"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:address (without child elements)
+    /// <summary>
     public class Address
     {
         public string id;
@@ -191,6 +210,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Address() { Xname = "address"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:affiliation (without child elements)
+    /// <summary>
     public class Affiliation
     {
         public string id;
@@ -216,6 +238,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Affiliation() { Xname = "affiliation"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:altId (without child elements)
+    /// <summary>
     public class AltId
     {
         public string id;
@@ -240,6 +265,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public AltId(string propValue) { Xname = "altId"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:altLoc (without child elements)
+    /// <summary>
     public class AltLoc
     {
         public string id;
@@ -259,6 +287,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public AltLoc() { Xname = "altLoc"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:altRep (without child elements)
+    /// <summary>
     public class AltRep
     {
         public string id;
@@ -282,6 +313,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public AltRep() { Xname = "altRep"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:area (without child elements)
+    /// <summary>
     public class Area
     {
         public string id;
@@ -305,6 +339,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Area() { Xname = "area"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:assert (without child elements)
+    /// <summary>
     public class Assert
     {
         public string id;
@@ -327,6 +364,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Assert() { Xname = "assert"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:assignedTo (without child elements)
+    /// <summary>
     public class AssignedTo
     {
         public string id;
@@ -351,6 +391,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public AssignedTo() { Xname = "assignedTo"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:audience (without child elements)
+    /// <summary>
     public class Audience
     {
         public string id;
@@ -378,6 +421,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Audience() { Xname = "audience"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:bag (without child elements)
+    /// <summary>
     public class Bag
     {
         public string id;
@@ -397,6 +443,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Bag() { Xname = "bag"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:bit (without child elements)
+    /// <summary>
     public class Bit
     {
         public string id;
@@ -421,6 +470,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Bit() { Xname = "bit"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:born (without child elements)
+    /// <summary>
     public class Born
     {
         public string id;
@@ -440,6 +492,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Born(string propValue) { Xname = "born"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:br (without child elements)
+    /// <summary>
     public class Br
     {
         public string id;
@@ -457,6 +512,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Br() { Xname = "br"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "m"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:broader (without child elements)
+    /// <summary>
     public class Broader
     {
         public string id;
@@ -484,6 +542,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Broader() { Xname = "broader"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:by (without child elements)
+    /// <summary>
     public class By
     {
         public string id;
@@ -508,6 +569,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public By(string propValue) { Xname = "by"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:capacity (without child elements)
+    /// <summary>
     public class Capacity
     {
         public string id;
@@ -531,6 +595,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Capacity(string propValue) { Xname = "capacity"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:catalog (without child elements)
+    /// <summary>
     public class Catalog
     {
         public string guid;
@@ -553,6 +620,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Catalog() { Xname = "catalog"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:catalogContainer (without child elements)
+    /// <summary>
     public class CatalogContainer
     {
         public readonly string Xname;
@@ -563,6 +633,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public CatalogContainer() { Xname = "catalogContainer"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:catalogItem (without child elements)
+    /// <summary>
     public class CatalogItem
     {
         public string standard;
@@ -578,6 +651,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public CatalogItem() { Xname = "catalogItem"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "r"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:catalogRef (without child elements)
+    /// <summary>
     public class CatalogRef
     {
         public string id;
@@ -596,6 +672,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public CatalogRef() { Xname = "catalogRef"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:ceasedToExist (without child elements)
+    /// <summary>
     public class CeasedToExist
     {
         public string id;
@@ -615,6 +694,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public CeasedToExist(string propValue) { Xname = "ceasedToExist"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:channelXxNMSG (without child elements)
+    /// <summary>
     public class ChannelXxNMSG
     {
         public string id;
@@ -639,6 +721,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ChannelXxNMSG(string propValue) { Xname = "channel"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:channelXxREMCONT (without child elements)
+    /// <summary>
     public class ChannelXxREMCONT
     {
         public string id;
@@ -691,6 +776,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ChannelXxREMCONT(string propValue) { Xname = "channel"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:circle (without child elements)
+    /// <summary>
     public class Circle
     {
         public string id;
@@ -708,6 +796,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Circle() { Xname = "circle"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:concept (without child elements)
+    /// <summary>
     public class Concept
     {
         public string id;
@@ -727,6 +818,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Concept() { Xname = "concept"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:conceptExtProperty (without child elements)
+    /// <summary>
     public class ConceptExtProperty
     {
         public string id;
@@ -756,6 +850,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ConceptExtProperty() { Xname = "conceptExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:conceptId (without child elements)
+    /// <summary>
     public class ConceptId
     {
         public string id;
@@ -777,6 +874,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ConceptId() { Xname = "conceptId"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:conceptItem (without child elements)
+    /// <summary>
     public class ConceptItem
     {
         public string standard;
@@ -794,6 +894,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ConceptItem() { Xname = "conceptItem"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "r"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:conceptRef (without child elements)
+    /// <summary>
     public class ConceptRef
     {
         public string id;
@@ -817,6 +920,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ConceptRef() { Xname = "conceptRef"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:conceptSet (without child elements)
+    /// <summary>
     public class ConceptSet
     {
         public string id;
@@ -834,6 +940,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ConceptSet() { Xname = "conceptSet"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:confirmation (without child elements)
+    /// <summary>
     public class Confirmation
     {
         public string id;
@@ -853,6 +962,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Confirmation() { Xname = "confirmation"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:contactInfo (without child elements)
+    /// <summary>
     public class ContactInfo
     {
         public string id;
@@ -871,6 +983,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ContactInfo() { Xname = "contactInfo"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:contentCreated (without child elements)
+    /// <summary>
     public class ContentCreated
     {
         public string id;
@@ -890,6 +1005,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ContentCreated(string propValue) { Xname = "contentCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:contentMeta (without child elements)
+    /// <summary>
     public class ContentMeta
     {
         public string id;
@@ -909,6 +1027,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ContentMeta() { Xname = "contentMeta"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:contentMetaExtProperty (without child elements)
+    /// <summary>
     public class ContentMetaExtProperty
     {
         public string id;
@@ -938,6 +1059,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ContentMetaExtProperty() { Xname = "contentMetaExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:contentModified (without child elements)
+    /// <summary>
     public class ContentModified
     {
         public string id;
@@ -957,6 +1081,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ContentModified(string propValue) { Xname = "contentModified"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:contentSet (without child elements)
+    /// <summary>
     public class ContentSet
     {
         public string id;
@@ -975,6 +1102,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ContentSet() { Xname = "contentSet"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:contributor (without child elements)
+    /// <summary>
     public class Contributor
     {
         public string id;
@@ -1000,6 +1130,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Contributor() { Xname = "contributor"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:copyrightHolder (without child elements)
+    /// <summary>
     public class CopyrightHolder
     {
         public string id;
@@ -1023,6 +1156,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public CopyrightHolder() { Xname = "copyrightHolder"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:copyrightNotice (without child elements)
+    /// <summary>
     public class CopyrightNotice
     {
         public string id;
@@ -1047,6 +1183,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public CopyrightNotice(string propValue) { Xname = "copyrightNotice"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:country (without child elements)
+    /// <summary>
     public class Country
     {
         public string id;
@@ -1070,6 +1209,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Country() { Xname = "country"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:created (without child elements)
+    /// <summary>
     public class Created
     {
         public string id;
@@ -1089,6 +1231,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Created(string propValue) { Xname = "created"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:creator (without child elements)
+    /// <summary>
     public class Creator
     {
         public string id;
@@ -1114,6 +1259,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Creator() { Xname = "creator"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:creditline (without child elements)
+    /// <summary>
     public class Creditline
     {
         public string id;
@@ -1136,6 +1284,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Creditline(string propValue) { Xname = "creditline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:dateline (without child elements)
+    /// <summary>
     public class Dateline
     {
         public string id;
@@ -1160,6 +1311,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Dateline(string propValue) { Xname = "dateline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:dates (without child elements)
+    /// <summary>
     public class Dates
     {
         public string id;
@@ -1177,6 +1331,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Dates() { Xname = "dates"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:definition (without child elements)
+    /// <summary>
     public class Definition
     {
         public string id;
@@ -1203,6 +1360,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Definition(string propValue) { Xname = "definition"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:deliverableOf (without child elements)
+    /// <summary>
     public class DeliverableOf
     {
         public string version;
@@ -1236,6 +1396,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public DeliverableOf() { Xname = "deliverableOf"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:deliveredItemRef (without child elements)
+    /// <summary>
     public class DeliveredItemRef
     {
         public string version;
@@ -1269,6 +1432,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public DeliveredItemRef() { Xname = "deliveredItemRef"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:delivery (without child elements)
+    /// <summary>
     public class Delivery
     {
         public string id;
@@ -1286,6 +1452,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Delivery() { Xname = "delivery"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:derivedFrom (without child elements)
+    /// <summary>
     public class DerivedFrom
     {
         public string id;
@@ -1309,6 +1478,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public DerivedFrom() { Xname = "derivedFrom"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:description (without child elements)
+    /// <summary>
     public class Description
     {
         public string id;
@@ -1333,6 +1505,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Description(string propValue) { Xname = "description"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:destination (without child elements)
+    /// <summary>
     public class Destination
     {
         public string id;
@@ -1357,6 +1532,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Destination(string propValue) { Xname = "destination"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:details (without child elements)
+    /// <summary>
     public class Details
     {
         public string id;
@@ -1380,6 +1558,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Details(string propValue) { Xname = "details"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:died (without child elements)
+    /// <summary>
     public class Died
     {
         public string id;
@@ -1399,6 +1580,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Died(string propValue) { Xname = "died"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:dissolved (without child elements)
+    /// <summary>
     public class Dissolved
     {
         public string id;
@@ -1418,6 +1602,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Dissolved(string propValue) { Xname = "dissolved"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:duration (without child elements)
+    /// <summary>
     public class Duration
     {
         public string id;
@@ -1437,6 +1624,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Duration(string propValue) { Xname = "duration"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:edNote (without child elements)
+    /// <summary>
     public class EdNote
     {
         public string id;
@@ -1460,6 +1650,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public EdNote(string propValue) { Xname = "edNote"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:email (without child elements)
+    /// <summary>
     public class Email
     {
         public string id;
@@ -1480,6 +1673,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Email(string propValue) { Xname = "email"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:embargoed (without child elements)
+    /// <summary>
     public class Embargoed
     {
         public string id;
@@ -1499,6 +1695,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Embargoed(string propValue) { Xname = "embargoed"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:end (without child elements)
+    /// <summary>
     public class End
     {
         public string id;
@@ -1520,6 +1719,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public End(string propValue) { Xname = "end"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:event (without child elements)
+    /// <summary>
     public class Event
     {
         public string id;
@@ -1537,6 +1739,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Event() { Xname = "event"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:eventDetails (without child elements)
+    /// <summary>
     public class EventDetails
     {
         public string id;
@@ -1554,6 +1759,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public EventDetails() { Xname = "eventDetails"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:events (without child elements)
+    /// <summary>
     public class Events
     {
         public string id;
@@ -1571,6 +1779,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Events() { Xname = "events"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:exclAudience (without child elements)
+    /// <summary>
     public class ExclAudience
     {
         public string id;
@@ -1598,6 +1809,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ExclAudience() { Xname = "exclAudience"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:exDate (without child elements)
+    /// <summary>
     public class ExDate
     {
         public string id;
@@ -1617,6 +1831,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ExDate(string propValue) { Xname = "exDate"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:exRule (without child elements)
+    /// <summary>
     public class ExRule
     {
         public string id;
@@ -1648,6 +1865,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ExRule() { Xname = "exRule"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:fax (without child elements)
+    /// <summary>
     public class Fax
     {
         public string id;
@@ -1668,6 +1888,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Fax(string propValue) { Xname = "fax"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:fileName (without child elements)
+    /// <summary>
     public class FileName
     {
         public string id;
@@ -1687,6 +1910,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public FileName(string propValue) { Xname = "fileName"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:firstCreated (without child elements)
+    /// <summary>
     public class FirstCreated
     {
         public string id;
@@ -1706,6 +1932,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public FirstCreated(string propValue) { Xname = "firstCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:founded (without child elements)
+    /// <summary>
     public class Founded
     {
         public string id;
@@ -1725,6 +1954,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Founded(string propValue) { Xname = "founded"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:g2contentType (without child elements)
+    /// <summary>
     public class G2contentType
     {
         public string id;
@@ -1742,6 +1974,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public G2contentType() { Xname = "g2contentType"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:generator (without child elements)
+    /// <summary>
     public class Generator
     {
         public string id;
@@ -1765,6 +2000,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Generator(string propValue) { Xname = "generator"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:genre (without child elements)
+    /// <summary>
     public class Genre
     {
         public string id;
@@ -1792,6 +2030,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Genre() { Xname = "genre"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:geoAreaDetails (without child elements)
+    /// <summary>
     public class GeoAreaDetails
     {
         public string id;
@@ -1809,6 +2050,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public GeoAreaDetails() { Xname = "geoAreaDetails"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:group (without child elements)
+    /// <summary>
     public class Group
     {
         public string id;
@@ -1830,42 +2074,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Group() { Xname = "group"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "u"; }
     }
 
-    public class GroupRef
-    {
-        public string id;
-        public string creator;
-        public string modified;
-        public string custom;
-        public string how;
-        public string why;
-        public string pubconstraint;
-        public string idref;
-        public readonly string Xname;
-        public readonly string XnsURI;
-        public readonly string XnsPrefix;
-        public readonly string Xusagecode;
-        public readonly string Xcard;
-        public GroupRef() { Xname = "groupRef"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
-    }
-
-    public class GroupSet
-    {
-        public string id;
-        public string creator;
-        public string modified;
-        public string custom;
-        public string how;
-        public string why;
-        public string pubconstraint;
-        public string root;
-        public readonly string Xname;
-        public readonly string XnsURI;
-        public readonly string XnsPrefix;
-        public readonly string Xusagecode;
-        public readonly string Xcard;
-        public GroupSet() { Xname = "groupSet"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
-    }
-
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:groupExtProperty (without child elements)
+    /// <summary>
     public class GroupExtProperty
     {
         public string id;
@@ -1895,6 +2106,51 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public GroupExtProperty() { Xname = "groupExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:groupRef (without child elements)
+    /// <summary>
+    public class GroupRef
+    {
+        public string id;
+        public string creator;
+        public string modified;
+        public string custom;
+        public string how;
+        public string why;
+        public string pubconstraint;
+        public string idref;
+        public readonly string Xname;
+        public readonly string XnsURI;
+        public readonly string XnsPrefix;
+        public readonly string Xusagecode;
+        public readonly string Xcard;
+        public GroupRef() { Xname = "groupRef"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
+    }
+
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:groupSet (without child elements)
+    /// <summary>
+    public class GroupSet
+    {
+        public string id;
+        public string creator;
+        public string modified;
+        public string custom;
+        public string how;
+        public string why;
+        public string pubconstraint;
+        public string root;
+        public readonly string Xname;
+        public readonly string XnsURI;
+        public readonly string XnsPrefix;
+        public readonly string Xusagecode;
+        public readonly string Xcard;
+        public GroupSet() { Xname = "groupSet"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
+    }
+
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:hash (without child elements)
+    /// <summary>
     public class Hash
     {
         public string id;
@@ -1914,6 +2170,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Hash() { Xname = "hash"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:hasInstrument (without child elements)
+    /// <summary>
     public class HasInstrument
     {
         public string id;
@@ -1937,6 +2196,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public HasInstrument() { Xname = "hasInstrument"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:header (without child elements)
+    /// <summary>
     public class Header
     {
         public string id;
@@ -1954,6 +2216,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Header() { Xname = "header"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:headerExtProperty (without child elements)
+    /// <summary>
     public class HeaderExtProperty
     {
         public string id;
@@ -1983,6 +2248,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public HeaderExtProperty() { Xname = "headerExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:headline (without child elements)
+    /// <summary>
     public class Headline
     {
         public string id;
@@ -2007,6 +2275,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Headline(string propValue) { Xname = "headline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:hierarchyInfo (without child elements)
+    /// <summary>
     public class HierarchyInfo
     {
         public string id;
@@ -2026,6 +2297,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public HierarchyInfo(string propValue) { Xname = "hierarchyInfo"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:hop (without child elements)
+    /// <summary>
     public class Hop
     {
         public string id;
@@ -2045,6 +2319,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Hop() { Xname = "hop"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:hopHistory (without child elements)
+    /// <summary>
     public class HopHistory
     {
         public string id;
@@ -2062,6 +2339,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public HopHistory() { Xname = "hopHistory"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:icon (without child elements)
+    /// <summary>
     public class Icon
     {
         public string version;
@@ -2097,6 +2377,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Icon() { Xname = "icon"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:im (without child elements)
+    /// <summary>
     public class Im
     {
         public string id;
@@ -2118,6 +2401,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Im(string propValue) { Xname = "im"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:infoSource (without child elements)
+    /// <summary>
     public class InfoSource
     {
         public string id;
@@ -2142,6 +2428,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public InfoSource() { Xname = "infoSource"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:inline (without child elements)
+    /// <summary>
     public class Inline
     {
         public string id;
@@ -2169,6 +2458,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Inline() { Xname = "inline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "m"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:inlineData (without child elements)
+    /// <summary>
     public class InlineData
     {
         public string id;
@@ -2224,6 +2516,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public InlineData(string propValue) { Xname = "inlineData"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:inlineRef (without child elements)
+    /// <summary>
     public class InlineRef
     {
         public string id;
@@ -2251,6 +2546,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public InlineRef() { Xname = "inlineRef"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:inlineXML (without child elements)
+    /// <summary>
     public class InlineXML
     {
         public string id;
@@ -2303,6 +2601,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public InlineXML() { Xname = "inlineXML"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:instanceOf (without child elements)
+    /// <summary>
     public class InstanceOf
     {
         public string id;
@@ -2326,6 +2627,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public InstanceOf() { Xname = "instanceOf"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:itemClass (without child elements)
+    /// <summary>
     public class ItemClass
     {
         public string id;
@@ -2347,6 +2651,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ItemClass() { Xname = "itemClass"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:itemCount (without child elements)
+    /// <summary>
     public class ItemCount
     {
         public string id;
@@ -2368,6 +2675,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ItemCount(string propValue) { Xname = "itemCount"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:itemMeta (without child elements)
+    /// <summary>
     public class ItemMeta
     {
         public string id;
@@ -2387,6 +2697,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ItemMeta() { Xname = "itemMeta"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:itemMetaExtProperty (without child elements)
+    /// <summary>
     public class ItemMetaExtProperty
     {
         public string id;
@@ -2416,6 +2729,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ItemMetaExtProperty() { Xname = "itemMetaExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:itemRef (without child elements)
+    /// <summary>
     public class ItemRef
     {
         public string version;
@@ -2449,6 +2765,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ItemRef() { Xname = "itemRef"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:itemSet (without child elements)
+    /// <summary>
     public class ItemSet
     {
         public string id;
@@ -2466,6 +2785,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ItemSet() { Xname = "itemSet"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:keyword (without child elements)
+    /// <summary>
     public class Keyword
     {
         public string id;
@@ -2491,6 +2813,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Keyword(string propValue) { Xname = "keyword"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:knowledgeItem (without child elements)
+    /// <summary>
     public class KnowledgeItem
     {
         public string standard;
@@ -2508,6 +2833,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public KnowledgeItem() { Xname = "knowledgeItem"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "r"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:language (without child elements)
+    /// <summary>
     public class Language
     {
         public string id;
@@ -2530,6 +2858,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Language(string propValue) { Xname = "language"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:lineXxADDR (without child elements)
+    /// <summary>
     public class LineXxADDR
     {
         public string id;
@@ -2551,6 +2882,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public LineXxADDR(string propValue) { Xname = "line"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:lineXxGEOAREA (without child elements)
+    /// <summary>
     public class LineXxGEOAREA
     {
         public string id;
@@ -2568,6 +2902,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public LineXxGEOAREA() { Xname = "line"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:link (without child elements)
+    /// <summary>
     public class Link
     {
         public string version;
@@ -2601,6 +2938,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Link() { Xname = "link"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:locality (without child elements)
+    /// <summary>
     public class Locality
     {
         public string id;
@@ -2624,6 +2964,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Locality() { Xname = "locality"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:located (without child elements)
+    /// <summary>
     public class Located
     {
         public string id;
@@ -2647,6 +2990,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Located() { Xname = "located"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:location (without child elements)
+    /// <summary>
     public class Location
     {
         public string id;
@@ -2670,6 +3016,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Location() { Xname = "location"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:memberOf (without child elements)
+    /// <summary>
     public class MemberOf
     {
         public string id;
@@ -2693,6 +3042,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public MemberOf() { Xname = "memberOf"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:name (without child elements)
+    /// <summary>
     public class Name
     {
         public string id;
@@ -2719,6 +3071,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Name(string propValue) { Xname = "name"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:narrower (without child elements)
+    /// <summary>
     public class Narrower
     {
         public string id;
@@ -2746,6 +3101,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Narrower() { Xname = "narrower"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:newsCoverage (without child elements)
+    /// <summary>
     public class NewsCoverage
     {
         public string id;
@@ -2764,6 +3122,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public NewsCoverage() { Xname = "newsCoverage"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:newsCoverageExtProperty (without child elements)
+    /// <summary>
     public class NewsCoverageExtProperty
     {
         public string id;
@@ -2793,6 +3154,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public NewsCoverageExtProperty() { Xname = "newsCoverageExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:newsCoverageSet (without child elements)
+    /// <summary>
     public class NewsCoverageSet
     {
         public string id;
@@ -2810,6 +3174,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public NewsCoverageSet() { Xname = "newsCoverageSet"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:newsCoverageStatus (without child elements)
+    /// <summary>
     public class NewsCoverageStatus
     {
         public string id;
@@ -2831,6 +3198,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public NewsCoverageStatus() { Xname = "newsCoverageStatus"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:newsItem (without child elements)
+    /// <summary>
     public class NewsItem
     {
         public string standard;
@@ -2848,6 +3218,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public NewsItem() { Xname = "newsItem"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "r"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:newsMessage (without child elements)
+    /// <summary>
     public class NewsMessage
     {
         public readonly string Xname;
@@ -2858,6 +3231,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public NewsMessage() { Xname = "newsMessage"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "r"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:note (without child elements)
+    /// <summary>
     public class Note
     {
         public string id;
@@ -2884,6 +3260,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Note(string propValue) { Xname = "note"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:objectDetails (without child elements)
+    /// <summary>
     public class ObjectDetails
     {
         public string id;
@@ -2901,6 +3280,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ObjectDetails() { Xname = "objectDetails"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:occurStatus (without child elements)
+    /// <summary>
     public class OccurStatus
     {
         public string id;
@@ -2922,6 +3304,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public OccurStatus() { Xname = "occurStatus"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:openHours (without child elements)
+    /// <summary>
     public class OpenHours
     {
         public string id;
@@ -2945,6 +3330,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public OpenHours(string propValue) { Xname = "openHours"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:organisationDetails (without child elements)
+    /// <summary>
     public class OrganisationDetails
     {
         public string id;
@@ -2962,6 +3350,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public OrganisationDetails() { Xname = "organisationDetails"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:organiser (without child elements)
+    /// <summary>
     public class Organiser
     {
         public string id;
@@ -2986,6 +3377,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Organiser() { Xname = "organiser"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:origin (without child elements)
+    /// <summary>
     public class Origin
     {
         public string id;
@@ -3010,6 +3404,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Origin(string propValue) { Xname = "origin"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:packageItem (without child elements)
+    /// <summary>
     public class PackageItem
     {
         public string standard;
@@ -3027,6 +3424,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public PackageItem() { Xname = "packageItem"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "r"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:participant (without child elements)
+    /// <summary>
     public class Participant
     {
         public string id;
@@ -3051,6 +3451,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Participant() { Xname = "participant"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:participationRequirement (without child elements)
+    /// <summary>
     public class ParticipationRequirement
     {
         public string id;
@@ -3075,6 +3478,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public ParticipationRequirement() { Xname = "participationRequirement"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:partMeta (without child elements)
+    /// <summary>
     public class PartMeta
     {
         public string creator;
@@ -3096,6 +3502,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public PartMeta() { Xname = "partMeta"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:partMetaExtProperty (without child elements)
+    /// <summary>
     public class PartMetaExtProperty
     {
         public string id;
@@ -3125,6 +3534,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public PartMetaExtProperty() { Xname = "partMetaExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:party (without child elements)
+    /// <summary>
     public class Party
     {
         public string id;
@@ -3148,6 +3560,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Party() { Xname = "party"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:personDetails (without child elements)
+    /// <summary>
     public class PersonDetails
     {
         public string id;
@@ -3165,6 +3580,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public PersonDetails() { Xname = "personDetails"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:phone (without child elements)
+    /// <summary>
     public class Phone
     {
         public string id;
@@ -3186,6 +3604,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Phone(string propValue) { Xname = "phone"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:planning (without child elements)
+    /// <summary>
     public class Planning
     {
         public string id;
@@ -3203,6 +3624,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Planning() { Xname = "planning"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:planningItem (without child elements)
+    /// <summary>
     public class PlanningItem
     {
         public string standard;
@@ -3220,6 +3644,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public PlanningItem() { Xname = "planningItem"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "r"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:POIDetails (without child elements)
+    /// <summary>
     public class POIDetails
     {
         public string id;
@@ -3237,6 +3664,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public POIDetails() { Xname = "POIDetails"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:polygon (without child elements)
+    /// <summary>
     public class Polygon
     {
         public string id;
@@ -3254,6 +3684,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Polygon() { Xname = "polygon"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:position (without child elements)
+    /// <summary>
     public class Position
     {
         public string id;
@@ -3275,6 +3708,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Position() { Xname = "position"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:postalCode (without child elements)
+    /// <summary>
     public class PostalCode
     {
         public string id;
@@ -3296,6 +3732,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public PostalCode(string propValue) { Xname = "postalCode"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:priority (without child elements)
+    /// <summary>
     public class Priority
     {
         public string id;
@@ -3315,6 +3754,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Priority(string propValue) { Xname = "priority"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:profile (without child elements)
+    /// <summary>
     public class Profile
     {
         public string id;
@@ -3327,14 +3769,19 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public string xmllang;
         public string dir;
         public string versioninfo;
+        public string thisValue;
         public readonly string Xname;
         public readonly string XnsURI;
         public readonly string XnsPrefix;
         public readonly string Xusagecode;
         public readonly string Xcard;
         public Profile() { Xname = "profile"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
+        public Profile(string propValue) { Xname = "profile"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:provider (without child elements)
+    /// <summary>
     public class Provider
     {
         public string id;
@@ -3358,6 +3805,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Provider() { Xname = "provider"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:pubStatus (without child elements)
+    /// <summary>
     public class PubStatus
     {
         public string id;
@@ -3379,6 +3829,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public PubStatus() { Xname = "pubStatus"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:rating (without child elements)
+    /// <summary>
     public class Rating
     {
         public string id;
@@ -3406,6 +3859,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Rating(string propValue) { Xname = "rating"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:rb (without child elements)
+    /// <summary>
     public class Rb
     {
         public readonly string Xname;
@@ -3416,6 +3872,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Rb() { Xname = "rb"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "m"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:rDate (without child elements)
+    /// <summary>
     public class RDate
     {
         public string id;
@@ -3435,6 +3894,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public RDate(string propValue) { Xname = "rDate"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:regionDelim (without child elements)
+    /// <summary>
     public class RegionDelim
     {
         public string id;
@@ -3456,6 +3918,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public RegionDelim() { Xname = "regionDelim"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:registration (without child elements)
+    /// <summary>
     public class Registration
     {
         public string id;
@@ -3479,6 +3944,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Registration(string propValue) { Xname = "registration"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:related (without child elements)
+    /// <summary>
     public class Related
     {
         public string id;
@@ -3509,6 +3977,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Related() { Xname = "related"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:remoteContent (without child elements)
+    /// <summary>
     public class RemoteContent
     {
         public string version;
@@ -3568,6 +4039,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public RemoteContent() { Xname = "remoteContent"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:remoteContentExtProperty (without child elements)
+    /// <summary>
     public class RemoteContentExtProperty
     {
         public string id;
@@ -3597,6 +4071,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public RemoteContentExtProperty() { Xname = "remoteContentExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:remoteInfo (without child elements)
+    /// <summary>
     public class RemoteInfo
     {
         public string version;
@@ -3630,6 +4107,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public RemoteInfo() { Xname = "remoteInfo"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:rightsInfo (without child elements)
+    /// <summary>
     public class RightsInfo
     {
         public string id;
@@ -3654,6 +4134,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public RightsInfo() { Xname = "rightsInfo"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:rightsInfoExtProperty (without child elements)
+    /// <summary>
     public class RightsInfoExtProperty
     {
         public string id;
@@ -3683,6 +4166,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public RightsInfoExtProperty() { Xname = "rightsInfoExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:role (without child elements)
+    /// <summary>
     public class Role
     {
         public string id;
@@ -3704,6 +4190,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Role() { Xname = "role"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:rp (without child elements)
+    /// <summary>
     public class Rp
     {
         public readonly string Xname;
@@ -3714,6 +4203,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Rp() { Xname = "rp"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "m"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:rRule (without child elements)
+    /// <summary>
     public class RRule
     {
         public string id;
@@ -3745,6 +4237,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public RRule() { Xname = "rRule"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:rt (without child elements)
+    /// <summary>
     public class Rt
     {
         public readonly string Xname;
@@ -3755,6 +4250,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Rt() { Xname = "rt"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "m"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:ruby (without child elements)
+    /// <summary>
     public class Ruby
     {
         public string id;
@@ -3774,6 +4272,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Ruby() { Xname = "ruby"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "m"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:sameAs (without child elements)
+    /// <summary>
     public class SameAs
     {
         public string id;
@@ -3799,6 +4300,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public SameAs() { Xname = "sameAs"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:sameAsScheme (without child elements)
+    /// <summary>
     public class SameAsScheme
     {
         public string id;
@@ -3816,6 +4320,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public SameAsScheme() { Xname = "sameAsScheme"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:scheduled (without child elements)
+    /// <summary>
     public class Scheduled
     {
         public string id;
@@ -3837,6 +4344,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Scheduled(string propValue) { Xname = "scheduled"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:scheme (without child elements)
+    /// <summary>
     public class Scheme
     {
         public string id;
@@ -3856,6 +4366,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Scheme() { Xname = "scheme"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:schemeMeta (without child elements)
+    /// <summary>
     public class SchemeMeta
     {
         public string id;
@@ -3876,6 +4389,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public SchemeMeta() { Xname = "schemeMeta"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "w"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:schemeMetaExtProperty (without child elements)
+    /// <summary>
     public class SchemeMetaExtProperty
     {
         public string id;
@@ -3905,6 +4421,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public SchemeMetaExtProperty() { Xname = "schemeMetaExtProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:sender (without child elements)
+    /// <summary>
     public class Sender
     {
         public string id;
@@ -3929,6 +4448,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Sender(string propValue) { Xname = "sender"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:sent (without child elements)
+    /// <summary>
     public class Sent
     {
         public string id;
@@ -3948,6 +4470,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Sent(string propValue) { Xname = "sent"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:service (without child elements)
+    /// <summary>
     public class Service
     {
         public string id;
@@ -3969,6 +4494,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Service() { Xname = "service"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:signal (without child elements)
+    /// <summary>
     public class Signal
     {
         public string id;
@@ -3991,6 +4519,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Signal() { Xname = "signal"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:slugline (without child elements)
+    /// <summary>
     public class Slugline
     {
         public string id;
@@ -4015,6 +4546,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Slugline(string propValue) { Xname = "slugline"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:span (without child elements)
+    /// <summary>
     public class Span
     {
         public string id;
@@ -4035,6 +4569,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Span() { Xname = "span"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "m"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:start (without child elements)
+    /// <summary>
     public class Start
     {
         public string id;
@@ -4056,6 +4593,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Start(string propValue) { Xname = "start"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:subject (without child elements)
+    /// <summary>
     public class Subject
     {
         public string id;
@@ -4083,6 +4623,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Subject() { Xname = "subject"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:timeDelim (without child elements)
+    /// <summary>
     public class TimeDelim
     {
         public string id;
@@ -4105,6 +4648,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public TimeDelim(string propValue) { Xname = "timeDelim"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:timestamp (without child elements)
+    /// <summary>
     public class Timestamp
     {
         public string id;
@@ -4125,6 +4671,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Timestamp(string propValue) { Xname = "timestamp"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:title (without child elements)
+    /// <summary>
     public class Title
     {
         public string id;
@@ -4148,6 +4697,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Title(string propValue) { Xname = "title"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:transmitId (without child elements)
+    /// <summary>
     public class TransmitId
     {
         public string id;
@@ -4167,6 +4719,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public TransmitId(string propValue) { Xname = "transmitId"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:type (without child elements)
+    /// <summary>
     public class Type
     {
         public string id;
@@ -4188,6 +4743,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Type() { Xname = "type"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:urgency (without child elements)
+    /// <summary>
     public class Urgency
     {
         public string id;
@@ -4207,6 +4765,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Urgency(string propValue) { Xname = "urgency"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:usageTerms (without child elements)
+    /// <summary>
     public class UsageTerms
     {
         public string id;
@@ -4231,6 +4792,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public UsageTerms(string propValue) { Xname = "usageTerms"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:userInteraction (without child elements)
+    /// <summary>
     public class UserInteraction
     {
         public string id;
@@ -4252,6 +4816,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public UserInteraction(string propValue) { Xname = "userInteraction"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:versionCreated (without child elements)
+    /// <summary>
     public class VersionCreated
     {
         public string id;
@@ -4271,6 +4838,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public VersionCreated(string propValue) { Xname = "versionCreated"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "p"; Xcard = "s"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for the NewsML-G2 element nar:web (without child elements)
+    /// <summary>
     public class Web
     {
         public string id;
@@ -4291,6 +4861,9 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public Web(string propValue) { Xname = "web"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = "d"; Xcard = "u"; thisValue = propValue; }
     }
 
+    /// <summary>
+    /// Class for a virtual element including all attributes defined in the NewsML-G2 context (without child elements)
+    /// <summary>
     public class GenericProperty
     {
         public string standard;
@@ -4450,7 +5023,6 @@ namespace NewsIT.IPTC.NewsMLG2.v217
         public readonly string Xcard;
         public GenericProperty() { Xname = "genericProperty"; XnsURI = "http://iptc.org/std/nar/2006-10-01/"; XnsPrefix = "nar"; Xusagecode = " "; Xcard = "u"; }
     }
-
 
 
 }
