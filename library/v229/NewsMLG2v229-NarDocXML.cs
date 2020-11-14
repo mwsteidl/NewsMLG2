@@ -742,9 +742,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
                 result = ReadFromItemResultEnum.emptyXPath;
                 return;
             }
-
-            string valueStr;
-            GetElemValueAsString(xPath, ElementTextvalueTypeEnum.innerText, out valueStr, out result);
+            GetElemValueAsString(xPath, ElementTextvalueTypeEnum.innerText, out string valueStr, out result);
             if ((result == ReadFromItemResultEnum.ok) || (result == ReadFromItemResultEnum.firstFromMultiple))
             {
                 try
@@ -782,8 +780,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
                 result = ReadFromItemResultEnum.emptyXPath;
                 return;
             }
-            string valueStr;
-            GetElemValueAsString(xPath, ElementTextvalueTypeEnum.innerText, out valueStr, out result);
+            GetElemValueAsString(xPath, ElementTextvalueTypeEnum.innerText, out string valueStr, out result);
             if ((result == ReadFromItemResultEnum.ok) || (result == ReadFromItemResultEnum.firstFromMultiple))
             {
                 try
@@ -832,6 +829,10 @@ namespace NewsIT.IPTC.NewsMLG2.v229
                 return;
             }
             XmlNodeList foundXNL = XmlDoc.SelectNodes(xPath, NsMngr);
+            if (foundXNL == null)
+            {
+                return;
+            }
             if (foundXNL.Count == 0)
             {
                 result = ReadFromItemResultEnum.targetNotFound;
@@ -859,8 +860,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
             // 2010-12-31 mws
         {
             value = 0;
-            string valueStr;
-            GetAttribValueAsString(xPath, attribname, out valueStr, out result);
+            GetAttribValueAsString(xPath, attribname, out string valueStr, out result);
             if ((result == ReadFromItemResultEnum.ok) || (result == ReadFromItemResultEnum.firstFromMultiple))
             {
                 try
@@ -894,8 +894,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
             // 2010-12-31 mws
         {
             value = DateTime.MinValue;
-            string valueStr;
-            GetAttribValueAsString(xPath, attribname, out valueStr, out result);
+            GetAttribValueAsString(xPath, attribname, out string valueStr, out result);
             if ((result == ReadFromItemResultEnum.ok) || (result == ReadFromItemResultEnum.firstFromMultiple))
             {
                 try

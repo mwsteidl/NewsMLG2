@@ -110,4 +110,9 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
+#####################
+# Project specific
+/library/*/dll
+
+
 
