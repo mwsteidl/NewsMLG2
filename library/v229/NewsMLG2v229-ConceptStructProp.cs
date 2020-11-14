@@ -251,7 +251,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         }
 
         // ******************************************************************************
-        protected virtual PropProcStatus ApplyToElementInternal(AnyItemXml NG2Item, XmlElement applyElement,
+        protected override PropProcStatus ApplyToElementInternal(AnyItemXml NG2Item, XmlElement applyElement,
             bool fullConceptMode)
         // Code History:
         // 2014-02-27 mws
@@ -310,7 +310,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         }
 
         // ******************************************************************************
-        protected virtual PropProcStatus ApplyToElementInternal(AnyItemXml NG2Item, XmlElement applyElement,
+        protected override PropProcStatus ApplyToElementInternal(AnyItemXml NG2Item, XmlElement applyElement,
             bool fullConceptMode)
         // Code History:
         // 2014-02-27 mws

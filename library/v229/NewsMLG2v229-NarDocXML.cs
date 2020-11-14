@@ -1000,8 +1000,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         // Code History:
         // 2014-02-22 mws
         {
-            XmlNode foundXnode;
-            if (!FindXE(parentXPath, out foundXnode))
+            if (!FindXE(parentXPath, out XmlNode foundXnode))
             {
                 return foundXnode;
             }
@@ -1153,9 +1152,9 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         {
             // retrieve information about the structure fields by NET Reflection
             FieldInfo[] fi = aProperty.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
-            string fieldName, fieldValue;
             foreach (FieldInfo info in fi)
             {
+                string fieldValue;
                 try { fieldValue = info.GetValue(aProperty).ToString(); }
                 catch (NullReferenceException ex) // exception is thrown if the field is empty.
                 {
@@ -1163,7 +1162,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
                 }
                 if (!string.IsNullOrEmpty(fieldValue))
                 {
-                    fieldName = info.Name;
+                    string fieldName = info.Name;
                     if (fieldName[0] == 'X') // eXcluded field
                         continue;
                     if (fieldName[0] == 'Y') // name of field collided with C# keyword, Y was prefixed
@@ -1194,7 +1193,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
             newElement = null;
             // retrieve information about the structure fields by NET Reflection
             FieldInfo[] fi = aProperty.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
-            string fieldName, fieldValue;
+            string fieldValue;
             string newPropName = string.Empty;
             foreach (FieldInfo info in fi)
             {
@@ -1226,7 +1225,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
                 }
                 if (!string.IsNullOrEmpty(fieldValue))
                 {
-                    fieldName = info.Name;
+                    string fieldName = info.Name;
                     if (fieldName[0] == 'X') // eXcluded field
                         continue;
                     if (fieldName[0] == 'Y') // name of field collided with C# keyword, Y was prefixed
