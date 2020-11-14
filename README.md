@@ -1,15 +1,12 @@
 # NewsMLG2
 
-This repository provides a C# library and examples for the IPTC NewsML-G2 news exchange format (http://www.newsml-g2.org).
+This repository provides a C# library and examples for the IPTC NewsML-G2 news exchange format (https://iptc.org/standards/newsml-g2/).
 
 
-## License
+## Covered NewsML-G2 Versions
 
-The MIT License (MIT)
-Copyright (c) 2014 NewsIT-M.W.Steidl (www.newsit.biz)
+A history of NewsML-G2 versions is available on the IPTC Developer Site at http://dev.iptc.org/G2-Standards
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+* version 2.17 of March 2014
+* version 2.18 of November 2014
+* version 2.29 of May 2020
