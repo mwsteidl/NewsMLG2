@@ -32,7 +32,6 @@ Current date / persID / change log (most current at top)
 2014-08-27 mws: moved from v217 to v218
 StartDate: 2014-02-27
 ******************************************************************************/
-using System;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -40,7 +39,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
 {
     //**************************************************************************
     /// <summary>
-    /// Class for a basic structured NewsML-G2 Concept
+    /// Class for a NewsML-G2 Concept with a basic structure
     /// </summary>
     public class ConceptStructProp
     {
@@ -78,7 +77,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
 
         // ******************************************************************************
         /// <summary>
-        /// Appends this object as concept element as child to a parent element
+        /// Appends this object as concept child element to a parent element
         /// </summary>
         /// <param name="NG2Item">The NewsML-G2 item</param>
         /// <param name="parentXPath">XPath of the parent element</param>

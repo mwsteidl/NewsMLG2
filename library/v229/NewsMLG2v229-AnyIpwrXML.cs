@@ -82,7 +82,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // SetGuidAndVersion
 
         /// <summary>
-        /// Sets the xml:lang attribute of the root element
+        /// Sets the xml:lang attribute of the root element of the NewsML-G2 document
         /// </summary>
         /// <param name="xmllang">IETF BCP 47 compliant language tag</param>
         public void SetRootXmlLang(string xmllang)
@@ -97,7 +97,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
 
         // ******************************************************************************
         /// <summary>
-        /// Adds a catalogRef element with href attribute
+        /// Adds a catalogRef element with href attribute to the NewsML-G2 item
         /// </summary>
         /// <param name="href">URL of the catalog</param>
         public void AddCatalogRef(string href)
@@ -119,6 +119,9 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         // ***** I T E M   M E T A
         // ******************************************************************************
 
+        /// <summary>
+        /// Simple&amp;constrained method: adds an empty itemMeta element
+        /// </summary>
         public void ScAddItemMeta()
         // Code History:
         // 2010-12-09, 2014-02-26 mws
@@ -126,6 +129,10 @@ namespace NewsIT.IPTC.NewsMLG2.v229
             CheckAddNarWrapper1(PropsWrapping1.ItemMeta);
         } // ScAddItemMeta
 
+        /// <summary>
+        /// Simple&amp;constrained method: adds an itemMeta class instance to the itemMeta wrapper
+        /// </summary>
+        /// <param name="itemClass"></param>
         public void ScAddIMitemClass(ItemClass itemClass)
         // Code History:
         // 2014-02-26 mws
@@ -133,6 +140,10 @@ namespace NewsIT.IPTC.NewsMLG2.v229
             AddNarPropertyToWrapper1(PropsWrapping1.ItemMeta, string.Empty, new ItemClass());
         }
 
+        /// <summary>
+        /// Simple&amp;constrained method: adds a Qcode-string as itemClass property value to the itemMeta wrapper
+        /// </summary>
+        /// <param name="classQC">QCode string</param>
         public void ScAddIMitemClass(string classQC)
         // Code History:
         // 2010-12-09; 2014-02-26 mws
@@ -143,6 +154,11 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddIMitemClass
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an XML-style date-time string as versionCreated property value
+        /// to the Item Meta wrapper
+        /// </summary>
+        /// <param name="dtValueAsStr">an XML-style date-time string</param>
         public void ScAddIMversionCreated(string dtValueAsStr)
         // Code History:
         // 2010-12-11, 2014-02-26 mws
@@ -153,6 +169,11 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddIMversionCreated
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an XML-style date-time string as firstCreated property value
+        /// to the Item Meta wrapper
+        /// </summary>
+        /// <param name="dtValueAsStr">an XML-style date-time string</param>
         public void ScAddIMfirstCreated(string dtValueAsStr)
         // Code History:
         // 2010-12-11, 2014-02-26 mws
@@ -163,6 +184,11 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddIMfirstCreated
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an edNote property with text and role to the Item Meta wrapper
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="roleQC"></param>
         public void ScAddIMedNote(string text, string roleQC)
         // Code History:
         // 2010-12-09,2014-02-26 mws
@@ -176,6 +202,9 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         // ******************************************************************************
         // ***** C O N T E N T   M E T A 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an empty contentMeta element
+        /// </summary>
         public void ScAddContentMeta()
         // Code History:
         // 2010-12-11, 2014-02-26 mws
@@ -184,6 +213,10 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddContentMeta
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an urgency property with a numeric value to the contentMeta wrapper
+        /// </summary>
+        /// <param name="urgencyValue"></param>
         public void ScAddCMurgency(int urgencyValue)
         // Code History:
         // 2014-02-26 mws
@@ -198,6 +231,11 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddCMurgency
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an XML-style date-time string as contentCreated property value
+        /// to the contentMeta wrapper
+        /// </summary>
+        /// <param name="dtValueAsStr"></param>
         public void ScAddCMcontentCreated(string dtValueAsStr)
         // Code History:
         // 2010-12-11, 2014-02-26 mws
@@ -208,6 +246,11 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddCMcontentCreated
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an XML-style date-time string as contentModified property value
+        /// to the contentMeta wrapper
+        /// </summary>
+        /// <param name="dtValueAsStr"></param>
         public void ScAddCMcontentModified(string dtValueAsStr)
         // Code History:
         // 2010-12-11, 2014-02-26 mws
@@ -218,6 +261,12 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddCMcontentModified
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds a free-text string with a language tag as description property value
+        /// to the contentMeta wrapper
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="langTag"></param>
         public void ScAddCMdescription(string text, string langTag)
         // Code History:
         // 2010-12-11, 2014-02-26 mws
@@ -231,13 +280,29 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         // ******************************************************************************
         // ***** P A R T   M E T A 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an empty partMeta element with a specific @partId
+        /// </summary>
+        /// <param name="partId"></param>
         public void ScAddPartMeta(string partId)
-        // Code History:
+            // Code History:
         // 2010-12-11, 2014-02-26 mws
         {
+            ResetErrState();
+            if (string.IsNullOrEmpty(partId))
+            {
+                SetErrState(G2DocProcErrEnum.NoWrapperIdAvailable);
+                return;
+            }
             CheckAddNarWrapper1(PropsWrapping1.PartMeta, partId);
         } // ScAddPartMeta
 
+        /// <summary>
+        /// Simple&amp;constrained method: adds a partMeta wrapper to a NewsML-G2 item
+        /// </summary>
+        /// <param name="partId"></param>
+        /// <param name="seq"></param>
+        /// <param name="contentrefs"></param>
         public void ScAddPartMeta(string partId, int seq, string contentrefs)
         // Code History:
         // 2010-12-14, 2014-02-26 mws
@@ -256,6 +321,12 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddPartMeta
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an XML-style date-time string as contentCreated property value
+        /// to the partMeta wrapper with a specific @id
+        /// </summary>
+        /// <param name="partId"></param>
+        /// <param name="dtValueAsStr"></param>
         public void ScAddPMcontentCreated(string partId, string dtValueAsStr)
         // Code History:
         // 2010-12-11,2014-02-26 mws
@@ -266,6 +337,12 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddPMcontentCreated
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds an XML-style date-time string as contentModified property value
+        /// to the partMeta wrapper with a specific @id
+        /// </summary>
+        /// <param name="partId"></param>
+        /// <param name="dtValueAsStr"></param>
         public void ScAddPMcontentModified(string partId, string dtValueAsStr)
         // Code History:
         // 2010-12-11,2014-02-26 mws
@@ -276,6 +353,13 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         } // ScAddPMcontentModified
 
         // ******************************************************************************
+        /// <summary>
+        /// Simple&amp;constrained method: adds a free-text string with a language tag as description property value
+        /// to the partMeta wrapper with a specific @id
+        /// </summary>
+        /// <param name="partId"></param>
+        /// <param name="text"></param>
+        /// <param name="roleQC"></param>
         public void ScAddPMdescription(string partId, string text, string roleQC)
         // Code History:
         // 2010-12-11,2014-02-26 mws

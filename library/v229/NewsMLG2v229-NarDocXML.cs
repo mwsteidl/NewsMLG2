@@ -38,6 +38,16 @@ using System.Xml;
 using System.Text;
 using System.Reflection;
 
+// **************************************
+#region DOXYGEN DOCUMENTATION MAIN PAGE
+
+/*! \mainpage NewsIT's NewsML-G2 Library - Index Page
+ *
+ * This is more about this library 
+ */
+
+#endregion
+
 namespace NewsIT.IPTC.NewsMLG2.v229
 {
 	// *************************************************************************
@@ -45,7 +55,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
 
     //**************************************************************************
     /// <summary>
-    /// Enumeration of results returned by methods reading from an NewsML-G2 Item
+    /// Enumeration of results returned by methods reading data from a NewsML-G2 Item
     /// </summary>
     public enum ReadFromItemResultEnum { ok, unknown, firstFromMultiple, emptyXPath, emptyAttribname, targetNotFound,
                                         valuetypeConversionFailed };
@@ -131,8 +141,9 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         // ##### For the automated adding of properties
 
         /// <summary>
-        /// These are all child properties/elements of the root in NewsML-G2 items 
-        /// they are wrappers of other properties
+        /// Enumeration of all child properties/elements of the root in NewsML-G2 items 
+        /// which are wrappers of metadata properties. Excluded are the helper-elements
+        /// assert, inlineRef, derived from and derivedFromValue
         /// </summary>
         public enum PropsWrapping1
         {
@@ -144,57 +155,105 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         | Each sequence reflects the NewsML-G2 XML Schema
         | These sequences are only used for adding properties
         */
+        /// <summary>
+        /// Sequence of basic child element names of any NewsML-G2 item
+        /// </summary>
         public const string NameSeqAnyRoot = "nar:catalogRef nar:catalog nar:hopHistory nar:pubHistory nar:rightsInfo nar:itemMeta";
 
+        /// <summary>
+        /// Sequence of extended child element names of many of the NewsML-G2 item
+        /// </summary>
         public const string NameSeqExtRoot = NameSeqAnyRoot
             + " nar:contentMeta nar:partMeta nar:assert nar:inlineRef nar:derivedFrom nar:derivedFromValue";
 
+        /// <summary>
+        /// Sequence of all child element names of all NewsML-G2 items - they will not appear in any specific item
+        /// </summary>
         public const string NameSeqFullRoot = NameSeqExtRoot
             + " nar:concept nar:conceptSet nar:schemeMeta nar:contentSet nar:groupSet nar:newsCoverageSet";
 
+        /// <summary>
+        /// Sequence of child element names of the nar:hopHistory element
+        /// </summary>
         public const string NameSeqHopHistory = "nar:hop";
 
+        /// <summary>
+        /// Sequence of child element names of the nar:rightsInfo element
+        /// </summary>
         public const string NameSeqRightsInfo =
             "nar:accountable nar:copyrightHolder nar:copyrightNotice nar:usageTerms nar:link nar:rightsExtProperty nar:rightsExpressionXML nar:rightsExpressionData";
 
+        /// <summary>
+        /// Sequence of child element names of the nar:itemMeta element
+        /// </summary>
         public const string NameSeqItemMeta =
             "nar:itemClass nar:provider nar:versionCreated nar:firstCreated "
             + "nar:embargoed nar:pubStatus nar:role nar:fileName nar:generator nar:profile nar:service nar:title "
             + "nar:edNote nar:memberOf nar:instanceOf nar:signal nar:altRep nar:deliverableOf nar:hash nar:expires " 
             + "nar:origRep nar:incomingFeedId nar:metadataCreator nar:link nar:itemMetaExtProperty";
 
+        /// <summary>
+        /// Sequence of child element names of the contentMeta element as defined by the ContentMetaAdmGroup (in the XML Schema)
+        /// </summary>
         public const string NameSeqContentMetaAdmGroup =
             "nar:urgency nar:contentCreated nar:contentModified nar:located nar:infoSource nar:creator "
             + "nar:contributor nar:audience nar:exclAudience nar:altId nar:rating nar:userInteraction";
 
+        /// <summary>
+        /// Sequence of child element names of the contentMeta element as defined by the ContentMetaDescrCoreGroup (in the XML Schema)
+        /// </summary>
         public const string NameSeqContentMetaDescrCoreGroup =
             "nar:language nar:keyword nar:subject nar:slugline nar:headline nar:description";
 
+        /// <summary>
+        /// Sequence of child element names of the contentMeta element as defined by the ContentMetaDescrFullGroup (in the XML Schema)
+        /// </summary>
         public const string NameSeqContentMetaDescrFullGroup =
             "nar:language nar:genre nar:keyword nar:subject nar:slugline nar:headline nar:dateline nar:by nar:creditline nar:description";
 
+        /// <summary>
+        /// Sequence of child element names of the contentMeta element as defined by the ContentMetaAcD group (in the XML Schema)
+        /// </summary>
         public const string NameSeqContentMetaAcD =
             "nar:icon " + NameSeqContentMetaAdmGroup + " " + NameSeqContentMetaDescrCoreGroup +
             " nar:contentMetaExtProperty";
 
+        /// <summary>
+        /// Sequence of child element names of the contentMeta element as defined by the ContentMetaAfD group (in the XML Schema)
+        /// </summary>
         public const string NameSeqContentMetaAfD =
             "nar:icon " + NameSeqContentMetaAdmGroup + " " + NameSeqContentMetaDescrFullGroup +
             " nar:contentMetaExtProperty";
 
+        /// <summary>
+        /// Sequence of child element names of the partMeta element
+        /// </summary>
         public const string NameSeqPartMeta = "nar:icon nar:timeDelim nar:regionDelim " 
             + NameSeqContentMetaAdmGroup + " " + NameSeqContentMetaDescrFullGroup + " nar:partMetaExtProperty"
             + " nar:signal";
 
+        /// <summary>
+        /// Sequence of child element names of the contentSet element of a newsItem
+        /// </summary>
         public const string NameSeqContentSet = "nar:inlineXML nar:inlineData nar:remoteContent";
 
+        /// <summary>
+        /// Sequence of child element names representing relationships between concepts
+        /// </summary>
         public const string NameSeqConceptRel = "nar:sameAs nar:broader nar:narrower nar:related ";
 
+        /// <summary>
+        /// Sequence of child element names of a full NewsML-G2 concept
+        /// </summary>
         public const string NameSeqConcept =
             "nar:conceptId nar:type nar:name nar:definition nar:note nar:remoteInfo "
             + "nar:hierarchyInfo " + NameSeqConceptRel +
             " nar:personDetails nar:organisationDetails nar:geoAreaDetails "
             + "nar:POIDetails nar:objectDetails nar:eventDetails";
 
+        /// <summary>
+        /// Sequence of child element names of NewsML-G2 News Message header element
+        /// </summary>
         public const string NameSeqNMHeader = "nar:sent nar:catalogRef nar:catalog nar:sender nar:transmitId nar:origin "
             + "nar:timestamp nar:destination nar:channel nar:signal nar:headerExtProperty";
 
@@ -212,12 +271,15 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         //********************************************************************************
         //********************************************************************************
 
-        #region ***** CLASS P R O P E R T I E S
+        #region ***** CLASS   P R O P E R T I E S
 
         //********************************************************************************
 
         private G2DocProcStateEnum _g2DocPropState;
 
+        /// <summary>
+        /// getter/setter of G2DocPropState
+        /// </summary>
         protected G2DocProcStateEnum G2DocPropState
         {
             get { return _g2DocPropState; }
@@ -226,6 +288,9 @@ namespace NewsIT.IPTC.NewsMLG2.v229
 
         private G2DocProcErrEnum _Err = G2DocProcErrEnum.NoError;
 
+        /// <summary>
+        /// getter/setter of the Err (error number)
+        /// </summary>
         public G2DocProcErrEnum Err
         {
             get { return _Err; }
@@ -234,12 +299,18 @@ namespace NewsIT.IPTC.NewsMLG2.v229
 
         private string _ErrStr = "";
 
+        /// <summary>
+        /// getter/setter of the ErrStr (error string)
+        /// </summary>
         public string ErrStr
         {
             get { return _ErrStr; }
             set { _ErrStr = value; }
         }
 
+        /// <summary>
+        /// getter of the name of the root element of the XML document
+        /// </summary>
         public string RootName
         {
             get { return RootElemName; }
@@ -254,12 +325,12 @@ namespace NewsIT.IPTC.NewsMLG2.v229
 
         // *******************************************************************************
         /// <summary>
-        /// Initializes an empty XML document with the required basic XML nodes.
+        /// Initializes an empty XML document with the mandatory basic XML nodes.
         /// </summary>
         public abstract void InitEmptyXMLDoc();
 
         /// <summary>
-        /// Initializes an empty XML document with the required basic XML nodes and
+        /// Initializes an empty XML document with the mandatory basic XML nodes and
         /// adds key attributes to the root element
         /// </summary>
         /// <param name="guid">The item's GUID</param>
@@ -267,7 +338,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         public abstract void InitEmptyXMLDoc(string guid, int version);
 
         /// <summary>
-        /// Initialized an item from a template file.
+        /// Initializes an item from a XML template file
         /// </summary>
         /// <param name="fileName"></param>
         public void InitDocFromTemplateFile(string fileName)
@@ -283,7 +354,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         }
 
         /// <summary>
-        /// Initialized an item from a string
+        /// Initializes an item from an XML string
         /// </summary>
         /// <param name="xMLtemplate">A string representing the template XML document</param>
         public void InitDocFromTemplateString(string xMLtemplate)
@@ -346,11 +417,10 @@ namespace NewsIT.IPTC.NewsMLG2.v229
             // 2014-02-26 mws
         {
             ResetErrState();
-            string wrapperParentXPath, wrapperParentChildNameSeq;
             var wrapperXPath = string.Empty;
             var wrapperLocalName = string.Empty;
             var  wrapperChildNameSeq = string.Empty;
-            if (!GetNarWrapper1Details(wrapper, wrapperId, out wrapperParentXPath, out wrapperParentChildNameSeq,
+            if (!GetNarWrapper1Details(wrapper, wrapperId, out string wrapperParentXPath, out string wrapperParentChildNameSeq,
                 out wrapperXPath, out wrapperLocalName, out wrapperChildNameSeq))
             {
                 return false;
@@ -599,8 +669,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
             }
 
             // add the core property
-            XmlElement corePropXe;
-            if (!AddNarPropertyToParent(newStructProp.ParentXPath, newStructProp.ParentChildNameSeq, newStructProp.CoreProp, out corePropXe))
+            if (!AddNarPropertyToParent(newStructProp.ParentXPath, newStructProp.ParentChildNameSeq, newStructProp.CoreProp, out XmlElement corePropXe))
             {
                 return false;
             }
@@ -730,7 +799,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         /// <param name="result">Returns a ReadFromItemResultEnum value</param>
         public void GetElemValueAsInt64(
             string xPath,
-            out Int64 value,
+            out long value,
             out ReadFromItemResultEnum result)
             // Code History:
             // 2010-12-31 mws
@@ -854,7 +923,7 @@ namespace NewsIT.IPTC.NewsMLG2.v229
         public void GetAttribValueAsInt64(
             string xPath,
             string attribname,
-            out Int64 value,
+            out long value,
             out ReadFromItemResultEnum result)
             // Code History:
             // 2010-12-31 mws
